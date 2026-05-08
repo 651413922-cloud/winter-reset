@@ -1,0 +1,41 @@
+# Place your button screenshots here for image recognition
+#
+# Required images (place PNG files in this folder):
+# =================================================
+#
+# 1. btn_change_line.png
+#    - 主界面的"更换线路"按钮截图
+#
+# 2. line_aa1_red.png
+#    - "美国节点-免费试用AA1" 在红色（不可用）状态下的整行截图
+#
+# 3. line_aa2_red.png
+#    - "美国节点-免费试用AA2" 在红色（不可用）状态下的整行截图
+#
+# 4. line_aa3_red.png
+#    - "美国节点-永久用户AA3" 在红色（不可用）状态下的整行截图
+#
+# 5. status_connected.png
+#    - 连接成功后的"已连接"状态截图
+#
+# =================================================
+# How it works (reverse matching):
+# =================================================
+# 脚本只保存了红色（不可用）版本的线路截图。
+# 当线路变成蓝色/黄色（可用）时，locateOnScreen 就匹配不到红色截图了。
+# 匹配不到 = 线路可用 → 直接点击该线路。
+#
+# =================================================
+# How to capture:
+# =================================================
+# 1. Run: python get_coords.py --snapshot
+#    (takes a screenshot of the VPN window)
+# 2. Use an image editor to crop each button/line area
+# 3. Save as PNG with the filenames listed above
+# 4. Run the main script: python main.py
+#
+# Tips:
+#   - Keep images small (just the button/line itself)
+#   - Use original resolution (don't scale)
+#   - Ensure the image is unique on the screen
+#   - For line screenshots, include the full row content

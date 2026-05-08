@@ -1,0 +1,8 @@
+# VPN Automation Dependencies
+# Install with: pip install -r requirements.txt
+
+pyautogui>=0.9.53
+pygetwindow>=0.0.9
+opencv-python>=4.5.0
+keyboard>=0.13.5
+Pillow>=9.0.0
