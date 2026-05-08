@@ -21,6 +21,11 @@ def main():
     Logger.info("Move mouse to top-left corner for emergency stop")
     Logger.info("=" * 50)
 
+    # Step 1: Check all required screenshot files before starting
+    if not VPNController.check_required_files():
+        Logger.error("Startup check failed. Please add the missing screenshot files.")
+        sys.exit(1)
+
     controller = VPNController()
 
     try:

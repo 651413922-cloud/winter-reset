@@ -1,41 +1,25 @@
-# Place your button screenshots here for image recognition
+# 截图文件清单
+# 请将以下PNG图片放入此文件夹
 #
-# Required images (place PNG files in this folder):
-# =================================================
+# 已有文件（已匹配配置）：
+#   btn_change_line.png   - 主界面左下角的"更换线路"四个字
+#   line_aa1_label.png    - "美国直连节点AA1" 文字
+#   line_aa2_label.png    - "美国直连节点AA2" 文字
+#   line_aa3_label.png    - "美国直连节点AA3" 文字
+#   status_full.png       - 红色的"100%"字样（用于判断线路爆满）
+#   status_connected.png  - 连接成功后圆圈下方的"连接成功"蓝色字样
+#   btn_recharge.png      - 底部的蓝色"充值"按钮（作为页面加载锚点）
 #
-# 1. btn_change_line.png
-#    - 主界面的"更换线路"按钮截图
+# 工作原理：
+#   1. 点击"更换线路"进入线路列表
+#   2. 用"充值"按钮判断页面是否加载完成
+#   3. 用线路名称文字定位每条线路
+#   4. 在该行右侧搜索红色"100%"：
+#      - 找到 → 线路爆满 → 检测下一条
+#      - 没找到 → 线路可用 → 点击该行
+#   5. 连接后检测"连接成功"文字
 #
-# 2. line_aa1_red.png
-#    - "美国节点-免费试用AA1" 在红色（不可用）状态下的整行截图
-#
-# 3. line_aa2_red.png
-#    - "美国节点-免费试用AA2" 在红色（不可用）状态下的整行截图
-#
-# 4. line_aa3_red.png
-#    - "美国节点-永久用户AA3" 在红色（不可用）状态下的整行截图
-#
-# 5. status_connected.png
-#    - 连接成功后的"已连接"状态截图
-#
-# =================================================
-# How it works (reverse matching):
-# =================================================
-# 脚本只保存了红色（不可用）版本的线路截图。
-# 当线路变成蓝色/黄色（可用）时，locateOnScreen 就匹配不到红色截图了。
-# 匹配不到 = 线路可用 → 直接点击该线路。
-#
-# =================================================
-# How to capture:
-# =================================================
-# 1. Run: python get_coords.py --snapshot
-#    (takes a screenshot of the VPN window)
-# 2. Use an image editor to crop each button/line area
-# 3. Save as PNG with the filenames listed above
-# 4. Run the main script: python main.py
-#
-# Tips:
-#   - Keep images small (just the button/line itself)
-#   - Use original resolution (don't scale)
-#   - Ensure the image is unique on the screen
-#   - For line screenshots, include the full row content
+# 截图要求：
+#   - 只裁剪目标文字/按钮本身，越小越好
+#   - 保持原始分辨率，不要缩放
+#   - PNG格式

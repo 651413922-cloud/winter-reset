@@ -3,7 +3,6 @@ Configuration module for VPN automation.
 All tunable parameters are centralized here.
 """
 
-import os
 from pathlib import Path
 
 # ============================================================
@@ -22,36 +21,60 @@ WINDOW_TITLE = "小熊加速器"
 
 # ============================================================
 # Screenshot file names for image recognition
-# Place your cropped button images in the screenshots/ folder
 # ============================================================
 
-# "更换线路" button on main page
+# Main page: "更换线路" button
 IMAGE_CHANGE_LINE = str(SCREENSHOTS_DIR / "btn_change_line.png")
 
-# Three free lines in RED (unavailable) state
-# Script uses reverse matching: if RED image is NOT found → line is available (blue/yellow)
-IMAGE_LINE_AA1_RED = str(SCREENSHOTS_DIR / "line_aa1_red.png")   # 美国节点-免费试用AA1 (red/unavailable)
-IMAGE_LINE_AA2_RED = str(SCREENSHOTS_DIR / "line_aa2_red.png")   # 美国节点-免费试用AA2 (red/unavailable)
-IMAGE_LINE_AA3_RED = str(SCREENSHOTS_DIR / "line_aa3_red.png")   # 美国节点-永久用户AA3 (red/unavailable)
+# Line row tags: click on these to trigger connection
+# "普通用户" tag (for AA1, AA2)
+IMAGE_TAG_NORMAL = str(SCREENSHOTS_DIR / "tag_normal.png")
+# "永久用户" tag (for AA3)
+IMAGE_TAG_FOREVER = str(SCREENSHOTS_DIR / "tag_forever.png")
 
-# "已连接" status indicator
+# Line status: red "100%" text indicating line is full
+IMAGE_STATUS_FULL = str(SCREENSHOTS_DIR / "status_full.png")
+
+# Connected page: "连接成功" text
 IMAGE_STATUS_CONNECTED = str(SCREENSHOTS_DIR / "status_connected.png")
 
+# Page anchor: "充值" button at top-right corner
+IMAGE_RECHARGE = str(SCREENSHOTS_DIR / "btn_recharge.png")
+
 # ============================================================
-# Image recognition confidence threshold (0.0 ~ 1.0)
-# Lower = more tolerant (may cause false positives)
-# Higher = stricter (may miss matches)
+# Image recognition confidence thresholds (0.0 ~ 1.0)
 # ============================================================
-CONFIDENCE = 0.8
+# General default confidence (for buttons, labels)
+CONFIDENCE = 0.5
+
+# Tag image detection (普通用户, 永久用户) — was 0.6, need lower for full-screen match
+CONFIDENCE_TAG = 0.5
+
+# High confidence to avoid false-positive "100%" detection
+CONFIDENCE_FULL = 0.8
+
+# Low confidence for "充值" anchor (actual score ~0.44)
+CONFIDENCE_ANCHOR = 0.35
+
+# Confidence for "连接成功" status detection
+CONFIDENCE_CONNECTED = 0.7
+
+# ============================================================
+# Line row search: after finding line name text, extend rightwards
+# to search for the tag image. This region is relative to the
+# name text position. (pixels)
+# ============================================================
+ROW_SEARCH_OFFSET_X = 200      # start of search region (right of name text)
+ROW_SEARCH_WIDTH = 400         # width of search region to the right
 
 # ============================================================
 # Timing settings (seconds)
 # ============================================================
-WAIT_SHORT = 1          # Short wait between operations
-WAIT_MEDIUM = 3         # Medium wait for UI transitions
-WAIT_REFRESH = 5        # Wait after clicking refresh/change line
-WAIT_CONNECT = 5        # Wait after clicking a line to auto-connect
-WAIT_BEFORE_RETRY = 2   # Wait before next retry cycle
+WAIT_SHORT = 1
+WAIT_MEDIUM = 2
+WAIT_REFRESH = 5
+WAIT_CONNECT = 8
+WAIT_BEFORE_RETRY = 2
 
 # ============================================================
 # Retry settings
@@ -62,3 +85,21 @@ MAX_RETRIES = 100
 # URL to open after successful connection
 # ============================================================
 TARGET_URL = "https://chat.openai.com"
+
+# ============================================================
+# DPI scaling / multi-resolution hints
+# ============================================================
+#
+# DPI Compatibility:
+# - PyAutoGUI locateOnScreen() works with pixel-perfect matching.
+# - If DPI scaling is NOT 100% (e.g., 125%, 150% on Windows),
+#   you MUST set Windows DPI scaling to 100% for the VPN app,
+#   OR take screenshots at the SAME DPI scaling level as runtime.
+#
+# Multi-resolution Tips:
+# - LocateOnScreen() does NOT auto-scale templates.
+# - If you run the script on a different resolution/DPI:
+#   1. Re-take all template PNG screenshots at that resolution.
+#   2. Or set `pyautogui.USE_IMAGE_RESIZE = True` (experimental).
+# - Recommended: Keep a separate screenshots/ folder per resolution.
+#
