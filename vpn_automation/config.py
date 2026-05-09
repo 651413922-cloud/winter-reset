@@ -1,105 +1,80 @@
 """
-Configuration module for VPN automation.
-All tunable parameters are centralized here.
+Central configuration for VPN automation.
+All tunable parameters in one place.
 """
 
 from pathlib import Path
 
-# ============================================================
-# Project paths
-# ============================================================
+# ── Project paths ─────────────────────────────────────────────────
 BASE_DIR = Path(__file__).parent
-SCREENSHOTS_DIR = BASE_DIR / "screenshots"
+TEMPLATES_DIR = BASE_DIR / "templates"
+DEBUG_DIR = BASE_DIR / "debug_output"
 
-# Ensure screenshots directory exists
-SCREENSHOTS_DIR.mkdir(exist_ok=True)
+for sub in ["buttons", "badges", "status", "popup", "anchors", "pages"]:
+    (TEMPLATES_DIR / sub).mkdir(exist_ok=True, parents=True)
+DEBUG_DIR.mkdir(exist_ok=True)
 
-# ============================================================
-# Window settings
-# ============================================================
+# ── Tesseract OCR path (Windows default) ─────────────────────────
+TESSERACT_CMD = r"C:\Program Files\Tesseract-OCR\tesseract.exe"
+
+# ── Window ────────────────────────────────────────────────────────
 WINDOW_TITLE = "小熊加速器"
 
-# ============================================================
-# Screenshot file names for image recognition
-# ============================================================
+# ── Template paths ────────────────────────────────────────────────
+TEMPLATE = {
+    # ── Full-page screenshots (for state detection) ────────────
+    "page_main": str(TEMPLATES_DIR / "pages" / "main_page.png"),
+    "page_line": str(TEMPLATES_DIR / "pages" / "line_page.png"),
 
-# Main page: "更换线路" button
-IMAGE_CHANGE_LINE = str(SCREENSHOTS_DIR / "btn_change_line.png")
+    # ── Sub-elements (searched WITHIN the matched page) ────────
+    "change_line": str(TEMPLATES_DIR / "buttons" / "change_line_button.png"),
+    "free_badge": str(TEMPLATES_DIR / "badges" / "free_badge.png"),
+    "permanent_badge": str(TEMPLATES_DIR / "badges" / "permanent_badge.png"),
+    "connected": str(TEMPLATES_DIR / "status" / "connected_status.png"),
+    "popup_close": str(TEMPLATES_DIR / "popup" / "popup_close.png"),
+}
 
-# Line row tags: click on these to trigger connection
-# "普通用户" tag (for AA1, AA2)
-IMAGE_TAG_NORMAL = str(SCREENSHOTS_DIR / "tag_normal.png")
-# "永久用户" tag (for AA3)
-IMAGE_TAG_FOREVER = str(SCREENSHOTS_DIR / "tag_forever.png")
+# ── Confidence thresholds ─────────────────────────────────────────
+CONF = {
+    "page": 0.5,       # full-page match
+    "button": 0.5,
+    "badge": 0.5,
+    "connected": 0.7,
+    "popup": 0.5,
+}
 
-# Line status: red "100%" text indicating line is full
-IMAGE_STATUS_FULL = str(SCREENSHOTS_DIR / "status_full.png")
+# ── Template validation ───────────────────────────────────────────
+TEMPLATE_MIN_WIDTH = 30
+TEMPLATE_MIN_HEIGHT = 10
 
-# Connected page: "连接成功" text
-IMAGE_STATUS_CONNECTED = str(SCREENSHOTS_DIR / "status_connected.png")
+# ── Timing (seconds) ──────────────────────────────────────────────
+WAIT = {
+    "short": 1,
+    "medium": 2,
+    "long": 5,
+    "connect": 8,
+    "retry_gap": 2,
+}
 
-# Page anchor: "充值" button at top-right corner
-IMAGE_RECHARGE = str(SCREENSHOTS_DIR / "btn_recharge.png")
-
-# ============================================================
-# Image recognition confidence thresholds (0.0 ~ 1.0)
-# ============================================================
-# General default confidence (for buttons, labels)
-CONFIDENCE = 0.5
-
-# Tag image detection (普通用户, 永久用户) — was 0.6, need lower for full-screen match
-CONFIDENCE_TAG = 0.5
-
-# High confidence to avoid false-positive "100%" detection
-CONFIDENCE_FULL = 0.8
-
-# Low confidence for "充值" anchor (actual score ~0.44)
-CONFIDENCE_ANCHOR = 0.35
-
-# Confidence for "连接成功" status detection
-CONFIDENCE_CONNECTED = 0.7
-
-# ============================================================
-# Line row search: after finding line name text, extend rightwards
-# to search for the tag image. This region is relative to the
-# name text position. (pixels)
-# ============================================================
-ROW_SEARCH_OFFSET_X = 200      # start of search region (right of name text)
-ROW_SEARCH_WIDTH = 400         # width of search region to the right
-
-# ============================================================
-# Timing settings (seconds)
-# ============================================================
-WAIT_SHORT = 1
-WAIT_MEDIUM = 2
-WAIT_REFRESH = 5
-WAIT_CONNECT = 8
-WAIT_BEFORE_RETRY = 2
-
-# ============================================================
-# Retry settings
-# ============================================================
+# ── Retry / anti-loop ─────────────────────────────────────────────
 MAX_RETRIES = 100
+ANTI_LOOP_MAX = 3
 
-# ============================================================
-# URL to open after successful connection
-# ============================================================
+# ── URL ───────────────────────────────────────────────────────────
 TARGET_URL = "https://chat.openai.com"
 
-# ============================================================
-# DPI scaling / multi-resolution hints
-# ============================================================
-#
-# DPI Compatibility:
-# - PyAutoGUI locateOnScreen() works with pixel-perfect matching.
-# - If DPI scaling is NOT 100% (e.g., 125%, 150% on Windows),
-#   you MUST set Windows DPI scaling to 100% for the VPN app,
-#   OR take screenshots at the SAME DPI scaling level as runtime.
-#
-# Multi-resolution Tips:
-# - LocateOnScreen() does NOT auto-scale templates.
-# - If you run the script on a different resolution/DPI:
-#   1. Re-take all template PNG screenshots at that resolution.
-#   2. Or set `pyautogui.USE_IMAGE_RESIZE = True` (experimental).
-# - Recommended: Keep a separate screenshots/ folder per resolution.
-#
+# ── Badge → ROI expansion ─────────────────────────────────────────
+ROI_EXPAND_RIGHT = 400
+ROI_EXPAND_BOTTOM = 40
+
+# ── OCR percentage region (relative to ROI) ───────────────────────
+OCR_REGION_OFFSET_X = 250
+OCR_REGION_OFFSET_Y = 5
+OCR_REGION_WIDTH = 120
+OCR_REGION_HEIGHT = 30
+
+# ── OCR status thresholds ─────────────────────────────────────────
+FULL_THRESHOLD = 100
+
+# ── OCR retries ───────────────────────────────────────────────────
+OCR_MAX_RETRIES = 3
