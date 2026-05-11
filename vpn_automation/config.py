@@ -8,7 +8,7 @@ from pathlib import Path
 # ── Project paths ─────────────────────────────────────────────────
 BASE_DIR = Path(__file__).parent
 TEMPLATES_DIR = BASE_DIR / "templates"
-DEBUG_DIR = BASE_DIR / "debug_output"
+DEBUG_DIR = BASE_DIR / "debug"
 
 for sub in ["buttons", "badges", "status", "popup", "anchors", "pages"]:
     (TEMPLATES_DIR / sub).mkdir(exist_ok=True, parents=True)
@@ -22,12 +22,9 @@ WINDOW_TITLE = "小熊加速器"
 
 # ── Template paths ────────────────────────────────────────────────
 TEMPLATE = {
-    # ── Full-page screenshots (for state detection) ────────────
-    "page_main": str(TEMPLATES_DIR / "pages" / "main_page.png"),
-    "page_line": str(TEMPLATES_DIR / "pages" / "line_page.png"),
-
-    # ── Sub-elements (searched WITHIN the matched page) ────────
+    # ── State detection elements ──────────────────────────────
     "change_line": str(TEMPLATES_DIR / "buttons" / "change_line_button.png"),
+    "line_page_title": str(TEMPLATES_DIR / "pages" / "line_page_title.png"),
     "free_badge": str(TEMPLATES_DIR / "badges" / "free_badge.png"),
     "permanent_badge": str(TEMPLATES_DIR / "badges" / "permanent_badge.png"),
     "connected": str(TEMPLATES_DIR / "status" / "connected_status.png"),
@@ -38,7 +35,7 @@ TEMPLATE = {
 CONF = {
     "page": 0.5,       # full-page match
     "button": 0.5,
-    "badge": 0.5,
+    "badge": 0.55,     # 线路页面真实 badge 匹配度更高
     "connected": 0.7,
     "popup": 0.5,
 }
