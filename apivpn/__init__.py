@@ -22,3 +22,4 @@
     - Protocol Mix: TLS/DNS混合使用模式
     - TTL Consistency: TTL跳数一致性
 """
+from .vpn_control import is_vpn_online, attempt_switch_and_verify, click_replace_line, select_free_line

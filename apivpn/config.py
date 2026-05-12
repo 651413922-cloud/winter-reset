@@ -11,8 +11,8 @@ TSHARK_PATH = r"D:\useful\Wireshark\tshark.exe"
 #  时间窗口参数 (秒)
 # ══════════════════════════════════════════════════════════════════════
 WINDOW_BURST   = 8     # 爆发检测窗口 — 检测连接突增
-WINDOW_MEDIUM  = 30    # 中期行为窗口 — 连接模式分析
-WINDOW_LONG    = 120   # 长期基线 — 建立行为画像
+WINDOW_SWITCH  = 15    # 切换检测窗口 — 监测簇迁移
+WINDOW_SESSION = 60    # 会话窗口 — TTL/通联性基线
 WINDOW_GONE    = 300   # 断开判定 — 多久无VPN活动判断开
 
 # ══════════════════════════════════════════════════════════════════════
@@ -77,6 +77,11 @@ MIN_CONFIDENCE_RECONNECT  = 0.55
 SUMMARY_INTERVAL = 60
 OUTPUT_FILE      = "vpn_events.jsonl"
 STATS_FILE       = "vpn_stats.json"
+
+# Remote webhook for event forwarding (empty = disabled)
+WEBHOOK_URL = ""
+WEBHOOK_ENABLED = False
+WEBHOOK_TIMEOUT = 5  # seconds
 
 # ══════════════════════════════════════════════════════════════════════
 #  通用排除 (仅排除公共CDN/基础服务, 不排除任何VPN关键词)
