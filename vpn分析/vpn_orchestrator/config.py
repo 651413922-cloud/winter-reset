@@ -2,8 +2,10 @@
 
 import os
 
-# === 项目根目录 ===
-BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
+# === v2rayN 客户端根目录 ===
+# 当前 config.py 在 vpn分析/vpn_orchestrator/config.py
+# v2rayN 客户端的真实路径
+BASE_DIR = r"d:\useful\加速器\v2rayN-Core\v2rayN-windows-64"
 
 # === 路径 ===
 GUI_DB = os.path.join(BASE_DIR, 'guiConfigs', 'guiNDB.db')
@@ -22,6 +24,9 @@ HTTP_PROXY = f'http://{SOCKS5_HOST}:{SOCKS5_PORT}'
 CHECK_URL = 'https://www.google.com/generate_204'
 TIMEOUT = 10          # 秒
 SPEED_TEST_URL = 'https://cachefly.cachefly.net/50mb.test'
+
+# === GUI 配置 ===
+GUI_NCONFIG_PATH = os.path.join(BASE_DIR, 'guiConfigs', 'guiNConfig.json')
 
 # === 浏览器目标 ===
 BROWSER_TARGETS = [
