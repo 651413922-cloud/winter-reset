@@ -99,17 +99,34 @@ class ProcessManager:
 
         try:
             print(f"[进程] 启动 sing-box...")
+            # sing-box 1.12+ 需要该环境变量以兼容旧版 DNS 配置
+            env = os.environ.copy()
+            env['ENABLE_DEPRECATED_LEGACY_DNS_SERVERS'] = 'true'
+            
             self._process = subprocess.Popen(
                 [self.exe_path, 'run', '-c', self.config_path],
                 stdout=subprocess.PIPE,
                 stderr=subprocess.PIPE,
                 creationflags=subprocess.CREATE_NO_WINDOW,
+                env=env,
             )
 
             # 等待进程启动
-            time.sleep(1.0)
+            time.sleep(1.5)
             if not self.is_running():
-                print("[进程] 启动失败（进程未出现）")
+                # 检查是否立即退出了
+                poll = self._process.poll()
+                if poll is not None:
+                    _, stderr = self._process.communicate(timeout=2)
+                    err_msg = stderr.decode('utf-8', errors='replace')[:500] if stderr else ''
+                    print(f"[进程] 启动失败 (退出码: {poll})")
+                    if err_msg:
+                        # 只显示关键行
+                        for line in err_msg.split('\n'):
+                            if 'FATAL' in line or 'ERROR' in line:
+                                print(f"  {line.strip()}")
+                else:
+                    print("[进程] 启动失败（进程未出现）")
                 return False
 
             print(f"[进程] sing-box 已启动 (PID: {self._process.pid})")
