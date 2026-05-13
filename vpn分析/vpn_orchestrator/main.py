@@ -6,6 +6,7 @@ VPN Orchestrator v0.1.0
 用法:
     python main.py                   → 交互菜单
     python main.py auto              → 全自动连接 + 打开浏览器
+    python main.py daemon            → 守护模式（持续监控+自动恢复）
     python main.py list              → 列出所有节点
     python main.py switch <名称/编号> → 切换到指定节点
     python main.py best              → 切换到最优节点
@@ -21,7 +22,14 @@ import sys
 import os
 
 # 确保能找到同级包
-sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+_orch_root = os.path.dirname(os.path.abspath(__file__))
+sys.path.insert(0, _orch_root)
+
+from core.logging_config import setup_logging
+
+# 初始化日志（daemon 模式传入 debug=True 可开启 DEBUG 级别）
+_debug = '--debug' in sys.argv
+setup_logging(debug=_debug)
 
 from orchestrator import VpnOrchestrator
 
@@ -156,6 +164,12 @@ def run_cli():
 
     elif cmd == 'check':
         orch.check_proxy()
+
+    elif cmd == 'daemon':
+        from daemon import VpnDaemon
+        interval = float(args[1]) if len(args) > 1 else 30.0
+        daemon = VpnDaemon(orch, interval=interval)
+        daemon.run()
 
     elif cmd == 'browser':
         orch.open_browsers()
