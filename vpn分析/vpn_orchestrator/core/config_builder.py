@@ -5,6 +5,7 @@ sing-box 配置文件生成器。
 """
 
 import json
+import logging
 import shutil
 import sys, os
 from typing import Optional
@@ -17,9 +18,82 @@ if _orch_root not in sys.path:
 from config import CONFIG_JSON, BACKUP_CONFIG_JSON
 from models.profile import ProfileItem
 
+logger = logging.getLogger(__name__)
 
-# ========== 基座配置 ==========
-# 保留 DNS、Inbounds、Routing 不变，只替换 outbounds 部分
+
+# ========== 完整配置模板 ==========
+# 不再依赖 v2rayN 生成的 config.json。
+# v2rayN 仅作为节点数据源（SQLite），完整 sing-box 配置由我们生成。
+
+def _build_base_config(proxy_outbound: dict, socks_port: int = 10808) -> dict:
+    """用我们自己的干净模板构建完整 sing-box config.json。"""
+    return {
+        "log": {
+            "level": "warning",
+        },
+        "dns": {
+            "servers": [
+                {
+                    "tag": "dns-remote",
+                    "address": "https://1.1.1.1/dns-query",
+                    "detour": "proxy",
+                },
+                {
+                    "tag": "dns-direct",
+                    "address": "223.5.5.5",
+                    "detour": "direct",
+                },
+            ],
+            "rules": [
+                {
+                    "domain_suffix": "cn",
+                    "server": "dns-direct",
+                },
+                {
+                    "geosite": "cn",
+                    "server": "dns-direct",
+                },
+            ],
+        },
+        "inbounds": [
+            {
+                "type": "mixed",
+                "tag": "mixed-in",
+                "listen": "127.0.0.1",
+                "listen_port": socks_port,
+                "sniff": True,
+                "sniff_override_destination": False,
+            }
+        ],
+        "outbounds": [
+            proxy_outbound,
+            {
+                "type": "direct",
+                "tag": "direct",
+            },
+            {
+                "type": "dns",
+                "tag": "dns-out",
+            },
+            {
+                "type": "block",
+                "tag": "block",
+            },
+        ],
+        "routing": {
+            "rules": [
+                {
+                    "protocol": "dns",
+                    "outbound": "dns-out",
+                },
+                {
+                    "ip_is_private": True,
+                    "outbound": "direct",
+                },
+            ],
+            "auto_detect_interface": True,
+        },
+    }
 
 def _build_vless_outbound_grpc(profile: ProfileItem) -> dict:
     """构建 ConfigType=11: VLESS + gRPC + TLS"""
@@ -146,7 +220,7 @@ def backup_config():
     src = Path(CONFIG_JSON)
     if src.exists():
         shutil.copy2(src, BACKUP_CONFIG_JSON)
-        print(f"[备份] 保存至 {BACKUP_CONFIG_JSON}")
+        logger.info("备份保存至 %s", BACKUP_CONFIG_JSON)
 
 
 def restore_config():
@@ -154,44 +228,28 @@ def restore_config():
     bak = Path(BACKUP_CONFIG_JSON)
     if bak.exists():
         shutil.copy2(bak, CONFIG_JSON)
-        print(f"[恢复] 从备份还原 {CONFIG_JSON}")
+        logger.info("从备份还原 %s", CONFIG_JSON)
         return True
-    print("[错误] 无备份文件可恢复")
+    logger.error("无备份文件可恢复")
     return False
 
 
 def apply_profile_to_config(profile: ProfileItem) -> str:
     """
-    将节点配置写入 config.json。
-    保留所有 Inbound/DNS/Routing 不变，只替换 outbounds 中的 proxy 部分。
-    返回最终 config.json 路径。
+    用我们自己的模板 + 节点数据生成完整 config.json。
+    v2rayN 仅作为节点数据源，不再依赖它生成的旧配置文件。
+
+    Returns:
+        config.json 的路径
     """
     backup_config()
 
-    # 读取当前配置
-    config = read_current_config()
+    proxy_outbound = build_outbound_for_profile(profile)
+    config = _build_base_config(proxy_outbound)
 
-    # 构建新的 outbound
-    new_proxy_outbound = build_outbound_for_profile(profile)
-
-    # 替换 outbounds 中的 proxy
-    outbounds = config.get('outbounds', [])
-    replaced = False
-    for i, ob in enumerate(outbounds):
-        if ob.get('tag') == 'proxy':
-            outbounds[i] = new_proxy_outbound
-            replaced = True
-            break
-
-    if not replaced:
-        outbounds.insert(0, new_proxy_outbound)
-
-    config['outbounds'] = outbounds
-
-    # 写回文件
     with open(CONFIG_JSON, 'w', encoding='utf-8') as f:
         json.dump(config, f, indent=2, ensure_ascii=False)
 
-    print(f"[配置] 已切换至节点: {profile.remarks} ({profile.address}:{profile.port})")
-    print(f"[配置] 写入 {CONFIG_JSON}")
+    logger.info("已切换至节点: %s (%s:%s)", profile.remarks, profile.address, profile.port)
+    logger.debug("写入 %s", CONFIG_JSON)
     return CONFIG_JSON

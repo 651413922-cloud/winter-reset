@@ -3,6 +3,8 @@
 打开 ChatGPT 和 Gemini 页面。
 """
 
+import logging
+import time
 import webbrowser
 import sys, os
 from typing import List
@@ -13,6 +15,8 @@ if _orch_root not in sys.path:
 
 from config import BROWSER_TARGETS
 
+logger = logging.getLogger(__name__)
+
 
 class BrowserLauncher:
     """启动系统浏览器打开目标网站"""
@@ -21,37 +25,29 @@ class BrowserLauncher:
         self.targets = targets or BROWSER_TARGETS
 
     def open_all(self, delay: float = 1.5):
-        """
-        打开所有目标网站（新标签页）
-        
-        Args:
-            delay: 每个标签页之间的延迟（秒）
-        """
         if not self.targets:
-            print("[浏览器] 没有配置目标 URL")
+            logger.warning("没有配置目标 URL")
             return
 
-        print(f"\n[浏览器] 正在打开 {len(self.targets)} 个页面...")
+        logger.info("正在打开 %d 个页面...", len(self.targets))
         for i, url in enumerate(self.targets):
             try:
                 webbrowser.open_new_tab(url)
-                print(f"  ✅ {i+1}. {url}")
-                import time
+                logger.info("  %d. %s", i + 1, url)
                 if i < len(self.targets) - 1:
                     time.sleep(delay)
             except Exception as e:
-                print(f"  ❌ {url}: {e}")
+                logger.error("  %s: %s", url, e)
 
-        print("[浏览器] 完成")
+        logger.info("浏览器启动完成")
 
     def open_single(self, url: str):
-        """打开单个 URL"""
         try:
             webbrowser.open_new_tab(url)
-            print(f"  ✅ {url}")
+            logger.info("打开: %s", url)
             return True
         except Exception as e:
-            print(f"  ❌ {url}: {e}")
+            logger.error("打开失败 %s: %s", url, e)
             return False
 
     @staticmethod

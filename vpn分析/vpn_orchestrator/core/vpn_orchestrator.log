@@ -1,0 +1,218 @@
+23:47:16 INFO    [daemon] ==================================================
+23:47:16 INFO    [daemon]   VPN Daemon 启动
+23:47:16 INFO    [daemon]   检查间隔: 30s | 最大退避: 300s
+23:47:16 INFO    [daemon] ==================================================
+23:47:16 INFO    [daemon] 首次启动，执行 auto_connect...
+23:47:16 INFO    [orchestrator] ==================================================
+23:47:16 INFO    [orchestrator]   VPN Orchestrator - 自动连接
+23:47:16 INFO    [orchestrator] ==================================================
+23:47:16 INFO    [orchestrator] [1/5] 检查当前状态...
+23:47:16 INFO    [orchestrator]   sing-box 未运行
+23:47:16 INFO    [orchestrator] [2/5] 确保 sing-box 运行中...
+23:47:16 INFO    [orchestrator] 状态: CONNECTING
+23:47:16 INFO    [core.process_manager] 启动 sing-box...
+23:47:18 ERROR   [core.process_manager] 启动失败 (退出码: 1)
+23:47:18 ERROR   [core.process_manager]   [31mFATAL[0m[0000] decode config at d:\useful\加速器\v2rayN-Core\v2rayN-windows-64\binConfigs\config.json: log.loglevel: json: unknown field "loglevel"
+23:47:18 WARNING [orchestrator] 非法状态转换: CONNECTING → DISCONNECTED
+23:47:18 ERROR   [orchestrator]   启动失败
+23:47:18 WARNING [orchestrator] sing-box 进程丢失，尝试重启...
+23:47:18 WARNING [orchestrator] 非法状态转换: CONNECTING → CONNECTING
+23:47:18 INFO    [core.process_manager] 启动 sing-box...
+23:47:19 ERROR   [core.process_manager] 启动失败 (退出码: 1)
+23:47:19 ERROR   [core.process_manager]   [31mFATAL[0m[0000] decode config at d:\useful\加速器\v2rayN-Core\v2rayN-windows-64\binConfigs\config.json: log.loglevel: json: unknown field "loglevel"
+23:47:19 WARNING [orchestrator] 非法状态转换: CONNECTING → DISCONNECTED
+23:47:49 WARNING [orchestrator] sing-box 进程丢失，尝试重启...
+23:47:49 WARNING [orchestrator] 非法状态转换: CONNECTING → CONNECTING
+23:47:49 INFO    [core.process_manager] 启动 sing-box...
+23:47:51 ERROR   [core.process_manager] 启动失败 (退出码: 1)
+23:47:51 ERROR   [core.process_manager]   [31mFATAL[0m[0000] decode config at d:\useful\加速器\v2rayN-Core\v2rayN-windows-64\binConfigs\config.json: log.loglevel: json: unknown field "loglevel"
+23:47:51 WARNING [orchestrator] 非法状态转换: CONNECTING → DISCONNECTED
+23:48:21 WARNING [orchestrator] sing-box 进程丢失，尝试重启...
+23:48:21 WARNING [orchestrator] 非法状态转换: CONNECTING → CONNECTING
+23:48:21 INFO    [core.process_manager] 启动 sing-box...
+23:48:23 ERROR   [core.process_manager] 启动失败 (退出码: 1)
+23:48:23 ERROR   [core.process_manager]   [31mFATAL[0m[0000] decode config at d:\useful\加速器\v2rayN-Core\v2rayN-windows-64\binConfigs\config.json: log.loglevel: json: unknown field "loglevel"
+23:48:23 WARNING [orchestrator] 非法状态转换: CONNECTING → DISCONNECTED
+23:48:53 WARNING [orchestrator] sing-box 进程丢失，尝试重启...
+23:48:53 WARNING [orchestrator] 非法状态转换: CONNECTING → CONNECTING
+23:48:53 INFO    [core.process_manager] 启动 sing-box...
+23:48:54 ERROR   [core.process_manager] 启动失败 (退出码: 1)
+23:48:54 ERROR   [core.process_manager]   [31mFATAL[0m[0000] decode config at d:\useful\加速器\v2rayN-Core\v2rayN-windows-64\binConfigs\config.json: log.loglevel: json: unknown field "loglevel"
+23:48:54 WARNING [orchestrator] 非法状态转换: CONNECTING → DISCONNECTED
+23:49:24 WARNING [orchestrator] sing-box 进程丢失，尝试重启...
+23:49:24 WARNING [orchestrator] 非法状态转换: CONNECTING → CONNECTING
+23:49:24 INFO    [core.process_manager] 启动 sing-box...
+23:49:26 ERROR   [core.process_manager] 启动失败 (退出码: 1)
+23:49:26 ERROR   [core.process_manager]   [31mFATAL[0m[0000] decode config at d:\useful\加速器\v2rayN-Core\v2rayN-windows-64\binConfigs\config.json: log.loglevel: json: unknown field "loglevel"
+23:49:26 WARNING [orchestrator] 非法状态转换: CONNECTING → DISCONNECTED
+23:49:29 DEBUG   [core.config_builder] 已修正: log.loglevel → log.level
+23:49:56 WARNING [orchestrator] sing-box 进程丢失，尝试重启...
+23:49:56 WARNING [orchestrator] 非法状态转换: CONNECTING → CONNECTING
+23:49:56 INFO    [core.process_manager] 启动 sing-box...
+23:49:57 ERROR   [core.process_manager] 启动失败 (退出码: 1)
+23:49:57 ERROR   [core.process_manager]   [31mFATAL[0m[0000] decode config at d:\useful\加速器\v2rayN-Core\v2rayN-windows-64\binConfigs\config.json: log.loglevel: json: unknown field "loglevel"
+23:49:57 WARNING [orchestrator] 非法状态转换: CONNECTING → DISCONNECTED
+23:49:58 INFO    [daemon] 收到信号 SIGINT，正在退出...
+23:50:07 INFO    [daemon] 收到信号 SIGINT，正在退出...
+23:50:16 INFO    [daemon] ==================================================
+23:50:16 INFO    [daemon]   VPN Daemon 启动
+23:50:16 INFO    [daemon]   检查间隔: 30s | 最大退避: 300s
+23:50:16 INFO    [daemon] ==================================================
+23:50:16 INFO    [daemon] 首次启动，执行 auto_connect...
+23:50:16 INFO    [orchestrator] ==================================================
+23:50:16 INFO    [orchestrator]   VPN Orchestrator - 自动连接
+23:50:16 INFO    [orchestrator] ==================================================
+23:50:16 INFO    [orchestrator] [1/5] 检查当前状态...
+23:50:16 INFO    [orchestrator]   sing-box 未运行
+23:50:16 INFO    [orchestrator] [2/5] 确保 sing-box 运行中...
+23:50:16 INFO    [orchestrator] 状态: CONNECTING
+23:50:16 INFO    [core.process_manager] 启动 sing-box...
+23:50:17 ERROR   [core.process_manager] 启动失败 (退出码: 1)
+23:50:17 ERROR   [core.process_manager]   [31mFATAL[0m[0000] decode config at d:\useful\加速器\v2rayN-Core\v2rayN-windows-64\binConfigs\config.json: log.loglevel: json: unknown field "loglevel"
+23:50:17 INFO    [orchestrator] 状态: DISCONNECTED
+23:50:17 ERROR   [orchestrator]   启动失败
+23:50:17 WARNING [orchestrator] sing-box 未运行，尝试启动...
+23:50:17 INFO    [orchestrator] 状态: CONNECTING
+23:50:17 INFO    [core.process_manager] 启动 sing-box...
+23:50:19 ERROR   [core.process_manager] 启动失败 (退出码: 1)
+23:50:19 ERROR   [core.process_manager]   [31mFATAL[0m[0000] decode config at d:\useful\加速器\v2rayN-Core\v2rayN-windows-64\binConfigs\config.json: log.loglevel: json: unknown field "loglevel"
+23:50:19 INFO    [orchestrator] 状态: DISCONNECTED
+23:50:19 WARNING [daemon] 所有节点不可用, 将在 45 秒后重试 (tick #1)
+23:50:36 INFO    [daemon] 收到信号 SIGINT，正在退出...
+23:51:04 INFO    [daemon] Daemon 退出
+23:52:41 DEBUG   [core.config_builder] 已修正: log.loglevel → log.level
+23:52:41 INFO    [core.config_builder] 已修正 config.json 兼容性字段
+23:53:19 INFO    [daemon] ==================================================
+23:53:19 INFO    [daemon]   VPN Daemon 启动
+23:53:19 INFO    [daemon]   检查间隔: 30s | 最大退避: 300s
+23:53:19 INFO    [daemon] ==================================================
+23:53:19 INFO    [daemon] 首次启动，执行 auto_connect...
+23:53:19 INFO    [orchestrator] ==================================================
+23:53:19 INFO    [orchestrator]   VPN Orchestrator - 自动连接
+23:53:19 INFO    [orchestrator] ==================================================
+23:53:19 INFO    [orchestrator] [1/5] 检查当前状态...
+23:53:19 INFO    [orchestrator]   sing-box 未运行
+23:53:19 INFO    [orchestrator] [2/5] 确保 sing-box 运行中...
+23:53:19 INFO    [orchestrator] 状态: CONNECTING
+23:53:19 INFO    [core.process_manager] 启动 sing-box...
+23:53:21 ERROR   [core.process_manager] 启动失败 (退出码: 1)
+23:53:21 ERROR   [core.process_manager]   [31mFATAL[0m[0000] decode config at d:\useful\加速器\v2rayN-Core\v2rayN-windows-64\binConfigs\config.json: dns.hosts: json: unknown field "hosts"
+23:53:21 INFO    [orchestrator] 状态: DISCONNECTED
+23:53:21 ERROR   [orchestrator]   启动失败
+23:53:21 WARNING [orchestrator] sing-box 未运行，尝试启动...
+23:53:21 INFO    [orchestrator] 状态: CONNECTING
+23:53:21 INFO    [core.process_manager] 启动 sing-box...
+23:53:22 ERROR   [core.process_manager] 启动失败 (退出码: 1)
+23:53:22 ERROR   [core.process_manager]   [31mFATAL[0m[0000] decode config at d:\useful\加速器\v2rayN-Core\v2rayN-windows-64\binConfigs\config.json: dns.hosts: json: unknown field "hosts"
+23:53:22 INFO    [orchestrator] 状态: DISCONNECTED
+23:53:22 WARNING [daemon] 所有节点不可用, 将在 45 秒后重试 (tick #1)
+23:53:37 INFO    [daemon] 收到信号 SIGINT，正在退出...
+23:53:38 INFO    [daemon] 收到信号 SIGINT，正在退出...
+23:54:07 INFO    [daemon] Daemon 退出
+23:57:07 DEBUG   [core.config_builder] 已删除不兼容字段: dns.hosts
+23:57:07 DEBUG   [core.config_builder] 已修正: log.loglevel → log.level
+23:57:07 INFO    [core.config_builder] 已修正 config.json 兼容性字段
+23:57:33 INFO    [daemon] ==================================================
+23:57:33 INFO    [daemon]   VPN Daemon 启动
+23:57:33 INFO    [daemon]   检查间隔: 30s | 最大退避: 300s
+23:57:33 INFO    [daemon] ==================================================
+23:57:33 INFO    [daemon] 首次启动，执行 auto_connect...
+23:57:33 INFO    [orchestrator] ==================================================
+23:57:33 INFO    [orchestrator]   VPN Orchestrator - 自动连接
+23:57:33 INFO    [orchestrator] ==================================================
+23:57:33 INFO    [orchestrator] [1/5] 检查当前状态...
+23:57:34 INFO    [orchestrator]   sing-box 未运行
+23:57:34 INFO    [orchestrator] [2/5] 确保 sing-box 运行中...
+23:57:34 INFO    [orchestrator] 状态: CONNECTING
+23:57:34 INFO    [core.process_manager] 启动 sing-box...
+23:57:35 ERROR   [core.process_manager] 启动失败 (退出码: 1)
+23:57:35 ERROR   [core.process_manager]   [31mFATAL[0m[0000] decode config at d:\useful\加速器\v2rayN-Core\v2rayN-windows-64\binConfigs\config.json: dns.servers[0].domains: json: unknown field "domains"
+23:57:35 INFO    [orchestrator] 状态: DISCONNECTED
+23:57:35 ERROR   [orchestrator]   启动失败
+23:57:35 WARNING [orchestrator] sing-box 未运行，尝试启动...
+23:57:35 INFO    [orchestrator] 状态: CONNECTING
+23:57:35 INFO    [core.process_manager] 启动 sing-box...
+23:57:37 ERROR   [core.process_manager] 启动失败 (退出码: 1)
+23:57:37 ERROR   [core.process_manager]   [31mFATAL[0m[0000] decode config at d:\useful\加速器\v2rayN-Core\v2rayN-windows-64\binConfigs\config.json: dns.servers[0].domains: json: unknown field "domains"
+23:57:37 INFO    [orchestrator] 状态: DISCONNECTED
+23:57:37 WARNING [daemon] 所有节点不可用, 将在 45 秒后重试 (tick #1)
+23:57:37 INFO    [daemon] 收到信号 SIGINT，正在退出...
+23:58:22 INFO    [daemon] Daemon 退出
+00:03:14 INFO    [daemon] ==================================================
+00:03:14 INFO    [daemon]   VPN Daemon 启动
+00:03:14 INFO    [daemon]   检查间隔: 30s | 最大退避: 300s
+00:03:14 INFO    [daemon] ==================================================
+00:03:14 INFO    [daemon] 首次启动，执行 auto_connect...
+00:03:14 INFO    [orchestrator] ==================================================
+00:03:14 INFO    [orchestrator]   VPN Orchestrator - 自动连接
+00:03:14 INFO    [orchestrator] ==================================================
+00:03:14 INFO    [orchestrator] [1/5] 选择节点并生成配置...
+00:03:14 INFO    [orchestrator]   最优节点: 美国3-V2free免费节点 (延迟: 222ms, 速度: 0.3MB/s)
+00:03:14 INFO    [core.config_builder] 备份保存至 d:\useful\加速器\v2rayN-Core\v2rayN-windows-64\binConfigs\config.json.bak
+00:03:14 INFO    [core.config_builder] 已切换至节点: 美国3-V2free免费节点 (<REDACTED_SERVER>:443)
+00:03:14 DEBUG   [core.config_builder] 写入 d:\useful\加速器\v2rayN-Core\v2rayN-windows-64\binConfigs\config.json
+00:03:14 INFO    [orchestrator] [2/5] 检查旧进程...
+00:03:14 INFO    [orchestrator] [3/5] 启动 sing-box...
+00:03:14 INFO    [orchestrator] 状态: CONNECTING
+00:03:14 INFO    [core.process_manager] 启动 sing-box...
+00:03:16 ERROR   [core.process_manager] 启动失败 (退出码: 1)
+00:03:16 ERROR   [core.process_manager]   [31mFATAL[0m[0000] decode config at d:\useful\加速器\v2rayN-Core\v2rayN-windows-64\binConfigs\config.json: inbounds[0]: legacy inbound fields are deprecated in sing-box 1.11.0 and removed in sing-box 1.13.0, checkout migration: https://sing-box.sagernet.org/migration/#migrate
+00:03:16 INFO    [orchestrator] 状态: DISCONNECTED
+00:03:16 ERROR   [orchestrator]   启动失败
+00:03:16 WARNING [orchestrator] sing-box 未运行，尝试启动...
+00:03:16 INFO    [orchestrator] 状态: CONNECTING
+00:03:16 INFO    [core.process_manager] 启动 sing-box...
+00:03:17 ERROR   [core.process_manager] 启动失败 (退出码: 1)
+00:03:17 ERROR   [core.process_manager]   [31mFATAL[0m[0000] decode config at d:\useful\加速器\v2rayN-Core\v2rayN-windows-64\binConfigs\config.json: inbounds[0]: legacy inbound fields are deprecated in sing-box 1.11.0 and removed in sing-box 1.13.0, checkout migration: https://sing-box.sagernet.org/migration/#migrate
+00:03:17 INFO    [orchestrator] 状态: DISCONNECTED
+00:03:17 WARNING [daemon] 所有节点不可用, 将在 45 秒后重试 (tick #1)
+00:03:23 INFO    [daemon] 收到信号 SIGINT，正在退出...
+00:04:01 INFO    [daemon] ==================================================
+00:04:01 INFO    [daemon]   VPN Daemon 启动
+00:04:01 INFO    [daemon]   检查间隔: 30s | 最大退避: 300s
+00:04:01 INFO    [daemon] ==================================================
+00:04:01 INFO    [daemon] 首次启动，执行 auto_connect...
+00:04:01 INFO    [orchestrator] ==================================================
+00:04:01 INFO    [orchestrator]   VPN Orchestrator - 自动连接
+00:04:01 INFO    [orchestrator] ==================================================
+00:04:01 INFO    [orchestrator] [1/5] 选择节点并生成配置...
+00:04:01 INFO    [orchestrator]   最优节点: 美国3-V2free免费节点 (延迟: 222ms, 速度: 0.3MB/s)
+00:04:01 INFO    [core.config_builder] 备份保存至 d:\useful\加速器\v2rayN-Core\v2rayN-windows-64\binConfigs\config.json.bak
+00:04:01 INFO    [core.config_builder] 已切换至节点: 美国3-V2free免费节点 (<REDACTED_SERVER>:443)
+00:04:01 DEBUG   [core.config_builder] 写入 d:\useful\加速器\v2rayN-Core\v2rayN-windows-64\binConfigs\config.json
+00:04:01 INFO    [orchestrator] [2/5] 检查旧进程...
+00:04:01 INFO    [orchestrator] [3/5] 启动 sing-box...
+00:04:01 INFO    [orchestrator] 状态: CONNECTING
+00:04:01 INFO    [core.process_manager] 启动 sing-box...
+00:04:02 ERROR   [core.process_manager] 启动失败 (退出码: 1)
+00:04:02 ERROR   [core.process_manager]   [31mFATAL[0m[0000] decode config at d:\useful\加速器\v2rayN-Core\v2rayN-windows-64\binConfigs\config.json: inbounds[0]: legacy inbound fields are deprecated in sing-box 1.11.0 and removed in sing-box 1.13.0, checkout migration: https://sing-box.sagernet.org/migration/#migrate
+00:04:02 INFO    [orchestrator] 状态: DISCONNECTED
+00:04:02 ERROR   [orchestrator]   启动失败
+00:04:02 WARNING [orchestrator] sing-box 未运行，尝试启动...
+00:04:02 INFO    [orchestrator] 状态: CONNECTING
+00:04:02 INFO    [core.process_manager] 启动 sing-box...
+00:04:04 ERROR   [core.process_manager] 启动失败 (退出码: 1)
+00:04:04 ERROR   [core.process_manager]   [31mFATAL[0m[0000] decode config at d:\useful\加速器\v2rayN-Core\v2rayN-windows-64\binConfigs\config.json: inbounds[0]: legacy inbound fields are deprecated in sing-box 1.11.0 and removed in sing-box 1.13.0, checkout migration: https://sing-box.sagernet.org/migration/#migrate
+00:04:04 INFO    [orchestrator] 状态: DISCONNECTED
+00:04:04 WARNING [daemon] 所有节点不可用, 将在 45 秒后重试 (tick #1)
+00:04:49 WARNING [orchestrator] sing-box 未运行，尝试启动...
+00:04:49 INFO    [orchestrator] 状态: CONNECTING
+00:04:49 INFO    [core.process_manager] 启动 sing-box...
+00:04:51 ERROR   [core.process_manager] 启动失败 (退出码: 1)
+00:04:51 ERROR   [core.process_manager]   [31mFATAL[0m[0000] decode config at d:\useful\加速器\v2rayN-Core\v2rayN-windows-64\binConfigs\config.json: inbounds[0]: legacy inbound fields are deprecated in sing-box 1.11.0 and removed in sing-box 1.13.0, checkout migration: https://sing-box.sagernet.org/migration/#migrate
+00:04:51 INFO    [orchestrator] 状态: DISCONNECTED
+00:04:51 WARNING [daemon] 所有节点不可用, 将在 68 秒后重试 (tick #2)
+00:05:58 WARNING [orchestrator] sing-box 未运行，尝试启动...
+00:05:58 INFO    [orchestrator] 状态: CONNECTING
+00:05:58 INFO    [core.process_manager] 启动 sing-box...
+00:06:00 ERROR   [core.process_manager] 启动失败 (退出码: 1)
+00:06:00 ERROR   [core.process_manager]   [31mFATAL[0m[0000] decode config at d:\useful\加速器\v2rayN-Core\v2rayN-windows-64\binConfigs\config.json: inbounds[0]: legacy inbound fields are deprecated in sing-box 1.11.0 and removed in sing-box 1.13.0, checkout migration: https://sing-box.sagernet.org/migration/#migrate
+00:06:00 INFO    [orchestrator] 状态: DISCONNECTED
+00:06:00 WARNING [daemon] 所有节点不可用, 将在 101 秒后重试 (tick #3)
+00:07:41 WARNING [orchestrator] sing-box 未运行，尝试启动...
+00:07:41 INFO    [orchestrator] 状态: CONNECTING
+00:07:41 INFO    [core.process_manager] 启动 sing-box...
+00:07:42 ERROR   [core.process_manager] 启动失败 (退出码: 1)
+00:07:42 ERROR   [core.process_manager]   [31mFATAL[0m[0000] decode config at d:\useful\加速器\v2rayN-Core\v2rayN-windows-64\binConfigs\config.json: inbounds[0]: legacy inbound fields are deprecated in sing-box 1.11.0 and removed in sing-box 1.13.0, checkout migration: https://sing-box.sagernet.org/migration/#migrate
+00:07:42 INFO    [orchestrator] 状态: DISCONNECTED
+00:07:42 WARNING [daemon] 所有节点不可用, 将在 152 秒后重试 (tick #4)

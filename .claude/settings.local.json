@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python -c ' *)",
+      "Bash(d:\\\\useful\\\\加速器\\\\v2rayN-Core\\\\v2rayN-windows-64\\\\bin\\\\sing_box\\\\sing-box.exe version *)"
+    ]
+  }
+}

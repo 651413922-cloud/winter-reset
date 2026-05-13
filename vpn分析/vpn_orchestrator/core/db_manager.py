@@ -1,5 +1,6 @@
 """SQLite 数据库管理器 - 直接读取 v2rayN 的 guiNDB.db"""
 
+import logging
 import sqlite3
 import sys, os
 from typing import List, Optional
@@ -11,6 +12,8 @@ if _orch_root not in sys.path:
 
 from config import GUI_DB
 from models.profile import ProfileItem, profile_from_db_row
+
+logger = logging.getLogger(__name__)
 
 
 class DbManager:
