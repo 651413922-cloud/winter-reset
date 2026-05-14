@@ -2,7 +2,15 @@
   "permissions": {
     "allow": [
       "Bash(python -c ' *)",
-      "Bash(d:\\\\useful\\\\加速器\\\\v2rayN-Core\\\\v2rayN-windows-64\\\\bin\\\\sing_box\\\\sing-box.exe version *)"
+      "Bash(d:\\\\useful\\\\加速器\\\\v2rayN-Core\\\\v2rayN-windows-64\\\\bin\\\\sing_box\\\\sing-box.exe version *)",
+      "Read(//d/useful/加速器/v2rayN-Core/v2rayN-windows-64/**)",
+      "Bash(echo '{\"log\":{\"level\":\"info\"},\"inbounds\":[{\"type\":\"mixed\",\"tag\":\"in\",\"listen\":\"127.0.0.1\",\"listen_port\":10809}],\"outbounds\":[{\"type\":\"direct\",\"tag\":\"direct\"}]}')",
+      "Bash(./bin/sing_box/sing-box.exe check *)",
+      "Bash(rm -f test_config.json)",
+      "Bash(d:/useful/加速器/v2rayN-Core/v2rayN-windows-64/bin/sing_box/sing-box.exe check *)",
+      "Bash(ENABLE_DEPRECATED_LEGACY_DNS_SERVERS=true d:/useful/加速器/v2rayN-Core/v2rayN-windows-64/bin/sing_box/sing-box.exe check *)",
+      "Bash(ENABLE_DEPRECATED_LEGACY_DNS_SERVERS=true ENABLE_DEPRECATED_MISSING_DOMAIN_RESOLVER=true d:/useful/加速器/v2rayN-Core/v2rayN-windows-64/bin/sing_box/sing-box.exe check *)",
+      "Bash(claude plugin *)"
     ]
   }
 }

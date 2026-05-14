@@ -1,14 +1,13 @@
 """
-sing-box 配置文件生成器。
+sing-box 配置文件生成器 (native format for sing-box ≥1.13)。
 从 ProfileItem 数据构建完整的 binConfigs/config.json。
-格式兼容 sing-box 核心。
+v2rayN 仅作为节点数据源（SQLite），完整配置由我们生成。
 """
 
 import json
 import logging
 import shutil
 import sys, os
-from typing import Optional
 from pathlib import Path
 
 _orch_root = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
@@ -21,21 +20,17 @@ from models.profile import ProfileItem
 logger = logging.getLogger(__name__)
 
 
-# ========== 完整配置模板 ==========
-# 不再依赖 v2rayN 生成的 config.json。
-# v2rayN 仅作为节点数据源（SQLite），完整 sing-box 配置由我们生成。
+# ========== 完整配置模板 (sing-box ≥1.13 native) ==========
 
 def _build_base_config(proxy_outbound: dict, socks_port: int = 10808) -> dict:
     """用我们自己的干净模板构建完整 sing-box config.json。"""
     return {
-        "log": {
-            "level": "warning",
-        },
+        "log": {"level": "warning"},
         "dns": {
             "servers": [
                 {
                     "tag": "dns-remote",
-                    "address": "https://1.1.1.1/dns-query",
+                    "address": "tls://1.1.1.1",
                     "detour": "proxy",
                 },
                 {
@@ -45,14 +40,7 @@ def _build_base_config(proxy_outbound: dict, socks_port: int = 10808) -> dict:
                 },
             ],
             "rules": [
-                {
-                    "domain_suffix": "cn",
-                    "server": "dns-direct",
-                },
-                {
-                    "geosite": "cn",
-                    "server": "dns-direct",
-                },
+                {"domain_suffix": "cn", "server": "dns-direct"},
             ],
         },
         "inbounds": [
@@ -67,133 +55,95 @@ def _build_base_config(proxy_outbound: dict, socks_port: int = 10808) -> dict:
         ],
         "outbounds": [
             proxy_outbound,
-            {
-                "type": "direct",
-                "tag": "direct",
-            },
-            {
-                "type": "dns",
-                "tag": "dns-out",
-            },
-            {
-                "type": "block",
-                "tag": "block",
-            },
+            {"type": "direct", "tag": "direct"},
+            {"type": "block", "tag": "block"},
         ],
-        "routing": {
+        "route": {
             "rules": [
-                {
-                    "protocol": "dns",
-                    "outbound": "dns-out",
-                },
-                {
-                    "ip_is_private": True,
-                    "outbound": "direct",
-                },
+                {"ip_is_private": True, "outbound": "direct"},
             ],
             "auto_detect_interface": True,
         },
     }
 
-def _build_vless_outbound_grpc(profile: ProfileItem) -> dict:
-    """构建 ConfigType=11: VLESS + gRPC + TLS"""
-    return {
-        "tag": "proxy",
-        "protocol": "vless",
-        "settings": {
-            "vnext": [{
-                "address": profile.address,
-                "port": profile.port,
-                "users": [{
-                    "id": profile.password,
-                    "email": "t@t.tt",
-                    "security": "auto",
-                    "encryption": "none",
-                }]
-            }]
-        },
-        "streamSettings": {
-            "network": "grpc",
-            "security": profile.stream_security or "tls",
-            "tlsSettings": {
-                "allowInsecure": profile.allow_insecure == "true",
-                "fingerprint": profile.fingerprint or "chrome",
-                "serverName": profile.sni or profile.address,
-            },
-            "grpcSettings": {
-                "serviceName": profile.effective_path.lstrip('/'),
-            }
-        },
-        "mux": {"enabled": False, "concurrency": -1}
-    }
 
+# ========== Outbound 构建器 (sing-box native format) ==========
 
 def _build_vless_outbound_vision(profile: ProfileItem) -> dict:
-    """构建 ConfigType=5: VLESS + Vision + httpupgrade + TLS"""
-    enc = profile.vless_encryption
-    return {
+    """ConfigType=5: VLESS + Vision + httpupgrade + TLS"""
+    enc = profile.vless_encryption or "none"
+    ob = {
+        "type": "vless",
         "tag": "proxy",
-        "protocol": "vless",
-        "settings": {
-            "vnext": [{
-                "address": profile.address,
-                "port": profile.port,
-                "users": [{
-                    "id": profile.password,
-                    "email": "t@t.tt",
-                    "security": "auto",
-                    "encryption": enc if enc else "none",
-                    "flow": profile.effective_flow or "xtls-rprx-vision",
-                }]
-            }]
-        },
-        "streamSettings": {
-            "network": "httpupgrade",
-            "security": profile.stream_security or "tls",
-            "tlsSettings": {
-                "allowInsecure": profile.allow_insecure == "true",
+        "server": profile.address,
+        "server_port": profile.port,
+        "uuid": profile.password,
+        "flow": profile.effective_flow or "xtls-rprx-vision",
+        "tls": {
+            "enabled": True,
+            "server_name": profile.sni or profile.address,
+            "utls": {
+                "enabled": True,
                 "fingerprint": profile.fingerprint or "chrome",
-                "serverName": profile.sni or profile.address,
             },
-            "httpupgradeSettings": {
-                "path": profile.effective_path or "/",
-                "host": profile.effective_host or "",
-            }
         },
-        "mux": {"enabled": False, "concurrency": -1}
+        "transport": {
+            "type": "httpupgrade",
+            "path": profile.effective_path or "/",
+            "host": profile.effective_host or "",
+        },
+    }
+    if enc and enc != "none":
+        ob["encryption"] = enc
+    return ob
+
+
+def _build_vless_outbound_grpc(profile: ProfileItem) -> dict:
+    """ConfigType=11: VLESS + gRPC + TLS"""
+    return {
+        "type": "vless",
+        "tag": "proxy",
+        "server": profile.address,
+        "server_port": profile.port,
+        "uuid": profile.password,
+        "tls": {
+            "enabled": True,
+            "server_name": profile.sni or profile.address,
+            "utls": {
+                "enabled": True,
+                "fingerprint": profile.fingerprint or "chrome",
+            },
+        },
+        "transport": {
+            "type": "grpc",
+            "service_name": (profile.effective_path or "").lstrip('/'),
+        },
     }
 
 
 def _build_vmess_outbound(profile: ProfileItem) -> dict:
-    """构建 ConfigType=1: VMess + httpupgrade"""
-    return {
+    """ConfigType=1: VMess + httpupgrade"""
+    ob = {
+        "type": "vmess",
         "tag": "proxy",
-        "protocol": "vmess",
-        "settings": {
-            "vnext": [{
-                "address": profile.address,
-                "port": profile.port,
-                "users": [{
-                    "id": profile.password,
-                    "security": profile.security or "auto",
-                    "alterId": profile.alter_id or 0,
-                }]
-            }]
+        "server": profile.address,
+        "server_port": profile.port,
+        "uuid": profile.password,
+        "security": profile.security or "auto",
+        "alter_id": profile.alter_id or 0,
+        "transport": {
+            "type": profile.network or "tcp",
         },
-        "streamSettings": {
-            "network": profile.network or "tcp",
-            "security": profile.stream_security or "",
-            "tlsSettings": {
-                "allowInsecure": profile.allow_insecure == "true",
-                "serverName": profile.sni or profile.address,
-            } if profile.stream_security == "tls" else {},
-            "httpupgradeSettings": {
-                "path": profile.effective_path or "/",
-                "host": profile.effective_host or "",
-            } if profile.network == "httpupgrade" else {},
-        },
-        "mux": {"enabled": False, "concurrency": -1}
     }
+    if profile.network == "httpupgrade":
+        ob["transport"]["path"] = profile.effective_path or "/"
+        ob["transport"]["host"] = profile.effective_host or ""
+    if profile.stream_security == "tls":
+        ob["tls"] = {
+            "enabled": True,
+            "server_name": profile.sni or profile.address,
+        }
+    return ob
 
 
 def build_outbound_for_profile(profile: ProfileItem) -> dict:
@@ -205,9 +155,10 @@ def build_outbound_for_profile(profile: ProfileItem) -> dict:
     elif profile.config_type == 1:
         return _build_vmess_outbound(profile)
     else:
-        # 默认走 VLESS Vision（最常见）
         return _build_vless_outbound_vision(profile)
 
+
+# ========== 文件操作 ==========
 
 def read_current_config() -> dict:
     """读取当前运行的 config.json"""
@@ -216,7 +167,6 @@ def read_current_config() -> dict:
 
 
 def backup_config():
-    """备份当前配置文件"""
     src = Path(CONFIG_JSON)
     if src.exists():
         shutil.copy2(src, BACKUP_CONFIG_JSON)
@@ -224,7 +174,6 @@ def backup_config():
 
 
 def restore_config():
-    """从备份恢复配置文件"""
     bak = Path(BACKUP_CONFIG_JSON)
     if bak.exists():
         shutil.copy2(bak, CONFIG_JSON)
@@ -235,13 +184,7 @@ def restore_config():
 
 
 def apply_profile_to_config(profile: ProfileItem) -> str:
-    """
-    用我们自己的模板 + 节点数据生成完整 config.json。
-    v2rayN 仅作为节点数据源，不再依赖它生成的旧配置文件。
-
-    Returns:
-        config.json 的路径
-    """
+    """用我们自己的模板 + 节点数据生成完整 config.json。"""
     backup_config()
 
     proxy_outbound = build_outbound_for_profile(profile)

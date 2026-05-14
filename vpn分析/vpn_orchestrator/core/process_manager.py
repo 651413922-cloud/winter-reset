@@ -88,7 +88,9 @@ class ProcessManager:
         try:
             logger.info("启动 sing-box...")
             env = os.environ.copy()
+            # sing-box ≥1.13 兼容性环境变量
             env['ENABLE_DEPRECATED_LEGACY_DNS_SERVERS'] = 'true'
+            env['ENABLE_DEPRECATED_MISSING_DOMAIN_RESOLVER'] = 'true'
 
             self._process = subprocess.Popen(
                 [self.exe_path, 'run', '-c', self.config_path],
