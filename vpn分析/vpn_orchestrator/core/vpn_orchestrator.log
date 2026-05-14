@@ -216,3 +216,94 @@
 00:07:42 ERROR   [core.process_manager]   [31mFATAL[0m[0000] decode config at d:\useful\加速器\v2rayN-Core\v2rayN-windows-64\binConfigs\config.json: inbounds[0]: legacy inbound fields are deprecated in sing-box 1.11.0 and removed in sing-box 1.13.0, checkout migration: https://sing-box.sagernet.org/migration/#migrate
 00:07:42 INFO    [orchestrator] 状态: DISCONNECTED
 00:07:42 WARNING [daemon] 所有节点不可用, 将在 152 秒后重试 (tick #4)
+00:10:14 WARNING [orchestrator] sing-box 未运行，尝试启动...
+00:10:14 INFO    [orchestrator] 状态: CONNECTING
+00:10:14 INFO    [core.process_manager] 启动 sing-box...
+00:10:16 ERROR   [core.process_manager] 启动失败 (退出码: 1)
+00:10:16 ERROR   [core.process_manager]   [31mFATAL[0m[0000] decode config at d:\useful\加速器\v2rayN-Core\v2rayN-windows-64\binConfigs\config.json: inbounds[0]: legacy inbound fields are deprecated in sing-box 1.11.0 and removed in sing-box 1.13.0, checkout migration: https://sing-box.sagernet.org/migration/#migrate
+00:10:16 INFO    [orchestrator] 状态: DISCONNECTED
+00:10:16 WARNING [daemon] 所有节点不可用, 将在 228 秒后重试 (tick #5)
+00:14:04 WARNING [orchestrator] sing-box 未运行，尝试启动...
+00:14:04 INFO    [orchestrator] 状态: CONNECTING
+00:14:04 INFO    [core.process_manager] 启动 sing-box...
+00:14:05 ERROR   [core.process_manager] 启动失败 (退出码: 1)
+00:14:05 ERROR   [core.process_manager]   [31mFATAL[0m[0000] decode config at d:\useful\加速器\v2rayN-Core\v2rayN-windows-64\binConfigs\config.json: log.loglevel: json: unknown field "loglevel"
+00:14:05 INFO    [orchestrator] 状态: DISCONNECTED
+00:14:05 WARNING [daemon] 所有节点不可用, 将在 300 秒后重试 (tick #6)
+00:19:05 WARNING [orchestrator] sing-box 未运行，尝试启动...
+00:19:05 INFO    [orchestrator] 状态: CONNECTING
+00:19:05 INFO    [core.process_manager] 启动 sing-box...
+00:19:07 ERROR   [core.process_manager] 启动失败 (退出码: 1)
+00:19:07 ERROR   [core.process_manager]   [31mFATAL[0m[0000] decode config at d:\useful\加速器\v2rayN-Core\v2rayN-windows-64\binConfigs\config.json: log.loglevel: json: unknown field "loglevel"
+00:19:07 INFO    [orchestrator] 状态: DISCONNECTED
+00:19:07 WARNING [daemon] 所有节点不可用, 将在 300 秒后重试 (tick #7)
+00:24:07 WARNING [orchestrator] sing-box 未运行，尝试启动...
+00:24:07 INFO    [orchestrator] 状态: CONNECTING
+00:24:07 INFO    [core.process_manager] 启动 sing-box...
+00:24:08 ERROR   [core.process_manager] 启动失败 (退出码: 1)
+00:24:08 ERROR   [core.process_manager]   [31mFATAL[0m[0000] decode config at d:\useful\加速器\v2rayN-Core\v2rayN-windows-64\binConfigs\config.json: log.loglevel: json: unknown field "loglevel"
+00:24:08 INFO    [orchestrator] 状态: DISCONNECTED
+00:24:08 WARNING [daemon] 所有节点不可用, 将在 300 秒后重试 (tick #8)
+00:28:39 INFO    [daemon] ==================================================
+00:28:39 INFO    [daemon]   VPN Daemon 启动
+00:28:39 INFO    [daemon]   检查间隔: 30s | 最大退避: 300s
+00:28:39 INFO    [daemon] ==================================================
+00:28:39 INFO    [daemon] 首次启动，执行 auto_connect...
+00:28:39 INFO    [orchestrator] ==================================================
+00:28:39 INFO    [orchestrator]   VPN Orchestrator - 自动连接
+00:28:39 INFO    [orchestrator] ==================================================
+00:28:39 INFO    [orchestrator] [1/5] 选择节点并生成配置...
+00:28:39 INFO    [orchestrator]   最优节点: 美国3-V2free免费节点 (延迟: 222ms, 速度: 0.3MB/s)
+00:28:39 INFO    [core.config_builder] 备份保存至 d:\useful\加速器\v2rayN-Core\v2rayN-windows-64\binConfigs\config.json.bak
+00:28:39 INFO    [core.config_builder] 已切换至节点: 美国3-V2free免费节点 (<REDACTED_SERVER>:443)
+00:28:39 DEBUG   [core.config_builder] 写入 d:\useful\加速器\v2rayN-Core\v2rayN-windows-64\binConfigs\config.json
+00:28:39 INFO    [orchestrator] [2/5] 检查旧进程...
+00:28:39 INFO    [orchestrator] [3/5] 启动 sing-box...
+00:28:39 INFO    [orchestrator] 状态: CONNECTING
+00:28:39 INFO    [core.process_manager] 启动 sing-box...
+00:28:41 ERROR   [core.process_manager] 启动失败 (退出码: 1)
+00:28:41 ERROR   [core.process_manager]   [31mFATAL[0m[0000] decode config at d:\useful\加速器\v2rayN-Core\v2rayN-windows-64\binConfigs\config.json: inbounds[0]: legacy inbound fields are deprecated in sing-box 1.11.0 and removed in sing-box 1.13.0, checkout migration: https://sing-box.sagernet.org/migration/#migrate
+00:28:41 INFO    [orchestrator] 状态: DISCONNECTED
+00:28:41 ERROR   [orchestrator]   启动失败
+00:28:41 WARNING [orchestrator] sing-box 未运行，尝试启动...
+00:28:41 INFO    [orchestrator] 状态: CONNECTING
+00:28:41 INFO    [core.process_manager] 启动 sing-box...
+00:28:42 ERROR   [core.process_manager] 启动失败 (退出码: 1)
+00:28:42 ERROR   [core.process_manager]   [31mFATAL[0m[0000] decode config at d:\useful\加速器\v2rayN-Core\v2rayN-windows-64\binConfigs\config.json: inbounds[0]: legacy inbound fields are deprecated in sing-box 1.11.0 and removed in sing-box 1.13.0, checkout migration: https://sing-box.sagernet.org/migration/#migrate
+00:28:42 INFO    [orchestrator] 状态: DISCONNECTED
+00:28:42 WARNING [daemon] 所有节点不可用, 将在 45 秒后重试 (tick #1)
+00:29:27 WARNING [orchestrator] sing-box 未运行，尝试启动...
+00:29:27 INFO    [orchestrator] 状态: CONNECTING
+00:29:27 INFO    [core.process_manager] 启动 sing-box...
+00:29:29 ERROR   [core.process_manager] 启动失败 (退出码: 1)
+00:29:29 ERROR   [core.process_manager]   [31mFATAL[0m[0000] decode config at d:\useful\加速器\v2rayN-Core\v2rayN-windows-64\binConfigs\config.json: log.loglevel: json: unknown field "loglevel"
+00:29:29 INFO    [orchestrator] 状态: DISCONNECTED
+00:29:29 WARNING [daemon] 所有节点不可用, 将在 68 秒后重试 (tick #2)
+00:30:37 WARNING [orchestrator] sing-box 未运行，尝试启动...
+00:30:37 INFO    [orchestrator] 状态: CONNECTING
+00:30:37 INFO    [core.process_manager] 启动 sing-box...
+00:30:38 ERROR   [core.process_manager] 启动失败 (退出码: 1)
+00:30:38 ERROR   [core.process_manager]   [31mFATAL[0m[0000] decode config at d:\useful\加速器\v2rayN-Core\v2rayN-windows-64\binConfigs\config.json: log.loglevel: json: unknown field "loglevel"
+00:30:38 INFO    [orchestrator] 状态: DISCONNECTED
+00:30:38 WARNING [daemon] 所有节点不可用, 将在 101 秒后重试 (tick #3)
+00:32:19 WARNING [orchestrator] sing-box 未运行，尝试启动...
+00:32:19 INFO    [orchestrator] 状态: CONNECTING
+00:32:19 INFO    [core.process_manager] 启动 sing-box...
+00:32:21 ERROR   [core.process_manager] 启动失败 (退出码: 1)
+00:32:21 ERROR   [core.process_manager]   [31mFATAL[0m[0000] decode config at d:\useful\加速器\v2rayN-Core\v2rayN-windows-64\binConfigs\config.json: log.loglevel: json: unknown field "loglevel"
+00:32:21 INFO    [orchestrator] 状态: DISCONNECTED
+00:32:21 WARNING [daemon] 所有节点不可用, 将在 152 秒后重试 (tick #4)
+00:34:53 WARNING [orchestrator] sing-box 未运行，尝试启动...
+00:34:53 INFO    [orchestrator] 状态: CONNECTING
+00:34:53 INFO    [core.process_manager] 启动 sing-box...
+00:34:54 ERROR   [core.process_manager] 启动失败 (退出码: 1)
+00:34:54 ERROR   [core.process_manager]   [31mFATAL[0m[0000] decode config at d:\useful\加速器\v2rayN-Core\v2rayN-windows-64\binConfigs\config.json: log.loglevel: json: unknown field "loglevel"
+00:34:54 INFO    [orchestrator] 状态: DISCONNECTED
+00:34:54 WARNING [daemon] 所有节点不可用, 将在 228 秒后重试 (tick #5)
+00:38:42 WARNING [orchestrator] sing-box 未运行，尝试启动...
+00:38:42 INFO    [orchestrator] 状态: CONNECTING
+00:38:42 INFO    [core.process_manager] 启动 sing-box...
+00:38:44 ERROR   [core.process_manager] 启动失败 (退出码: 1)
+00:38:44 ERROR   [core.process_manager]   [31mFATAL[0m[0000] decode config at d:\useful\加速器\v2rayN-Core\v2rayN-windows-64\binConfigs\config.json: log.loglevel: json: unknown field "loglevel"
+00:38:44 INFO    [orchestrator] 状态: DISCONNECTED
+00:38:44 WARNING [daemon] 所有节点不可用, 将在 300 秒后重试 (tick #6)
