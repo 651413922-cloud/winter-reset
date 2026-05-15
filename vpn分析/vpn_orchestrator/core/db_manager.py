@@ -175,20 +175,29 @@ class DbManager:
 
     # ========== 工具方法 ==========
 
+    @staticmethod
+    def _safe_print(msg):
+        try:
+            print(msg)
+        except UnicodeEncodeError:
+            import sys
+            print(msg.encode(sys.stdout.encoding or 'utf-8', errors='replace')
+                      .decode(sys.stdout.encoding or 'utf-8'))
+
     def print_all_profiles(self):
         """打印所有节点信息"""
         profiles = self.get_all_profiles()
-        print(f"\n共 {len(profiles)} 个节点:")
-        print("-" * 70)
+        self._safe_print(f"\n共 {len(profiles)} 个节点:")
+        self._safe_print("-" * 70)
         for i, p in enumerate(profiles, 1):
             stats = self.get_profile_stats(p.index_id)
             delay_str = f"{stats['delay']}ms" if stats['delay'] >= 0 else "未测"
             speed_str = f"{stats['speed']}MB/s" if stats['speed'] > 0 else ""
-            print(f"  {i}. {p.display()}")
-            print(f"     UUID: {p.password[:16]}... | Flow: {p.effective_flow}")
-            print(f"     Path: {p.effective_path} | SNI: {p.sni or '(同地址)'}")
-            print(f"     延迟: {delay_str} | 速度: {speed_str}")
-            print()
+            self._safe_print(f"  {i}. {p.display()}")
+            self._safe_print(f"     UUID: {p.password[:16]}... | Flow: {p.effective_flow}")
+            self._safe_print(f"     Path: {p.effective_path} | SNI: {p.sni or '(同地址)'}")
+            self._safe_print(f"     延迟: {delay_str} | 速度: {speed_str}")
+            self._safe_print("")
 
     def print_subscriptions(self):
         """打印所有订阅"""

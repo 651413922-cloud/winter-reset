@@ -5,7 +5,7 @@ import os
 # === v2rayN 客户端根目录 ===
 # 当前 config.py 在 vpn分析/vpn_orchestrator/config.py
 # v2rayN 客户端的真实路径
-BASE_DIR = r"d:\useful\加速器\v2rayN-Core\v2rayN-windows-64"
+BASE_DIR = r"d:\useful\加速器\v2rayn"
 
 # === 路径 ===
 GUI_DB = os.path.join(BASE_DIR, 'guiConfigs', 'guiNDB.db')
