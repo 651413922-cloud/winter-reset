@@ -74,7 +74,7 @@ class VpnDaemon:
 
                 if state.name in ('CONNECTED',):
                     self._backoff = self.interval  # 恢复后重置退避
-                elif state.name in ('DEGRADED', 'DISCONNECTED'):
+                elif state.name in ('DEGRADED', 'DISCONNECTED', 'FAILED'):
                     # 退避增长
                     self._backoff = min(self._backoff * 1.5, self.max_backoff)
                     logger.warning(

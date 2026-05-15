@@ -18,15 +18,24 @@ def setup_logging(level: int = logging.INFO,
     if debug:
         level = logging.DEBUG
 
-    fmt = logging.Formatter(
-        "%(asctime)s %(levelname)-7s [%(name)s] %(message)s",
-        datefmt="%H:%M:%S",
-    )
+    _fmt_str = "%(asctime)s %(levelname)-7s [%(name)s] %(message)s"
+    _datefmt = "%H:%M:%S"
+    fmt = logging.Formatter(_fmt_str, datefmt=_datefmt)
 
-    # 控制台 handler
+    # 控制台 handler (兼容 Windows GBK，自动过滤 emoji)
+    class _SafeFormatter(logging.Formatter):
+        def format(self, record):
+            msg = super().format(record)
+            enc = sys.stdout.encoding or 'utf-8'
+            try:
+                msg.encode(enc)
+            except UnicodeEncodeError:
+                msg = msg.encode(enc, errors='replace').decode(enc)
+            return msg
+
     console = logging.StreamHandler(sys.stdout)
     console.setLevel(level)
-    console.setFormatter(fmt)
+    console.setFormatter(_SafeFormatter(_fmt_str, datefmt=_datefmt))
 
     root = logging.getLogger()
     root.setLevel(logging.DEBUG)  # root 设最低，由各 handler 控制

@@ -1,6 +1,13 @@
 """
-VPN Orchestrator 高层编排器。
-整合所有模块，提供一键式操作入口。
+VPN Orchestrator — high-level facade combining all modules.
+
+Integrates:
+  - RuntimeManager   (process lifecycle + health check + auto-recovery)
+  - StateMachine     (strict state transitions)
+  - VpnStatus        (operational state + health tracking)
+  - DbManager        (node database)
+  - NodeSwitcher     (node switching)
+  - BrowserLauncher  (browser tabs)
 """
 
 import sys
@@ -16,8 +23,12 @@ from typing import Optional
 
 from core.db_manager import DbManager
 from core.process_manager import ProcessManager
-from core.config_builder import apply_profile_to_config
-from core.state import VpnState, StateMachine, StateError, VpnStatus
+from core.runtime_manager import RuntimeManager
+from core.config_builder import apply_profile_to_config, read_current_config
+from core.state import (
+    VpnState, StateMachine, StateError, VpnStatus,
+    RecoveryStrategy, HealthSnapshot,
+)
 from services.proxy_checker import ProxyChecker
 from services.node_switcher import NodeSwitcher
 from services.browser_launcher import BrowserLauncher
@@ -26,11 +37,12 @@ logger = logging.getLogger(__name__)
 
 
 class VpnOrchestrator:
-    """VPN 编排器 - 高层控制入口"""
+    """VPN orchestration — high-level control entry point."""
 
     def __init__(self, tick_interval: float = 30.0):
         self.db = DbManager()
-        self.proc = ProcessManager()
+        self.rt = RuntimeManager()
+        self.proc = ProcessManager()  # backward-compat wrapper
         self.checker = ProxyChecker()
         self.switcher = NodeSwitcher()
         self.browser = BrowserLauncher()
@@ -38,104 +50,125 @@ class VpnOrchestrator:
         self.status = VpnStatus()
         self.tick_interval = tick_interval
 
-        # 初始化时检测真实状态
-        if self.proc.is_running():
+        # Sync initial state from reality
+        self._sync_initial_state()
+
+    def _sync_initial_state(self):
+        """Detect actual sing-box state on startup."""
+        if self.rt.is_running():
             self.sm.force(VpnState.CONNECTED)
             self._sync_current_node()
-            # 快速验证代理是否真的可用
-            ok, delay = self.checker.check_connectivity()
-            self.status.last_check_ms = delay
-            if not ok:
+            online, latency = self.checker.check_connectivity()
+            self.status.update_health(online, latency, True)
+            if not online:
                 self.sm.force(VpnState.DEGRADED)
-                self.status.record_failure(self.status.current_node or "unknown")
+                self.status.record_failure(self.status.current_node or 'unknown')
 
     def _sync_current_node(self):
-        """从 config.json 读取当前活动节点名，同步到状态"""
+        """Read current proxy outbound from config.json into status."""
         try:
-            from core.config_builder import read_current_config
-            cfg = read_current_config()
-            for ob in cfg.get('outbounds', []):
-                if ob.get('tag') == 'proxy':
-                    for vn in ob.get('settings', {}).get('vnext', []):
-                        addr = vn.get('address', '')
-                        port = vn.get('port', '')
-                        self.status.current_node = f"{addr}:{port}"
+            from adapters.xray_config import find_proxy_outbound, read_config
+            cfg = read_config()
+            ob, _ = find_proxy_outbound(cfg)
+            if ob:
+                proto = ob.get('protocol', ob.get('type', ''))
+                if proto in ('vless', 'vmess', 'trojan'):
+                    vnext = ob.get('settings', {}).get('vnext', [])
+                    if vnext:
+                        addr = vnext[0].get('address', '')
+                        port = vnext[0].get('port', '')
+                        self.status.current_node = f'{addr}:{port}'
                         return
+                elif proto == 'shadowsocks':
+                    servers = ob.get('settings', {}).get('servers', [])
+                    if servers:
+                        addr = servers[0].get('address', '')
+                        port = servers[0].get('port', '')
+                        self.status.current_node = f'{addr}:{port}'
+                        return
+                self.status.current_node = f'{proto}://{ob.get("server", "?")}'
         except Exception:
             pass
+
+    # ================================================================
+    #  State transitions
+    # ================================================================
 
     def _try_transition(self, to: VpnState) -> bool:
         try:
             self.sm.transition(to)
             self.status.state = self.sm.state
             self.status.state_since = time.monotonic()
-            logger.info(f"状态: {to.name}")
+            logger.info('State: %s', to.name)
             return True
         except StateError:
-            logger.warning(f"非法状态转换: {self.sm.state.name} → {to.name}")
+            logger.warning('Illegal transition: %s → %s',
+                          self.sm.state.name, to.name)
             return False
 
-    # ========== 一键全流程 ==========
+    # ================================================================
+    #  Auto-connect (full flow)
+    # ================================================================
 
     def auto_connect(self, open_browser: bool = True) -> bool:
-        logger.info("=" * 50)
-        logger.info("  VPN Orchestrator - 自动连接")
-        logger.info("=" * 50)
+        logger.info('=' * 50)
+        logger.info('  VPN Orchestrator — Auto Connect')
+        logger.info('=' * 50)
 
-        # Step 1: 用我们的模板生成干净 config（选最优节点）
-        logger.info("[1/5] 选择节点并生成配置...")
+        # Step 1: Pick best node, patch config
+        logger.info('[1/5] Selecting node & patching config...')
         profile = self._pick_best_profile()
         if not profile:
-            logger.error("  数据库中没有节点")
+            logger.error('  No nodes in database')
             return False
-        from core.config_builder import apply_profile_to_config
         apply_profile_to_config(profile)
         self._sync_current_node()
 
-        # Step 2: 如有旧进程先停
-        logger.info("[2/5] 检查旧进程...")
-        if self.proc.is_running():
-            logger.info("  发现运行中的 sing-box，先停止...")
-            self.proc.stop()
+        # Step 2: Stop old process
+        logger.info('[2/5] Stopping old process...')
+        self.rt.stop()
 
-        # Step 3: 启动
-        logger.info("[3/5] 启动 sing-box...")
+        # Step 3: Start
+        logger.info('[3/5] Starting sing-box...')
         self._try_transition(VpnState.CONNECTING)
-        if not self.proc.start():
-            self._try_transition(VpnState.DISCONNECTED)
-            logger.error("  启动失败")
+        if not self.rt.start():
+            self._try_transition(VpnState.FAILED)
+            logger.error('  Start failed')
             return False
         self._try_transition(VpnState.CONNECTED)
 
-        # Step 4: 验证代理
-        logger.info("[4/5] 检测代理连通性...")
-        online, delay = self.checker.check_connectivity()
-        self.status.last_check_ms = delay
+        # Step 4: Verify
+        logger.info('[4/5] Checking proxy...')
+        online, latency = self.checker.check_connectivity()
+        self.status.update_health(online, latency, True)
         if online:
-            logger.info("  代理正常 (延迟: %.0fms)", delay)
+            logger.info('  Proxy OK (latency: %.0fms)', latency)
         else:
-            logger.warning("  代理不可用，尝试切换...")
+            logger.warning('  Proxy unreachable, trying failover...')
             self._try_transition(VpnState.RECOVERING)
             found = self.switcher.switch_until_working()
             if not found:
-                self._try_transition(VpnState.DEGRADED)
-                logger.error("  所有节点均不可用")
+                self._try_transition(VpnState.FAILED)
+                logger.error('  All nodes failed')
                 return False
             self._try_transition(VpnState.CONNECTED)
             self.status.reset_failures()
 
-        # Step 5: browser
+        # Step 5: Browser
         if open_browser:
-            logger.info("[5/5] 打开浏览器...")
+            logger.info('[5/5] Opening browser...')
             self.browser.open_all()
         else:
-            logger.info("[5/5] 跳过浏览器")
+            logger.info('[5/5] Skipping browser')
 
-        logger.info("  VPN 就绪!")
+        logger.info('  VPN Ready!')
         return True
 
+    # ================================================================
+    #  Node selection
+    # ================================================================
+
     def _pick_best_profile(self):
-        """从数据库选最优节点（优先速度，其次延迟）。"""
         self.db.connect()
         try:
             profiles = self.db.get_all_profiles()
@@ -143,77 +176,97 @@ class VpnOrchestrator:
                 return None
             scored = []
             for p in profiles:
+                if self.status.is_node_blacklisted(p.remarks):
+                    continue
                 stats = self.db.get_profile_stats(p.index_id)
                 delay = stats['delay'] if stats['delay'] > 0 else 99999
                 speed = stats['speed']
                 scored.append((p, delay, speed))
+            if not scored:
+                # All blacklisted, reset and try again
+                self.status.node_failures.clear()
+                return self._pick_best_profile()
             scored.sort(key=lambda x: (x[1], -x[2]))
             best = scored[0]
-            logger.info("  最优节点: %s (延迟: %.0fms, 速度: %.1fMB/s)",
-                        best[0].remarks, best[1], best[2])
+            logger.info('  Best node: %s (delay: %.0fms, speed: %.1fMB/s)',
+                       best[0].remarks, best[1], best[2])
             return best[0]
         finally:
             self.db.close()
 
-    # ========== 守护模式 (daemon tick) ==========
+    # ================================================================
+    #  Daemon tick (health check + auto-recovery)
+    # ================================================================
 
     def tick(self) -> VpnState:
         """
-        单次健康检查 tick。供 daemon 循环调用。
+        Single daemon tick: health check → recovery if needed.
 
-        Returns:
-            当前 VpnState
+        Returns current VpnState.
         """
         if self.sm.in_state(VpnState.STOPPED):
             return self.sm.state
 
-        is_running = self.proc.is_running()
-        if not is_running:
-            if self.sm.in_state(VpnState.DISCONNECTED):
-                logger.warning("sing-box 未运行，尝试启动...")
-            else:
-                logger.warning("sing-box 进程丢失，尝试重启...")
+        # Health check
+        process_running = self.rt.is_running()
+        online, latency = self.checker.check_connectivity() if process_running else (False, -1)
+        self.status.update_health(online, latency, process_running)
+
+        if not process_running:
+            logger.warning('Process lost, attempting restart...')
             self._try_transition(VpnState.CONNECTING)
-            if self.proc.start():
+            if self.rt.start():
                 self._try_transition(VpnState.CONNECTED)
                 self.status.reset_failures()
             else:
                 self._try_transition(VpnState.DISCONNECTED)
-                return self.sm.state
-
-        online, delay = self.checker.check_connectivity()
-        self.status.last_check_ms = delay
+            return self.sm.state
 
         if online:
-            if self.sm.in_state(VpnState.DEGRADED, VpnState.RECOVERING):
-                logger.info("代理恢复, 延迟: %.0fms", delay)
+            if self.sm.in_state(VpnState.DEGRADED, VpnState.RECOVERING, VpnState.FAILED):
+                logger.info('Connectivity restored (latency: %.0fms)', latency)
             self._try_transition(VpnState.CONNECTED)
             self.status.reset_failures()
         else:
-            logger.warning("代理不可用 (延迟: %.0fms), 进入恢复模式", delay)
+            logger.warning('Proxy unreachable (latency: %.0fms)', latency)
             self._try_transition(VpnState.DEGRADED)
-
-            # 记录当前节点故障
             self._sync_current_node()
-            node = self.status.current_node or "unknown"
+            node = self.status.current_node or 'unknown'
             self.status.record_failure(node)
-            logger.info("节点 %s 连续失败 %d 次", node, self.status.consecutive_failures)
 
-            # 自动恢复
+            logger.info('Node %s — %d consecutive failures (strategy: %s)',
+                       node, self.status.consecutive_failures,
+                       self.status.get_recovery_strategy().name)
+
+            # Auto-recovery
             self._try_transition(VpnState.RECOVERING)
-            found = self.switcher.switch_until_working()
-            self.status.total_switches += 1
-            if found:
+            recovered, desc = self.rt.attempt_recovery(
+                self.status,
+                on_switch_node=lambda: self.switcher.switch_until_working(),
+                on_restore_config=lambda: self._restore_and_restart(),
+            )
+
+            if recovered:
                 self._try_transition(VpnState.CONNECTED)
                 self.status.reset_failures()
                 self._sync_current_node()
+                logger.info('Recovered: %s', desc)
+            elif self.status.get_recovery_strategy() == RecoveryStrategy.GIVE_UP:
+                self._try_transition(VpnState.FAILED)
+                logger.error('Entered FAILED state — manual intervention needed')
             else:
-                self._try_transition(VpnState.DEGRADED)
-                logger.error("所有节点不可用, %d 秒后重试", self.tick_interval)
+                logger.warning('Recovery unsuccessful, will retry next tick')
 
         return self.sm.state
 
-    # ========== 节点管理 ==========
+    def _restore_and_restart(self) -> bool:
+        """Restore config from backup and restart."""
+        from adapters.xray_config import restore_config
+        return restore_config()
+
+    # ================================================================
+    #  Node management
+    # ================================================================
 
     def list_nodes(self):
         self.db.connect()
@@ -228,6 +281,7 @@ class VpnOrchestrator:
         if result:
             self._try_transition(VpnState.CONNECTED)
             self._sync_current_node()
+            self.status.reset_failures()
         else:
             self._try_transition(VpnState.DEGRADED)
         return result
@@ -238,6 +292,7 @@ class VpnOrchestrator:
         if result:
             self._try_transition(VpnState.CONNECTED)
             self._sync_current_node()
+            self.status.reset_failures()
         else:
             self._try_transition(VpnState.DEGRADED)
         return result
@@ -248,22 +303,25 @@ class VpnOrchestrator:
         if result:
             self._try_transition(VpnState.CONNECTED)
             self._sync_current_node()
+            self.status.reset_failures()
         else:
-            self._try_transition(VpnState.DEGRADED)
+            self._try_transition(VpnState.FAILED)
         return result
 
-    # ========== 进程控制 ==========
+    # ================================================================
+    #  Process control
+    # ================================================================
 
     def start(self) -> bool:
         self._try_transition(VpnState.CONNECTING)
-        if self.proc.start():
+        if self.rt.start():
             self._try_transition(VpnState.CONNECTED)
             return True
-        self._try_transition(VpnState.DISCONNECTED)
+        self._try_transition(VpnState.FAILED)
         return False
 
     def stop(self) -> bool:
-        if self.proc.stop():
+        if self.rt.stop():
             self.sm.force(VpnState.STOPPED)
             self.status.state = self.sm.state
             return True
@@ -271,36 +329,48 @@ class VpnOrchestrator:
 
     def restart(self) -> bool:
         self._try_transition(VpnState.CONNECTING)
-        if self.proc.restart():
+        if self.rt.restart():
             self._try_transition(VpnState.CONNECTED)
             return True
-        self._try_transition(VpnState.DISCONNECTED)
+        self._try_transition(VpnState.FAILED)
         return False
 
-    def status(self):
-        """打印状态报告"""
-        self.proc.print_status()
-        online, delay = self.checker.check_connectivity()
-        self.status.last_check_ms = delay
-        if online:
-            logger.info("  代理可用 (延迟: %.0fms)", delay)
-        else:
-            logger.warning("  代理不可用")
+    # ================================================================
+    #  Status & diagnostics
+    # ================================================================
 
-        logger.info("  状态: %s | 节点: %s | 连续失败: %d | 总切换: %d",
-                     self.sm.state.name,
-                     self.status.current_node or "未知",
-                     self.status.consecutive_failures,
-                     self.status.total_switches)
+    def status(self):
+        """Print comprehensive status report."""
+        self.rt.print_status()
+        online, latency = self.checker.check_connectivity()
+        self.status.update_health(online, latency, self.rt.is_running())
+
+        if online:
+            logger.info('  Proxy OK (latency: %.0fms)', latency)
+        else:
+            logger.warning('  Proxy UNREACHABLE')
+
+        h = self.status.last_health
+        logger.info(
+            '  State: %s | Node: %s | Failures: %d | Switches: %d | '
+            'Strategy: %s | State duration: %.0fs',
+            self.sm.state.name,
+            self.status.current_node or '?',
+            self.status.consecutive_failures,
+            self.status.total_switches,
+            self.status.get_recovery_strategy().name,
+            self.status.state_duration_seconds,
+        )
 
     def check_proxy(self):
-        self.proc.print_status()
+        """Full connectivity check."""
+        self.rt.print_status()
         result = self.checker.full_check()
         if result['online']:
-            logger.info("  在线 | 延迟: %.0fms | 速度: %.1fMB/s",
-                        result['delay_ms'], result['speed_mb_s'])
+            logger.info('  Online | Latency: %.0fms | Speed: %.1fMB/s',
+                       result['delay_ms'], result['speed_mb_s'])
         else:
-            logger.error("  离线 | 原因: %s", result['error'])
+            logger.error('  Offline | Reason: %s', result['error'])
         return result
 
     def open_browsers(self):

@@ -1,11 +1,11 @@
 """
-sing-box 进程管理器。
-查找、启动、停止、重启 sing-box 核心。
+sing-box process manager (compatibility wrapper).
+
+Delegates to RuntimeManager for Windows-safe process lifecycle.
+Public API kept stable for backward compatibility.
 """
 
 import logging
-import subprocess
-import time
 import sys, os
 from typing import Optional
 
@@ -21,131 +21,49 @@ logger = logging.getLogger(__name__)
 
 
 class ProcessManager:
-    """管理 sing-box 进程"""
+    """Manage sing-box process (delegates to RuntimeManager)."""
 
     def __init__(self, exe_path: str = SING_BOX_EXE,
                  config_path: str = CONFIG_JSON):
         self.exe_path = exe_path
         self.config_path = config_path
-        self._process: Optional[subprocess.Popen] = None
+        self._process: Optional = None
 
-    # ========== 查找进程 ==========
+        # Lazy-import to avoid circular dependency
+        from core.runtime_manager import RuntimeManager
+        self._rt = RuntimeManager(exe_path, config_path)
+
+    # ========== Process Discovery ==========
 
     @staticmethod
     def find_singbox_process() -> Optional[psutil.Process]:
-        """查找系统中正在运行的 sing-box.exe 进程"""
-        for proc in psutil.process_iter(['pid', 'name', 'cmdline']):
-            try:
-                if proc.info['name'] and 'sing-box' in proc.info['name'].lower():
-                    return proc
-                if proc.info['cmdline']:
-                    cmd = ' '.join(proc.info['cmdline']).lower()
-                    if 'sing-box' in cmd:
-                        return proc
-            except (psutil.NoSuchProcess, psutil.AccessDenied):
-                continue
-        return None
+        from core.runtime_manager import RuntimeManager
+        return RuntimeManager.find_singbox_process()
 
     @staticmethod
     def is_running() -> bool:
-        """检查 sing-box 是否正在运行"""
-        return ProcessManager.find_singbox_process() is not None
+        from core.runtime_manager import RuntimeManager
+        return RuntimeManager.is_running()
 
-    # ========== 停止进程 ==========
+    # ========== Stop ==========
 
     @staticmethod
     def stop() -> bool:
-        proc = ProcessManager.find_singbox_process()
-        if not proc:
-            logger.info("sing-box 未在运行")
-            return True
+        from core.runtime_manager import RuntimeManager
+        return RuntimeManager.stop()
 
-        try:
-            logger.info("正在停止 sing-box (PID: %d)...", proc.pid)
-            proc.terminate()
-            try:
-                proc.wait(timeout=5)
-            except psutil.TimeoutExpired:
-                logger.warning("停止超时，强制终止...")
-                proc.kill()
-                proc.wait(timeout=3)
-            logger.info("sing-box 已停止")
-            return True
-        except (psutil.NoSuchProcess, psutil.AccessDenied) as e:
-            logger.error("停止失败: %s", e)
-            return False
-
-    # ========== 启动进程 ==========
+    # ========== Start ==========
 
     def start(self, timeout: float = 5.0) -> bool:
-        if self.is_running():
-            logger.info("sing-box 已在运行")
-            return True
+        self._rt._startup_timeout = timeout
+        return self._rt.start()
 
-        if not self._check_exe():
-            return False
-
-        try:
-            logger.info("启动 sing-box...")
-            env = os.environ.copy()
-            # sing-box ≥1.13 兼容性环境变量
-            env['ENABLE_DEPRECATED_LEGACY_DNS_SERVERS'] = 'true'
-            env['ENABLE_DEPRECATED_MISSING_DOMAIN_RESOLVER'] = 'true'
-
-            self._process = subprocess.Popen(
-                [self.exe_path, 'run', '-c', self.config_path],
-                stdout=subprocess.PIPE,
-                stderr=subprocess.PIPE,
-                creationflags=subprocess.CREATE_NO_WINDOW,
-                env=env,
-            )
-
-            time.sleep(1.5)
-            if not self.is_running():
-                poll = self._process.poll()
-                if poll is not None:
-                    _, stderr = self._process.communicate(timeout=2)
-                    err_msg = stderr.decode('utf-8', errors='replace')[:500] if stderr else ''
-                    logger.error("启动失败 (退出码: %d)", poll)
-                    if err_msg:
-                        for line in err_msg.split('\n'):
-                            if 'FATAL' in line or 'ERROR' in line:
-                                logger.error("  %s", line.strip())
-                else:
-                    logger.error("启动失败（进程未出现）")
-                return False
-
-            logger.info("sing-box 已启动 (PID: %d)", self._process.pid)
-            return True
-
-        except Exception as e:
-            logger.error("启动异常: %s", e)
-            return False
-
-    # ========== 重启 ==========
+    # ========== Restart ==========
 
     def restart(self) -> bool:
-        logger.info("重启 sing-box...")
-        self.stop()
-        time.sleep(1)
-        return self.start()
+        return self._rt.restart()
 
-    # ========== 工具方法 ==========
-
-    def _check_exe(self) -> bool:
-        import os
-        if not os.path.exists(self.exe_path):
-            logger.error("找不到 sing-box: %s", self.exe_path)
-            return False
-        return True
+    # ========== Status ==========
 
     def print_status(self):
-        """打印当前 sing-box 状态"""
-        proc = self.find_singbox_process()
-        if proc:
-            mem = proc.memory_info().rss / 1024 / 1024
-            cpu = proc.cpu_percent()
-            logger.info("sing-box 运行中 (PID: %d) | 内存: %.1f MB | CPU: %.1f%%",
-                        proc.pid, mem, cpu)
-        else:
-            logger.info("sing-box 未运行")
+        self._rt.print_status()

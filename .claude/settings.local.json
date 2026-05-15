@@ -12,7 +12,22 @@
       "Bash(ENABLE_DEPRECATED_LEGACY_DNS_SERVERS=true ENABLE_DEPRECATED_MISSING_DOMAIN_RESOLVER=true d:/useful/加速器/v2rayN-Core/v2rayN-windows-64/bin/sing_box/sing-box.exe check *)",
       "Bash(claude plugin *)",
       "Bash(curl -s http://127.0.0.1:10813/version)",
-      "Bash(python *)"
+      "Bash(python *)",
+      "Bash(d:/useful/加速器/v2rayn/bin/sing_box/sing-box.exe version *)",
+      "WebFetch(domain:sing-box.sagernet.org)",
+      "Bash(curl -s --socks5 127.0.0.1:10808 https://www.google.com/generate_204 -o /dev/null -w \"%{http_code}\" --connect-timeout 5)",
+      "Bash(tasklist /FI \"IMAGENAME eq sing-box.exe\")",
+      "Bash(netstat -ano)",
+      "Bash(curl *)",
+      "Bash(nslookup <REDACTED_SERVER>)",
+      "Bash(nslookup <REDACTED_SERVER>)",
+      "Bash(taskkill /F /PID 15312)",
+      "Bash(ENABLE_DEPRECATED_LEGACY_DNS_SERVERS=true \"d:/useful/加速器/v2rayn/bin/sing_box/sing-box.exe\" run -c \"d:/useful/加速器/v2rayn/binConfigs/config.json\")",
+      "Bash(\"d:/useful/加速器/v2rayn/bin/sing_box/sing-box.exe\" run *)",
+      "Read(//tmp/**)",
+      "Bash(tasklist)",
+      "Bash(powershell -Command \"Stop-Process -Id 15312 -Force\")",
+      "Bash(powershell -Command \"Stop-Process -Name sing-box -Force -ErrorAction SilentlyContinue\")"
     ]
   }
 }
