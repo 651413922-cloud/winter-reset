@@ -87,7 +87,8 @@ class NodeSwitcher:
 
     # ========== 遍历切换（直到可用） ==========
 
-    def switch_until_working(self, max_attempts: int = 6) -> bool:
+    def switch_until_working(self, max_attempts: int = 0) -> bool:
+        """Try nodes until one works. 0 = no limit (try all)."""
         self.db.connect()
         try:
             profiles = self.db.get_all_profiles()
@@ -98,9 +99,10 @@ class NodeSwitcher:
                 scored.append((p, stats['speed']))
             scored.sort(key=lambda x: -x[1])
 
-            for i, (profile, speed) in enumerate(scored[:max_attempts]):
+            limit = max_attempts if max_attempts > 0 else len(scored)
+            for i, (profile, speed) in enumerate(scored[:limit]):
                 logger.info("--- 尝试 %d/%d: %s ---",
-                            i + 1, min(max_attempts, len(scored)), profile.remarks)
+                            i + 1, limit, profile.remarks)
                 ok = self._apply_and_restart(profile)
                 if not ok:
                     continue
@@ -124,14 +126,14 @@ class NodeSwitcher:
 
         apply_profile_to_config(profile)
 
-        if not self.proc.restart():
-            logger.error("sing-box 重启失败")
+        if not self.proc.restart_xray():
+            logger.error("Xray 重启失败")
             return False
 
         time.sleep(2)
         if self.proc.is_running():
-            logger.info("sing-box 运行正常")
+            logger.info("Xray 运行正常")
             return True
         else:
-            logger.error("sing-box 未正常启动")
+            logger.error("Xray 未正常启动")
             return False

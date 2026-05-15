@@ -801,3 +801,1200 @@
 16:32:46 ERROR   [services.node_switcher] 所有节点均不可用
 16:32:46 INFO    [orchestrator] 状态: DEGRADED
 16:32:46 ERROR   [orchestrator]   所有节点均不可用
+15:31:41 INFO    [orchestrator] ==================================================
+15:31:41 INFO    [orchestrator]   VPN Orchestrator — Auto Connect
+15:31:41 INFO    [orchestrator] ==================================================
+15:31:41 INFO    [orchestrator] [1/5] Selecting node & patching config...
+15:31:42 INFO    [orchestrator]   Best node: [1x] [C] [直连] [SS] 新加坡 10 (delay: 99999ms, speed: 0.0MB/s)
+15:31:42 INFO    [adapters.xray_config] Backup saved to d:\useful\加速器\v2rayn\binConfigs\config.json.bak
+15:31:42 INFO    [adapters.xray_config] Detected config format: xray
+15:31:42 DEBUG   [adapters.outbound_builder] Building Xray outbound (config_type=3, protocol=)
+15:31:42 INFO    [adapters.xray_config] Patched proxy outbound → [1x] [C] [直连] [SS] 新加坡 10 (ss.030.node-for-bigairport.win:19287)
+15:31:42 DEBUG   [adapters.xray_config] Written to d:\useful\加速器\v2rayn\binConfigs\config.json
+15:31:42 INFO    [orchestrator] [2/5] Stopping old process...
+15:31:42 INFO    [core.runtime_manager] sing-box is not running
+15:31:42 INFO    [orchestrator] [3/5] Starting sing-box...
+15:31:42 INFO    [orchestrator] State: CONNECTING
+15:31:42 INFO    [core.runtime_manager] Starting sing-box...
+15:31:42 INFO    [core.runtime_manager] sing-box started (PID: 14348)
+15:31:42 INFO    [orchestrator] State: CONNECTED
+15:31:42 INFO    [orchestrator] [4/5] Checking proxy...
+15:31:42 WARNING [orchestrator]   Proxy unreachable, trying failover...
+15:31:42 WARNING [orchestrator] Illegal transition: CONNECTED → RECOVERING
+15:31:42 INFO    [services.node_switcher] --- 尝试 1/6: [1x] [C] [直连] [SS] 新加坡 10 ---
+15:31:42 INFO    [services.node_switcher] 切换到: [[1x] [C] [直连] [SS] 新加坡 10] ss.030.node-for-bigairport.win:19287 |  | 
+15:31:42 INFO    [adapters.xray_config] Backup saved to d:\useful\加速器\v2rayn\binConfigs\config.json.bak
+15:31:42 INFO    [adapters.xray_config] Detected config format: xray
+15:31:42 DEBUG   [adapters.outbound_builder] Building Xray outbound (config_type=3, protocol=)
+15:31:42 INFO    [adapters.xray_config] Patched proxy outbound → [1x] [C] [直连] [SS] 新加坡 10 (ss.030.node-for-bigairport.win:19287)
+15:31:42 DEBUG   [adapters.xray_config] Written to d:\useful\加速器\v2rayn\binConfigs\config.json
+15:31:42 INFO    [core.runtime_manager] Restarting sing-box...
+15:31:42 INFO    [core.runtime_manager] Stopping sing-box (PID: 14348)...
+15:31:42 INFO    [core.runtime_manager] sing-box stopped gracefully
+15:31:43 INFO    [core.runtime_manager] Starting sing-box...
+15:31:43 INFO    [core.runtime_manager] sing-box started (PID: 15632)
+15:31:45 ERROR   [services.node_switcher] sing-box 未正常启动
+15:31:45 INFO    [services.node_switcher] --- 尝试 2/6: [1x] [C] [直连] [SS] 新加坡 9 ---
+15:31:45 INFO    [services.node_switcher] 切换到: [[1x] [C] [直连] [SS] 新加坡 9] ss.029.node-for-bigairport.win:29088 |  | 
+15:31:45 INFO    [adapters.xray_config] Backup saved to d:\useful\加速器\v2rayn\binConfigs\config.json.bak
+15:31:45 INFO    [adapters.xray_config] Detected config format: xray
+15:31:45 DEBUG   [adapters.outbound_builder] Building Xray outbound (config_type=3, protocol=)
+15:31:45 INFO    [adapters.xray_config] Patched proxy outbound → [1x] [C] [直连] [SS] 新加坡 9 (ss.029.node-for-bigairport.win:29088)
+15:31:45 DEBUG   [adapters.xray_config] Written to d:\useful\加速器\v2rayn\binConfigs\config.json
+15:31:45 INFO    [core.runtime_manager] Restarting sing-box...
+15:31:45 INFO    [core.runtime_manager] sing-box is not running
+15:31:45 INFO    [core.runtime_manager] Starting sing-box...
+15:31:45 INFO    [core.runtime_manager] sing-box started (PID: 18768)
+15:31:47 ERROR   [services.node_switcher] sing-box 未正常启动
+15:31:47 INFO    [services.node_switcher] --- 尝试 3/6: [1x] [D] [直连] [SS] 新加坡 10 ---
+15:31:47 INFO    [services.node_switcher] 切换到: [[1x] [D] [直连] [SS] 新加坡 10] ss.040.node-for-bigairport.win:12689 |  | 
+15:31:47 INFO    [adapters.xray_config] Backup saved to d:\useful\加速器\v2rayn\binConfigs\config.json.bak
+15:31:47 INFO    [adapters.xray_config] Detected config format: xray
+15:31:47 DEBUG   [adapters.outbound_builder] Building Xray outbound (config_type=3, protocol=)
+15:31:47 INFO    [adapters.xray_config] Patched proxy outbound → [1x] [D] [直连] [SS] 新加坡 10 (ss.040.node-for-bigairport.win:12689)
+15:31:47 DEBUG   [adapters.xray_config] Written to d:\useful\加速器\v2rayn\binConfigs\config.json
+15:31:47 INFO    [core.runtime_manager] Restarting sing-box...
+15:31:47 INFO    [core.runtime_manager] sing-box is not running
+15:31:48 INFO    [core.runtime_manager] Starting sing-box...
+15:31:48 INFO    [core.runtime_manager] sing-box started (PID: 20088)
+15:31:50 ERROR   [services.node_switcher] sing-box 未正常启动
+15:31:50 INFO    [services.node_switcher] --- 尝试 4/6: [1x] [D] [直连] [SS] 新加坡 9 ---
+15:31:50 INFO    [services.node_switcher] 切换到: [[1x] [D] [直连] [SS] 新加坡 9] ss.039.node-for-bigairport.win:29004 |  | 
+15:31:50 INFO    [adapters.xray_config] Backup saved to d:\useful\加速器\v2rayn\binConfigs\config.json.bak
+15:31:50 INFO    [adapters.xray_config] Detected config format: xray
+15:31:50 DEBUG   [adapters.outbound_builder] Building Xray outbound (config_type=3, protocol=)
+15:31:50 INFO    [adapters.xray_config] Patched proxy outbound → [1x] [D] [直连] [SS] 新加坡 9 (ss.039.node-for-bigairport.win:29004)
+15:31:50 DEBUG   [adapters.xray_config] Written to d:\useful\加速器\v2rayn\binConfigs\config.json
+15:31:50 INFO    [core.runtime_manager] Restarting sing-box...
+15:31:50 INFO    [core.runtime_manager] sing-box is not running
+15:31:51 INFO    [core.runtime_manager] Starting sing-box...
+15:31:51 INFO    [core.runtime_manager] sing-box started (PID: 29304)
+15:31:53 ERROR   [services.node_switcher] sing-box 未正常启动
+15:31:53 INFO    [services.node_switcher] --- 尝试 5/6: [1x] [D] [直连] [SS] 日本 1 ---
+15:31:53 INFO    [services.node_switcher] 切换到: [[1x] [D] [直连] [SS] 日本 1] ss.031.node-for-bigairport.win:12885 |  | 
+15:31:53 INFO    [adapters.xray_config] Backup saved to d:\useful\加速器\v2rayn\binConfigs\config.json.bak
+15:31:53 INFO    [adapters.xray_config] Detected config format: xray
+15:31:53 DEBUG   [adapters.outbound_builder] Building Xray outbound (config_type=3, protocol=)
+15:31:53 INFO    [adapters.xray_config] Patched proxy outbound → [1x] [D] [直连] [SS] 日本 1 (ss.031.node-for-bigairport.win:12885)
+15:31:53 DEBUG   [adapters.xray_config] Written to d:\useful\加速器\v2rayn\binConfigs\config.json
+15:31:53 INFO    [core.runtime_manager] Restarting sing-box...
+15:31:53 INFO    [core.runtime_manager] sing-box is not running
+15:31:53 INFO    [core.runtime_manager] Starting sing-box...
+15:31:53 INFO    [core.runtime_manager] sing-box started (PID: 11984)
+15:31:55 ERROR   [services.node_switcher] sing-box 未正常启动
+15:31:55 INFO    [services.node_switcher] --- 尝试 6/6: [1x] [D] [直连] [SS] 日本 2 ---
+15:31:55 INFO    [services.node_switcher] 切换到: [[1x] [D] [直连] [SS] 日本 2] ss.032.node-for-bigairport.win:19887 |  | 
+15:31:55 INFO    [adapters.xray_config] Backup saved to d:\useful\加速器\v2rayn\binConfigs\config.json.bak
+15:31:55 INFO    [adapters.xray_config] Detected config format: xray
+15:31:55 DEBUG   [adapters.outbound_builder] Building Xray outbound (config_type=3, protocol=)
+15:31:55 INFO    [adapters.xray_config] Patched proxy outbound → [1x] [D] [直连] [SS] 日本 2 (ss.032.node-for-bigairport.win:19887)
+15:31:55 DEBUG   [adapters.xray_config] Written to d:\useful\加速器\v2rayn\binConfigs\config.json
+15:31:55 INFO    [core.runtime_manager] Restarting sing-box...
+15:31:55 INFO    [core.runtime_manager] sing-box is not running
+15:31:56 INFO    [core.runtime_manager] Starting sing-box...
+15:31:56 INFO    [core.runtime_manager] sing-box started (PID: 22068)
+15:31:58 ERROR   [services.node_switcher] sing-box 未正常启动
+15:31:58 ERROR   [services.node_switcher] 所有节点均不可用
+15:31:58 WARNING [orchestrator] Illegal transition: CONNECTED → FAILED
+15:31:58 ERROR   [orchestrator]   All nodes failed
+15:45:05 INFO    [orchestrator] ==================================================
+15:45:05 INFO    [orchestrator]   VPN Orchestrator — Auto Connect
+15:45:05 INFO    [orchestrator] ==================================================
+15:45:05 INFO    [orchestrator] [1/5] Selecting node & patching config...
+15:45:05 INFO    [orchestrator]   Best node: [1x] [C] [直连] [SS] 新加坡 10 (delay: 99999ms, speed: 0.0MB/s)
+15:45:05 INFO    [adapters.xray_config] Backup saved to d:\useful\加速器\v2rayn\binConfigs\config.json.bak
+15:45:05 INFO    [adapters.xray_config] Detected config format: xray
+15:45:05 DEBUG   [adapters.outbound_builder] Building Xray outbound (config_type=3, protocol=)
+15:45:05 INFO    [adapters.xray_config] Patched proxy outbound → [1x] [C] [直连] [SS] 新加坡 10 (ss.030.node-for-bigairport.win:19287)
+15:45:05 DEBUG   [adapters.xray_config] Written to d:\useful\加速器\v2rayn\binConfigs\config.json
+15:45:05 INFO    [orchestrator] [2/5] Stopping old process...
+15:45:05 INFO    [core.runtime_manager] Proxy core is not running
+15:45:05 INFO    [orchestrator] [3/5] Starting sing-box...
+15:45:05 INFO    [orchestrator] State: CONNECTING
+15:45:05 INFO    [core.runtime_manager] Starting Xray...
+15:45:05 INFO    [core.runtime_manager] sing-box started (PID: 12488)
+15:45:05 INFO    [orchestrator] State: CONNECTED
+15:45:05 INFO    [orchestrator] [4/5] Checking proxy...
+15:45:05 WARNING [orchestrator]   Proxy unreachable, trying failover...
+15:45:05 WARNING [orchestrator] Illegal transition: CONNECTED → RECOVERING
+15:45:05 INFO    [services.node_switcher] --- 尝试 1/6: [1x] [C] [直连] [SS] 新加坡 10 ---
+15:45:05 INFO    [services.node_switcher] 切换到: [[1x] [C] [直连] [SS] 新加坡 10] ss.030.node-for-bigairport.win:19287 |  | 
+15:45:05 INFO    [adapters.xray_config] Backup saved to d:\useful\加速器\v2rayn\binConfigs\config.json.bak
+15:45:05 INFO    [adapters.xray_config] Detected config format: xray
+15:45:05 DEBUG   [adapters.outbound_builder] Building Xray outbound (config_type=3, protocol=)
+15:45:05 INFO    [adapters.xray_config] Patched proxy outbound → [1x] [C] [直连] [SS] 新加坡 10 (ss.030.node-for-bigairport.win:19287)
+15:45:05 DEBUG   [adapters.xray_config] Written to d:\useful\加速器\v2rayn\binConfigs\config.json
+15:45:05 INFO    [core.runtime_manager] Restarting sing-box...
+15:45:05 INFO    [core.runtime_manager] Stopping sing-box (PID: 12488)...
+15:45:05 INFO    [core.runtime_manager] sing-box stopped gracefully
+15:45:06 INFO    [core.runtime_manager] Starting Xray...
+15:45:06 INFO    [core.runtime_manager] sing-box started (PID: 23768)
+15:45:08 INFO    [services.node_switcher] sing-box 运行正常
+15:45:08 WARNING [services.node_switcher] [1x] [C] [直连] [SS] 新加坡 10 不可用
+15:45:08 INFO    [services.node_switcher] --- 尝试 2/6: [1x] [C] [直连] [SS] 新加坡 9 ---
+15:45:08 INFO    [services.node_switcher] 切换到: [[1x] [C] [直连] [SS] 新加坡 9] ss.029.node-for-bigairport.win:29088 |  | 
+15:45:08 INFO    [adapters.xray_config] Backup saved to d:\useful\加速器\v2rayn\binConfigs\config.json.bak
+15:45:08 INFO    [adapters.xray_config] Detected config format: xray
+15:45:08 DEBUG   [adapters.outbound_builder] Building Xray outbound (config_type=3, protocol=)
+15:45:08 INFO    [adapters.xray_config] Patched proxy outbound → [1x] [C] [直连] [SS] 新加坡 9 (ss.029.node-for-bigairport.win:29088)
+15:45:08 DEBUG   [adapters.xray_config] Written to d:\useful\加速器\v2rayn\binConfigs\config.json
+15:45:08 INFO    [core.runtime_manager] Restarting sing-box...
+15:45:08 INFO    [core.runtime_manager] Stopping sing-box (PID: 23768)...
+15:45:08 INFO    [core.runtime_manager] sing-box stopped gracefully
+15:45:09 INFO    [core.runtime_manager] Starting Xray...
+15:45:09 INFO    [core.runtime_manager] sing-box started (PID: 3112)
+15:45:11 INFO    [services.node_switcher] sing-box 运行正常
+15:45:11 WARNING [services.node_switcher] [1x] [C] [直连] [SS] 新加坡 9 不可用
+15:45:11 INFO    [services.node_switcher] --- 尝试 3/6: [1x] [D] [直连] [SS] 新加坡 10 ---
+15:45:11 INFO    [services.node_switcher] 切换到: [[1x] [D] [直连] [SS] 新加坡 10] ss.040.node-for-bigairport.win:12689 |  | 
+15:45:11 INFO    [adapters.xray_config] Backup saved to d:\useful\加速器\v2rayn\binConfigs\config.json.bak
+15:45:11 INFO    [adapters.xray_config] Detected config format: xray
+15:45:11 DEBUG   [adapters.outbound_builder] Building Xray outbound (config_type=3, protocol=)
+15:45:11 INFO    [adapters.xray_config] Patched proxy outbound → [1x] [D] [直连] [SS] 新加坡 10 (ss.040.node-for-bigairport.win:12689)
+15:45:11 DEBUG   [adapters.xray_config] Written to d:\useful\加速器\v2rayn\binConfigs\config.json
+15:45:11 INFO    [core.runtime_manager] Restarting sing-box...
+15:45:11 INFO    [core.runtime_manager] Stopping sing-box (PID: 3112)...
+15:45:11 INFO    [core.runtime_manager] sing-box stopped gracefully
+15:45:12 INFO    [core.runtime_manager] Starting Xray...
+15:45:12 INFO    [core.runtime_manager] sing-box started (PID: 22776)
+15:45:14 INFO    [services.node_switcher] sing-box 运行正常
+15:45:14 WARNING [services.node_switcher] [1x] [D] [直连] [SS] 新加坡 10 不可用
+15:45:14 INFO    [services.node_switcher] --- 尝试 4/6: [1x] [D] [直连] [SS] 新加坡 9 ---
+15:45:14 INFO    [services.node_switcher] 切换到: [[1x] [D] [直连] [SS] 新加坡 9] ss.039.node-for-bigairport.win:29004 |  | 
+15:45:14 INFO    [adapters.xray_config] Backup saved to d:\useful\加速器\v2rayn\binConfigs\config.json.bak
+15:45:14 INFO    [adapters.xray_config] Detected config format: xray
+15:45:14 DEBUG   [adapters.outbound_builder] Building Xray outbound (config_type=3, protocol=)
+15:45:14 INFO    [adapters.xray_config] Patched proxy outbound → [1x] [D] [直连] [SS] 新加坡 9 (ss.039.node-for-bigairport.win:29004)
+15:45:14 DEBUG   [adapters.xray_config] Written to d:\useful\加速器\v2rayn\binConfigs\config.json
+15:45:14 INFO    [core.runtime_manager] Restarting sing-box...
+15:45:14 INFO    [core.runtime_manager] Stopping sing-box (PID: 22776)...
+15:45:14 INFO    [core.runtime_manager] sing-box stopped gracefully
+15:45:15 INFO    [core.runtime_manager] Starting Xray...
+15:45:15 INFO    [core.runtime_manager] sing-box started (PID: 4944)
+15:45:17 INFO    [services.node_switcher] sing-box 运行正常
+15:45:17 WARNING [services.node_switcher] [1x] [D] [直连] [SS] 新加坡 9 不可用
+15:45:17 INFO    [services.node_switcher] --- 尝试 5/6: [1x] [D] [直连] [SS] 日本 1 ---
+15:45:17 INFO    [services.node_switcher] 切换到: [[1x] [D] [直连] [SS] 日本 1] ss.031.node-for-bigairport.win:12885 |  | 
+15:45:17 INFO    [adapters.xray_config] Backup saved to d:\useful\加速器\v2rayn\binConfigs\config.json.bak
+15:45:17 INFO    [adapters.xray_config] Detected config format: xray
+15:45:17 DEBUG   [adapters.outbound_builder] Building Xray outbound (config_type=3, protocol=)
+15:45:17 INFO    [adapters.xray_config] Patched proxy outbound → [1x] [D] [直连] [SS] 日本 1 (ss.031.node-for-bigairport.win:12885)
+15:45:17 DEBUG   [adapters.xray_config] Written to d:\useful\加速器\v2rayn\binConfigs\config.json
+15:45:17 INFO    [core.runtime_manager] Restarting sing-box...
+15:45:18 INFO    [core.runtime_manager] Stopping sing-box (PID: 4944)...
+15:45:18 INFO    [core.runtime_manager] sing-box stopped gracefully
+15:45:19 INFO    [core.runtime_manager] Starting Xray...
+15:45:19 INFO    [core.runtime_manager] sing-box started (PID: 5192)
+15:45:21 INFO    [services.node_switcher] sing-box 运行正常
+15:45:21 WARNING [services.node_switcher] [1x] [D] [直连] [SS] 日本 1 不可用
+15:45:21 INFO    [services.node_switcher] --- 尝试 6/6: [1x] [D] [直连] [SS] 日本 2 ---
+15:45:21 INFO    [services.node_switcher] 切换到: [[1x] [D] [直连] [SS] 日本 2] ss.032.node-for-bigairport.win:19887 |  | 
+15:45:21 INFO    [adapters.xray_config] Backup saved to d:\useful\加速器\v2rayn\binConfigs\config.json.bak
+15:45:21 INFO    [adapters.xray_config] Detected config format: xray
+15:45:21 DEBUG   [adapters.outbound_builder] Building Xray outbound (config_type=3, protocol=)
+15:45:21 INFO    [adapters.xray_config] Patched proxy outbound → [1x] [D] [直连] [SS] 日本 2 (ss.032.node-for-bigairport.win:19887)
+15:45:21 DEBUG   [adapters.xray_config] Written to d:\useful\加速器\v2rayn\binConfigs\config.json
+15:45:21 INFO    [core.runtime_manager] Restarting sing-box...
+15:45:21 INFO    [core.runtime_manager] Stopping sing-box (PID: 5192)...
+15:45:21 INFO    [core.runtime_manager] sing-box stopped gracefully
+15:45:22 INFO    [core.runtime_manager] Starting Xray...
+15:45:22 INFO    [core.runtime_manager] sing-box started (PID: 22068)
+15:45:24 INFO    [services.node_switcher] sing-box 运行正常
+15:45:24 WARNING [services.node_switcher] [1x] [D] [直连] [SS] 日本 2 不可用
+15:45:24 ERROR   [services.node_switcher] 所有节点均不可用
+15:45:24 WARNING [orchestrator] Illegal transition: CONNECTED → FAILED
+15:45:24 ERROR   [orchestrator]   All nodes failed
+15:46:40 INFO    [orchestrator] ==================================================
+15:46:40 INFO    [orchestrator]   VPN Orchestrator — Auto Connect
+15:46:40 INFO    [orchestrator] ==================================================
+15:46:40 INFO    [orchestrator] [1/5] Selecting node & patching config...
+15:46:40 INFO    [orchestrator]   Best node: [1x] [C] [直连] [SS] 新加坡 10 (delay: 99999ms, speed: 0.0MB/s)
+15:46:40 INFO    [adapters.xray_config] Backup saved to d:\useful\加速器\v2rayn\binConfigs\config.json.bak
+15:46:40 INFO    [adapters.xray_config] Detected config format: xray
+15:46:40 DEBUG   [adapters.outbound_builder] Building Xray outbound (config_type=3, protocol=)
+15:46:40 INFO    [adapters.xray_config] Patched proxy outbound → [1x] [C] [直连] [SS] 新加坡 10 (ss.030.node-for-bigairport.win:19287)
+15:46:40 DEBUG   [adapters.xray_config] Written to d:\useful\加速器\v2rayn\binConfigs\config.json
+15:46:40 INFO    [orchestrator] [2/5] Stopping old process...
+15:46:40 INFO    [core.runtime_manager] Stopping sing-box (PID: 22068)...
+15:46:40 INFO    [core.runtime_manager] sing-box stopped gracefully
+15:46:40 INFO    [orchestrator] [3/5] Starting sing-box...
+15:46:40 WARNING [orchestrator] Illegal transition: DEGRADED → CONNECTING
+15:46:40 INFO    [core.runtime_manager] Starting Xray...
+15:46:40 INFO    [core.runtime_manager] sing-box started (PID: 17344)
+15:46:40 INFO    [orchestrator] State: CONNECTED
+15:46:40 INFO    [orchestrator] [4/5] Checking proxy...
+15:46:40 WARNING [orchestrator]   Proxy unreachable, trying failover...
+15:46:40 WARNING [orchestrator] Illegal transition: CONNECTED → RECOVERING
+15:46:40 INFO    [services.node_switcher] --- 尝试 1/6: [1x] [C] [直连] [SS] 新加坡 10 ---
+15:46:40 INFO    [services.node_switcher] 切换到: [[1x] [C] [直连] [SS] 新加坡 10] ss.030.node-for-bigairport.win:19287 |  | 
+15:46:40 INFO    [adapters.xray_config] Backup saved to d:\useful\加速器\v2rayn\binConfigs\config.json.bak
+15:46:40 INFO    [adapters.xray_config] Detected config format: xray
+15:46:40 DEBUG   [adapters.outbound_builder] Building Xray outbound (config_type=3, protocol=)
+15:46:40 INFO    [adapters.xray_config] Patched proxy outbound → [1x] [C] [直连] [SS] 新加坡 10 (ss.030.node-for-bigairport.win:19287)
+15:46:40 DEBUG   [adapters.xray_config] Written to d:\useful\加速器\v2rayn\binConfigs\config.json
+15:46:40 INFO    [core.runtime_manager] Restarting sing-box...
+15:46:40 INFO    [core.runtime_manager] Stopping sing-box (PID: 17344)...
+15:46:40 INFO    [core.runtime_manager] sing-box stopped gracefully
+15:46:42 INFO    [core.runtime_manager] Starting Xray...
+15:46:42 INFO    [core.runtime_manager] sing-box started (PID: 24736)
+15:46:44 INFO    [services.node_switcher] sing-box 运行正常
+15:46:44 WARNING [services.node_switcher] [1x] [C] [直连] [SS] 新加坡 10 不可用
+15:46:44 INFO    [services.node_switcher] --- 尝试 2/6: [1x] [C] [直连] [SS] 新加坡 9 ---
+15:46:44 INFO    [services.node_switcher] 切换到: [[1x] [C] [直连] [SS] 新加坡 9] ss.029.node-for-bigairport.win:29088 |  | 
+15:46:44 INFO    [adapters.xray_config] Backup saved to d:\useful\加速器\v2rayn\binConfigs\config.json.bak
+15:46:44 INFO    [adapters.xray_config] Detected config format: xray
+15:46:44 DEBUG   [adapters.outbound_builder] Building Xray outbound (config_type=3, protocol=)
+15:46:44 INFO    [adapters.xray_config] Patched proxy outbound → [1x] [C] [直连] [SS] 新加坡 9 (ss.029.node-for-bigairport.win:29088)
+15:46:44 DEBUG   [adapters.xray_config] Written to d:\useful\加速器\v2rayn\binConfigs\config.json
+15:46:44 INFO    [core.runtime_manager] Restarting sing-box...
+15:46:44 INFO    [core.runtime_manager] Stopping sing-box (PID: 24736)...
+15:46:44 INFO    [core.runtime_manager] sing-box stopped gracefully
+15:46:45 INFO    [core.runtime_manager] Starting Xray...
+15:46:45 INFO    [core.runtime_manager] sing-box started (PID: 23464)
+15:46:47 INFO    [services.node_switcher] sing-box 运行正常
+15:46:47 WARNING [services.node_switcher] [1x] [C] [直连] [SS] 新加坡 9 不可用
+15:46:47 INFO    [services.node_switcher] --- 尝试 3/6: [1x] [D] [直连] [SS] 新加坡 10 ---
+15:46:47 INFO    [services.node_switcher] 切换到: [[1x] [D] [直连] [SS] 新加坡 10] ss.040.node-for-bigairport.win:12689 |  | 
+15:46:47 INFO    [adapters.xray_config] Backup saved to d:\useful\加速器\v2rayn\binConfigs\config.json.bak
+15:46:47 INFO    [adapters.xray_config] Detected config format: xray
+15:46:47 DEBUG   [adapters.outbound_builder] Building Xray outbound (config_type=3, protocol=)
+15:46:47 INFO    [adapters.xray_config] Patched proxy outbound → [1x] [D] [直连] [SS] 新加坡 10 (ss.040.node-for-bigairport.win:12689)
+15:46:47 DEBUG   [adapters.xray_config] Written to d:\useful\加速器\v2rayn\binConfigs\config.json
+15:46:47 INFO    [core.runtime_manager] Restarting sing-box...
+15:46:47 INFO    [core.runtime_manager] Stopping sing-box (PID: 23464)...
+15:46:47 INFO    [core.runtime_manager] sing-box stopped gracefully
+15:46:48 INFO    [core.runtime_manager] Starting Xray...
+15:46:48 INFO    [core.runtime_manager] sing-box started (PID: 27316)
+15:46:50 INFO    [services.node_switcher] sing-box 运行正常
+15:46:50 WARNING [services.node_switcher] [1x] [D] [直连] [SS] 新加坡 10 不可用
+15:46:50 INFO    [services.node_switcher] --- 尝试 4/6: [1x] [D] [直连] [SS] 新加坡 9 ---
+15:46:50 INFO    [services.node_switcher] 切换到: [[1x] [D] [直连] [SS] 新加坡 9] ss.039.node-for-bigairport.win:29004 |  | 
+15:46:50 INFO    [adapters.xray_config] Backup saved to d:\useful\加速器\v2rayn\binConfigs\config.json.bak
+15:46:50 INFO    [adapters.xray_config] Detected config format: xray
+15:46:50 DEBUG   [adapters.outbound_builder] Building Xray outbound (config_type=3, protocol=)
+15:46:50 INFO    [adapters.xray_config] Patched proxy outbound → [1x] [D] [直连] [SS] 新加坡 9 (ss.039.node-for-bigairport.win:29004)
+15:46:50 DEBUG   [adapters.xray_config] Written to d:\useful\加速器\v2rayn\binConfigs\config.json
+15:46:50 INFO    [core.runtime_manager] Restarting sing-box...
+15:46:50 INFO    [core.runtime_manager] Stopping sing-box (PID: 27316)...
+15:46:50 INFO    [core.runtime_manager] sing-box stopped gracefully
+15:46:51 INFO    [core.runtime_manager] Starting Xray...
+15:46:51 INFO    [core.runtime_manager] sing-box started (PID: 15484)
+15:46:53 INFO    [services.node_switcher] sing-box 运行正常
+15:46:53 WARNING [services.node_switcher] [1x] [D] [直连] [SS] 新加坡 9 不可用
+15:46:53 INFO    [services.node_switcher] --- 尝试 5/6: [1x] [D] [直连] [SS] 日本 1 ---
+15:46:53 INFO    [services.node_switcher] 切换到: [[1x] [D] [直连] [SS] 日本 1] ss.031.node-for-bigairport.win:12885 |  | 
+15:46:53 INFO    [adapters.xray_config] Backup saved to d:\useful\加速器\v2rayn\binConfigs\config.json.bak
+15:46:53 INFO    [adapters.xray_config] Detected config format: xray
+15:46:53 DEBUG   [adapters.outbound_builder] Building Xray outbound (config_type=3, protocol=)
+15:46:53 INFO    [adapters.xray_config] Patched proxy outbound → [1x] [D] [直连] [SS] 日本 1 (ss.031.node-for-bigairport.win:12885)
+15:46:53 DEBUG   [adapters.xray_config] Written to d:\useful\加速器\v2rayn\binConfigs\config.json
+15:46:53 INFO    [core.runtime_manager] Restarting sing-box...
+15:46:53 INFO    [core.runtime_manager] Stopping sing-box (PID: 15484)...
+15:46:53 INFO    [core.runtime_manager] sing-box stopped gracefully
+15:46:54 INFO    [core.runtime_manager] Starting Xray...
+15:46:54 INFO    [core.runtime_manager] sing-box started (PID: 19524)
+15:46:56 INFO    [services.node_switcher] sing-box 运行正常
+15:46:56 WARNING [services.node_switcher] [1x] [D] [直连] [SS] 日本 1 不可用
+15:46:56 INFO    [services.node_switcher] --- 尝试 6/6: [1x] [D] [直连] [SS] 日本 2 ---
+15:46:56 INFO    [services.node_switcher] 切换到: [[1x] [D] [直连] [SS] 日本 2] ss.032.node-for-bigairport.win:19887 |  | 
+15:46:56 INFO    [adapters.xray_config] Backup saved to d:\useful\加速器\v2rayn\binConfigs\config.json.bak
+15:46:56 INFO    [adapters.xray_config] Detected config format: xray
+15:46:56 DEBUG   [adapters.outbound_builder] Building Xray outbound (config_type=3, protocol=)
+15:46:56 INFO    [adapters.xray_config] Patched proxy outbound → [1x] [D] [直连] [SS] 日本 2 (ss.032.node-for-bigairport.win:19887)
+15:46:56 DEBUG   [adapters.xray_config] Written to d:\useful\加速器\v2rayn\binConfigs\config.json
+15:46:56 INFO    [core.runtime_manager] Restarting sing-box...
+15:46:56 INFO    [core.runtime_manager] Stopping sing-box (PID: 19524)...
+15:46:56 INFO    [core.runtime_manager] sing-box stopped gracefully
+15:46:57 INFO    [core.runtime_manager] Starting Xray...
+15:46:57 INFO    [core.runtime_manager] sing-box started (PID: 30932)
+15:46:59 INFO    [services.node_switcher] sing-box 运行正常
+15:46:59 WARNING [services.node_switcher] [1x] [D] [直连] [SS] 日本 2 不可用
+15:46:59 ERROR   [services.node_switcher] 所有节点均不可用
+15:46:59 WARNING [orchestrator] Illegal transition: CONNECTED → FAILED
+15:46:59 ERROR   [orchestrator]   All nodes failed
+21:45:54 DEBUG   [urllib3.connectionpool] Starting new HTTPS connection (1): www.google.com:443
+21:45:56 DEBUG   [socks] Error connecting to SOCKS5 proxy 127.0.0.1:61013 due to: [WinError 10061] 由于目标计算机积极拒绝，无法连接。
+21:45:56 INFO    [orchestrator] ==================================================
+21:45:56 INFO    [orchestrator]   VPN Orchestrator — Auto Connect
+21:45:56 INFO    [orchestrator] ==================================================
+21:45:56 WARNING [orchestrator] CONFLICT: v2rayN GUI is running (PID 23260). Stop v2rayN before using the orchestrator — they will fight over config.json.
+21:45:56 ERROR   [orchestrator] v2rayN GUI and orchestrator cannot run simultaneously. Please close v2rayN GUI first.
+21:46:34 DEBUG   [urllib3.connectionpool] Starting new HTTPS connection (1): www.google.com:443
+21:46:36 DEBUG   [socks] Error connecting to SOCKS5 proxy 127.0.0.1:61013 due to: [WinError 10061] 由于目标计算机积极拒绝，无法连接。
+21:46:36 INFO    [orchestrator] ==================================================
+21:46:36 INFO    [orchestrator]   VPN Orchestrator — Auto Connect
+21:46:36 INFO    [orchestrator] ==================================================
+21:46:36 WARNING [orchestrator] CONFLICT: v2rayN GUI is running (PID 23260). Stop v2rayN before using the orchestrator — they will fight over config.json.
+21:46:36 ERROR   [orchestrator] v2rayN GUI and orchestrator cannot run simultaneously. Please close v2rayN GUI first.
+21:58:09 INFO    [orchestrator] ==================================================
+21:58:09 INFO    [orchestrator]   VPN Orchestrator — Auto Connect
+21:58:09 INFO    [orchestrator] ==================================================
+21:58:09 INFO    [orchestrator] [1/5] Selecting node & patching config...
+21:58:09 INFO    [orchestrator]   Best node: [1x] [直连] [SS] 新加坡 02 (delay: 88ms, speed: 7.7MB/s)
+21:58:09 INFO    [adapters.xray_config] Backup saved to d:\useful\加速器\v2rayn\binConfigs\config.json.bak
+21:58:09 INFO    [adapters.xray_config] Detected config format: xray
+21:58:09 DEBUG   [adapters.outbound_builder] Building Xray outbound (config_type=3, protocol=)
+21:58:09 DEBUG   [adapters.xray_config] Removed dialerProxy (standalone mode, TUN not available)
+21:58:09 INFO    [adapters.xray_config] Patched proxy outbound → [1x] [直连] [SS] 新加坡 02 (ss.037.node-for-bigairport.win:19887)
+21:58:09 DEBUG   [adapters.xray_config] Written to d:\useful\加速器\v2rayn\binConfigs\config.json
+21:58:09 INFO    [orchestrator] [2/5] Stopping old process...
+21:58:09 INFO    [core.runtime_manager] Proxy core is not running
+21:58:09 INFO    [orchestrator] [3/5] Starting sing-box...
+21:58:09 INFO    [orchestrator] State: CONNECTING
+21:58:09 INFO    [core.runtime_manager] Starting Xray...
+21:58:09 INFO    [core.runtime_manager] sing-box started (PID: 28192)
+21:58:09 INFO    [orchestrator] State: CONNECTED
+21:58:09 INFO    [orchestrator] [4/5] Checking proxy...
+21:58:09 DEBUG   [urllib3.connectionpool] Starting new HTTPS connection (1): www.google.com:443
+21:58:20 WARNING [orchestrator]   Proxy unreachable, trying failover...
+21:58:20 WARNING [orchestrator] Illegal transition: CONNECTED → RECOVERING
+21:58:20 INFO    [services.node_switcher] --- 尝试 1/6: [1x] [D] [直连] [SS] 新加坡 9 ---
+21:58:20 INFO    [services.node_switcher] 切换到: [[1x] [D] [直连] [SS] 新加坡 9] ss.039.node-for-bigairport.win:29004 |  | 
+21:58:20 INFO    [adapters.xray_config] Backup saved to d:\useful\加速器\v2rayn\binConfigs\config.json.bak
+21:58:20 INFO    [adapters.xray_config] Detected config format: xray
+21:58:20 DEBUG   [adapters.outbound_builder] Building Xray outbound (config_type=3, protocol=)
+21:58:20 INFO    [adapters.xray_config] Patched proxy outbound → [1x] [D] [直连] [SS] 新加坡 9 (ss.039.node-for-bigairport.win:29004)
+21:58:20 DEBUG   [adapters.xray_config] Written to d:\useful\加速器\v2rayn\binConfigs\config.json
+21:58:20 INFO    [core.runtime_manager] Restarting sing-box...
+21:58:20 INFO    [core.runtime_manager] Stopping sing-box (PID: 28192)...
+21:58:20 INFO    [core.runtime_manager] sing-box stopped gracefully
+21:58:21 INFO    [core.runtime_manager] Starting Xray...
+21:58:21 INFO    [core.runtime_manager] sing-box started (PID: 30420)
+21:58:23 INFO    [services.node_switcher] sing-box 运行正常
+21:58:23 DEBUG   [urllib3.connectionpool] Starting new HTTPS connection (1): www.google.com:443
+21:58:33 WARNING [services.node_switcher] [1x] [D] [直连] [SS] 新加坡 9 不可用
+21:58:33 INFO    [services.node_switcher] --- 尝试 2/6: [1x] [直连] [SS] 新加坡 02 ---
+21:58:33 INFO    [services.node_switcher] 切换到: [[1x] [直连] [SS] 新加坡 02] ss.037.node-for-bigairport.win:19887 |  | 
+21:58:33 INFO    [adapters.xray_config] Backup saved to d:\useful\加速器\v2rayn\binConfigs\config.json.bak
+21:58:33 INFO    [adapters.xray_config] Detected config format: xray
+21:58:33 DEBUG   [adapters.outbound_builder] Building Xray outbound (config_type=3, protocol=)
+21:58:33 INFO    [adapters.xray_config] Patched proxy outbound → [1x] [直连] [SS] 新加坡 02 (ss.037.node-for-bigairport.win:19887)
+21:58:33 DEBUG   [adapters.xray_config] Written to d:\useful\加速器\v2rayn\binConfigs\config.json
+21:58:33 INFO    [core.runtime_manager] Restarting sing-box...
+21:58:33 INFO    [core.runtime_manager] Stopping sing-box (PID: 30420)...
+21:58:33 INFO    [core.runtime_manager] sing-box stopped gracefully
+21:58:34 INFO    [core.runtime_manager] Starting Xray...
+21:58:34 INFO    [core.runtime_manager] sing-box started (PID: 18068)
+21:58:36 INFO    [services.node_switcher] sing-box 运行正常
+21:58:36 DEBUG   [urllib3.connectionpool] Starting new HTTPS connection (1): www.google.com:443
+21:58:46 WARNING [services.node_switcher] [1x] [直连] [SS] 新加坡 02 不可用
+21:58:46 INFO    [services.node_switcher] --- 尝试 3/6: [1x] [直连] [SS] 新加坡 01 ---
+21:58:46 INFO    [services.node_switcher] 切换到: [[1x] [直连] [SS] 新加坡 01] ss.036.node-for-bigairport.win:19887 |  | 
+21:58:46 INFO    [adapters.xray_config] Backup saved to d:\useful\加速器\v2rayn\binConfigs\config.json.bak
+21:58:46 INFO    [adapters.xray_config] Detected config format: xray
+21:58:46 DEBUG   [adapters.outbound_builder] Building Xray outbound (config_type=3, protocol=)
+21:58:46 INFO    [adapters.xray_config] Patched proxy outbound → [1x] [直连] [SS] 新加坡 01 (ss.036.node-for-bigairport.win:19887)
+21:58:46 DEBUG   [adapters.xray_config] Written to d:\useful\加速器\v2rayn\binConfigs\config.json
+21:58:46 INFO    [core.runtime_manager] Restarting sing-box...
+21:58:46 INFO    [core.runtime_manager] Stopping sing-box (PID: 18068)...
+21:58:46 INFO    [core.runtime_manager] sing-box stopped gracefully
+21:58:48 INFO    [core.runtime_manager] Starting Xray...
+21:58:48 INFO    [core.runtime_manager] sing-box started (PID: 18360)
+21:58:50 INFO    [services.node_switcher] sing-box 运行正常
+21:58:50 DEBUG   [urllib3.connectionpool] Starting new HTTPS connection (1): www.google.com:443
+21:59:00 WARNING [services.node_switcher] [1x] [直连] [SS] 新加坡 01 不可用
+21:59:00 INFO    [services.node_switcher] --- 尝试 4/6: [1x] [直连] [SS] 新加坡 03 ---
+21:59:00 INFO    [services.node_switcher] 切换到: [[1x] [直连] [SS] 新加坡 03] ss.038.node-for-bigairport.win:16589 |  | 
+21:59:00 INFO    [adapters.xray_config] Backup saved to d:\useful\加速器\v2rayn\binConfigs\config.json.bak
+21:59:00 INFO    [adapters.xray_config] Detected config format: xray
+21:59:00 DEBUG   [adapters.outbound_builder] Building Xray outbound (config_type=3, protocol=)
+21:59:00 INFO    [adapters.xray_config] Patched proxy outbound → [1x] [直连] [SS] 新加坡 03 (ss.038.node-for-bigairport.win:16589)
+21:59:00 DEBUG   [adapters.xray_config] Written to d:\useful\加速器\v2rayn\binConfigs\config.json
+21:59:00 INFO    [core.runtime_manager] Restarting sing-box...
+21:59:00 INFO    [core.runtime_manager] Stopping sing-box (PID: 18360)...
+21:59:00 INFO    [core.runtime_manager] sing-box stopped gracefully
+21:59:01 INFO    [core.runtime_manager] Starting Xray...
+21:59:01 INFO    [core.runtime_manager] sing-box started (PID: 27652)
+21:59:03 INFO    [services.node_switcher] sing-box 运行正常
+21:59:03 DEBUG   [urllib3.connectionpool] Starting new HTTPS connection (1): www.google.com:443
+21:59:13 WARNING [services.node_switcher] [1x] [直连] [SS] 新加坡 03 不可用
+21:59:13 INFO    [services.node_switcher] --- 尝试 5/6: [1x] [D] [直连] [SS] 日本 2 ---
+21:59:13 INFO    [services.node_switcher] 切换到: [[1x] [D] [直连] [SS] 日本 2] ss.032.node-for-bigairport.win:19887 |  | 
+21:59:13 INFO    [adapters.xray_config] Backup saved to d:\useful\加速器\v2rayn\binConfigs\config.json.bak
+21:59:13 INFO    [adapters.xray_config] Detected config format: xray
+21:59:13 DEBUG   [adapters.outbound_builder] Building Xray outbound (config_type=3, protocol=)
+21:59:13 INFO    [adapters.xray_config] Patched proxy outbound → [1x] [D] [直连] [SS] 日本 2 (ss.032.node-for-bigairport.win:19887)
+21:59:13 DEBUG   [adapters.xray_config] Written to d:\useful\加速器\v2rayn\binConfigs\config.json
+21:59:13 INFO    [core.runtime_manager] Restarting sing-box...
+21:59:13 INFO    [core.runtime_manager] Stopping sing-box (PID: 27652)...
+21:59:13 INFO    [core.runtime_manager] sing-box stopped gracefully
+21:59:15 INFO    [core.runtime_manager] Starting Xray...
+21:59:15 INFO    [core.runtime_manager] sing-box started (PID: 1252)
+21:59:17 INFO    [services.node_switcher] sing-box 运行正常
+21:59:17 DEBUG   [urllib3.connectionpool] Starting new HTTPS connection (1): www.google.com:443
+21:59:27 WARNING [services.node_switcher] [1x] [D] [直连] [SS] 日本 2 不可用
+21:59:27 INFO    [services.node_switcher] --- 尝试 6/6: [1x] [直连] [SS] 香港 11 ---
+21:59:27 INFO    [services.node_switcher] 切换到: [[1x] [直连] [SS] 香港 11] ss.011.node-for-bigairport.win:13002 |  | 
+21:59:27 INFO    [adapters.xray_config] Backup saved to d:\useful\加速器\v2rayn\binConfigs\config.json.bak
+21:59:27 INFO    [adapters.xray_config] Detected config format: xray
+21:59:27 DEBUG   [adapters.outbound_builder] Building Xray outbound (config_type=3, protocol=)
+21:59:27 INFO    [adapters.xray_config] Patched proxy outbound → [1x] [直连] [SS] 香港 11 (ss.011.node-for-bigairport.win:13002)
+21:59:27 DEBUG   [adapters.xray_config] Written to d:\useful\加速器\v2rayn\binConfigs\config.json
+21:59:27 INFO    [core.runtime_manager] Restarting sing-box...
+21:59:27 INFO    [core.runtime_manager] Stopping sing-box (PID: 1252)...
+21:59:27 INFO    [core.runtime_manager] sing-box stopped gracefully
+21:59:28 INFO    [core.runtime_manager] Starting Xray...
+21:59:28 INFO    [core.runtime_manager] sing-box started (PID: 27816)
+21:59:30 INFO    [services.node_switcher] sing-box 运行正常
+21:59:30 DEBUG   [urllib3.connectionpool] Starting new HTTPS connection (1): www.google.com:443
+21:59:40 WARNING [services.node_switcher] [1x] [直连] [SS] 香港 11 不可用
+21:59:40 ERROR   [services.node_switcher] 所有节点均不可用
+21:59:40 WARNING [orchestrator] Illegal transition: CONNECTED → FAILED
+21:59:40 ERROR   [orchestrator]   All nodes failed
+22:04:18 DEBUG   [urllib3.connectionpool] Starting new HTTPS connection (1): www.google.com:443
+22:04:38 INFO    [orchestrator] ==================================================
+22:04:38 INFO    [orchestrator]   VPN Orchestrator — Auto Connect
+22:04:38 INFO    [orchestrator] ==================================================
+22:04:38 INFO    [orchestrator] [1/5] Selecting node & patching config...
+22:04:38 INFO    [orchestrator]   Best node: [1x] [直连] [SS] 新加坡 02 (delay: 88ms, speed: 7.7MB/s)
+22:04:38 INFO    [adapters.xray_config] Backup saved to d:\useful\加速器\v2rayn\binConfigs\config.json.bak
+22:04:38 INFO    [adapters.xray_config] Detected config format: xray
+22:04:38 DEBUG   [adapters.outbound_builder] Building Xray outbound (config_type=3, protocol=)
+22:04:38 INFO    [adapters.xray_config] Patched proxy outbound → [1x] [直连] [SS] 新加坡 02 (ss.037.node-for-bigairport.win:19887)
+22:04:38 DEBUG   [adapters.xray_config] Written to d:\useful\加速器\v2rayn\binConfigs\config.json
+22:04:38 INFO    [orchestrator] [2/5] Stopping old process...
+22:04:38 INFO    [core.runtime_manager] Stopping sing-box (PID: 27816)...
+22:04:38 INFO    [core.runtime_manager] sing-box stopped gracefully
+22:04:39 INFO    [orchestrator] [3/5] Starting sing-box...
+22:04:39 WARNING [orchestrator] Illegal transition: DEGRADED → CONNECTING
+22:04:39 INFO    [core.runtime_manager] Starting Xray...
+22:04:39 INFO    [core.runtime_manager] sing-box started (PID: 20092)
+22:04:39 INFO    [orchestrator] State: CONNECTED
+22:04:39 INFO    [orchestrator] [4/5] Checking proxy...
+22:04:39 DEBUG   [urllib3.connectionpool] Starting new HTTPS connection (1): www.google.com:443
+22:05:00 WARNING [orchestrator]   Proxy unreachable, trying failover...
+22:05:00 WARNING [orchestrator] Illegal transition: CONNECTED → RECOVERING
+22:05:00 INFO    [services.node_switcher] --- 尝试 1/41: [1x] [D] [直连] [SS] 新加坡 9 ---
+22:05:00 INFO    [services.node_switcher] 切换到: [[1x] [D] [直连] [SS] 新加坡 9] ss.039.node-for-bigairport.win:29004 |  | 
+22:05:00 INFO    [adapters.xray_config] Backup saved to d:\useful\加速器\v2rayn\binConfigs\config.json.bak
+22:05:00 INFO    [adapters.xray_config] Detected config format: xray
+22:05:00 DEBUG   [adapters.outbound_builder] Building Xray outbound (config_type=3, protocol=)
+22:05:00 INFO    [adapters.xray_config] Patched proxy outbound → [1x] [D] [直连] [SS] 新加坡 9 (ss.039.node-for-bigairport.win:29004)
+22:05:00 DEBUG   [adapters.xray_config] Written to d:\useful\加速器\v2rayn\binConfigs\config.json
+22:05:00 INFO    [core.runtime_manager] Restarting sing-box...
+22:05:00 INFO    [core.runtime_manager] Stopping sing-box (PID: 20092)...
+22:05:00 INFO    [core.runtime_manager] sing-box stopped gracefully
+22:05:01 INFO    [core.runtime_manager] Starting Xray...
+22:05:01 INFO    [core.runtime_manager] sing-box started (PID: 19524)
+22:05:03 INFO    [services.node_switcher] sing-box 运行正常
+22:05:03 DEBUG   [urllib3.connectionpool] Starting new HTTPS connection (1): www.google.com:443
+22:05:23 WARNING [services.node_switcher] [1x] [D] [直连] [SS] 新加坡 9 不可用
+22:05:23 INFO    [services.node_switcher] --- 尝试 2/41: [1x] [直连] [SS] 新加坡 02 ---
+22:05:23 INFO    [services.node_switcher] 切换到: [[1x] [直连] [SS] 新加坡 02] ss.037.node-for-bigairport.win:19887 |  | 
+22:05:23 INFO    [adapters.xray_config] Backup saved to d:\useful\加速器\v2rayn\binConfigs\config.json.bak
+22:05:23 INFO    [adapters.xray_config] Detected config format: xray
+22:05:23 DEBUG   [adapters.outbound_builder] Building Xray outbound (config_type=3, protocol=)
+22:05:23 INFO    [adapters.xray_config] Patched proxy outbound → [1x] [直连] [SS] 新加坡 02 (ss.037.node-for-bigairport.win:19887)
+22:05:23 DEBUG   [adapters.xray_config] Written to d:\useful\加速器\v2rayn\binConfigs\config.json
+22:05:23 INFO    [core.runtime_manager] Restarting sing-box...
+22:05:23 INFO    [core.runtime_manager] Stopping sing-box (PID: 19524)...
+22:05:23 INFO    [core.runtime_manager] sing-box stopped gracefully
+22:05:24 INFO    [core.runtime_manager] Starting Xray...
+22:05:24 INFO    [core.runtime_manager] sing-box started (PID: 1252)
+22:05:26 INFO    [services.node_switcher] sing-box 运行正常
+22:05:26 DEBUG   [urllib3.connectionpool] Starting new HTTPS connection (1): www.google.com:443
+22:05:46 WARNING [services.node_switcher] [1x] [直连] [SS] 新加坡 02 不可用
+22:05:46 INFO    [services.node_switcher] --- 尝试 3/41: [1x] [直连] [SS] 新加坡 01 ---
+22:05:46 INFO    [services.node_switcher] 切换到: [[1x] [直连] [SS] 新加坡 01] ss.036.node-for-bigairport.win:19887 |  | 
+22:05:46 INFO    [adapters.xray_config] Backup saved to d:\useful\加速器\v2rayn\binConfigs\config.json.bak
+22:05:46 INFO    [adapters.xray_config] Detected config format: xray
+22:05:46 DEBUG   [adapters.outbound_builder] Building Xray outbound (config_type=3, protocol=)
+22:05:46 INFO    [adapters.xray_config] Patched proxy outbound → [1x] [直连] [SS] 新加坡 01 (ss.036.node-for-bigairport.win:19887)
+22:05:46 DEBUG   [adapters.xray_config] Written to d:\useful\加速器\v2rayn\binConfigs\config.json
+22:05:46 INFO    [core.runtime_manager] Restarting sing-box...
+22:05:46 INFO    [core.runtime_manager] Stopping sing-box (PID: 1252)...
+22:05:46 INFO    [core.runtime_manager] sing-box stopped gracefully
+22:05:48 INFO    [core.runtime_manager] Starting Xray...
+22:05:48 INFO    [core.runtime_manager] sing-box started (PID: 22432)
+22:05:50 INFO    [services.node_switcher] sing-box 运行正常
+22:05:50 DEBUG   [urllib3.connectionpool] Starting new HTTPS connection (1): www.google.com:443
+22:06:10 WARNING [services.node_switcher] [1x] [直连] [SS] 新加坡 01 不可用
+22:06:10 INFO    [services.node_switcher] --- 尝试 4/41: [1x] [直连] [SS] 新加坡 03 ---
+22:06:10 INFO    [services.node_switcher] 切换到: [[1x] [直连] [SS] 新加坡 03] ss.038.node-for-bigairport.win:16589 |  | 
+22:06:10 INFO    [adapters.xray_config] Backup saved to d:\useful\加速器\v2rayn\binConfigs\config.json.bak
+22:06:10 INFO    [adapters.xray_config] Detected config format: xray
+22:06:10 DEBUG   [adapters.outbound_builder] Building Xray outbound (config_type=3, protocol=)
+22:06:10 INFO    [adapters.xray_config] Patched proxy outbound → [1x] [直连] [SS] 新加坡 03 (ss.038.node-for-bigairport.win:16589)
+22:06:10 DEBUG   [adapters.xray_config] Written to d:\useful\加速器\v2rayn\binConfigs\config.json
+22:06:10 INFO    [core.runtime_manager] Restarting sing-box...
+22:06:10 INFO    [core.runtime_manager] Stopping sing-box (PID: 22432)...
+22:06:10 INFO    [core.runtime_manager] sing-box stopped gracefully
+22:06:11 INFO    [core.runtime_manager] Starting Xray...
+22:06:11 INFO    [core.runtime_manager] sing-box started (PID: 27484)
+22:06:13 INFO    [services.node_switcher] sing-box 运行正常
+22:06:13 DEBUG   [urllib3.connectionpool] Starting new HTTPS connection (1): www.google.com:443
+22:06:33 WARNING [services.node_switcher] [1x] [直连] [SS] 新加坡 03 不可用
+22:06:33 INFO    [services.node_switcher] --- 尝试 5/41: [1x] [D] [直连] [SS] 日本 2 ---
+22:06:33 INFO    [services.node_switcher] 切换到: [[1x] [D] [直连] [SS] 日本 2] ss.032.node-for-bigairport.win:19887 |  | 
+22:06:33 INFO    [adapters.xray_config] Backup saved to d:\useful\加速器\v2rayn\binConfigs\config.json.bak
+22:06:33 INFO    [adapters.xray_config] Detected config format: xray
+22:06:33 DEBUG   [adapters.outbound_builder] Building Xray outbound (config_type=3, protocol=)
+22:06:33 INFO    [adapters.xray_config] Patched proxy outbound → [1x] [D] [直连] [SS] 日本 2 (ss.032.node-for-bigairport.win:19887)
+22:06:33 DEBUG   [adapters.xray_config] Written to d:\useful\加速器\v2rayn\binConfigs\config.json
+22:06:33 INFO    [core.runtime_manager] Restarting sing-box...
+22:06:33 INFO    [core.runtime_manager] Stopping sing-box (PID: 27484)...
+22:06:33 INFO    [core.runtime_manager] sing-box stopped gracefully
+22:06:34 INFO    [core.runtime_manager] Starting Xray...
+22:06:34 INFO    [core.runtime_manager] sing-box started (PID: 25516)
+22:06:36 INFO    [services.node_switcher] sing-box 运行正常
+22:06:36 DEBUG   [urllib3.connectionpool] Starting new HTTPS connection (1): www.google.com:443
+22:06:57 WARNING [services.node_switcher] [1x] [D] [直连] [SS] 日本 2 不可用
+22:06:57 INFO    [services.node_switcher] --- 尝试 6/41: [1x] [直连] [SS] 香港 11 ---
+22:06:57 INFO    [services.node_switcher] 切换到: [[1x] [直连] [SS] 香港 11] ss.011.node-for-bigairport.win:13002 |  | 
+22:06:57 INFO    [adapters.xray_config] Backup saved to d:\useful\加速器\v2rayn\binConfigs\config.json.bak
+22:06:57 INFO    [adapters.xray_config] Detected config format: xray
+22:06:57 DEBUG   [adapters.outbound_builder] Building Xray outbound (config_type=3, protocol=)
+22:06:57 INFO    [adapters.xray_config] Patched proxy outbound → [1x] [直连] [SS] 香港 11 (ss.011.node-for-bigairport.win:13002)
+22:06:57 DEBUG   [adapters.xray_config] Written to d:\useful\加速器\v2rayn\binConfigs\config.json
+22:06:57 INFO    [core.runtime_manager] Restarting sing-box...
+22:06:57 INFO    [core.runtime_manager] Stopping sing-box (PID: 25516)...
+22:06:57 INFO    [core.runtime_manager] sing-box stopped gracefully
+22:06:58 INFO    [core.runtime_manager] Starting Xray...
+22:06:58 INFO    [core.runtime_manager] sing-box started (PID: 28388)
+22:07:00 INFO    [services.node_switcher] sing-box 运行正常
+22:07:00 DEBUG   [urllib3.connectionpool] Starting new HTTPS connection (1): www.google.com:443
+22:07:20 WARNING [services.node_switcher] [1x] [直连] [SS] 香港 11 不可用
+22:07:20 INFO    [services.node_switcher] --- 尝试 7/41: [5x] [直连] [SS] 香港 07 ---
+22:07:20 INFO    [services.node_switcher] 切换到: [[5x] [直连] [SS] 香港 07] ss.007.node-for-bigairport.win:36888 |  | 
+22:07:20 INFO    [adapters.xray_config] Backup saved to d:\useful\加速器\v2rayn\binConfigs\config.json.bak
+22:07:20 INFO    [adapters.xray_config] Detected config format: xray
+22:07:20 DEBUG   [adapters.outbound_builder] Building Xray outbound (config_type=3, protocol=)
+22:07:20 INFO    [adapters.xray_config] Patched proxy outbound → [5x] [直连] [SS] 香港 07 (ss.007.node-for-bigairport.win:36888)
+22:07:20 DEBUG   [adapters.xray_config] Written to d:\useful\加速器\v2rayn\binConfigs\config.json
+22:07:20 INFO    [core.runtime_manager] Restarting sing-box...
+22:07:20 INFO    [core.runtime_manager] Stopping sing-box (PID: 28388)...
+22:07:20 INFO    [core.runtime_manager] sing-box stopped gracefully
+22:07:21 INFO    [core.runtime_manager] Starting Xray...
+22:07:21 INFO    [core.runtime_manager] sing-box started (PID: 24572)
+22:07:23 INFO    [services.node_switcher] sing-box 运行正常
+22:07:23 DEBUG   [urllib3.connectionpool] Starting new HTTPS connection (1): www.google.com:443
+22:07:43 WARNING [services.node_switcher] [5x] [直连] [SS] 香港 07 不可用
+22:07:43 INFO    [services.node_switcher] --- 尝试 8/41: [1x] [C] [直连] [SS] 新加坡 9 ---
+22:07:43 INFO    [services.node_switcher] 切换到: [[1x] [C] [直连] [SS] 新加坡 9] ss.029.node-for-bigairport.win:29088 |  | 
+22:07:43 INFO    [adapters.xray_config] Backup saved to d:\useful\加速器\v2rayn\binConfigs\config.json.bak
+22:07:43 INFO    [adapters.xray_config] Detected config format: xray
+22:07:43 DEBUG   [adapters.outbound_builder] Building Xray outbound (config_type=3, protocol=)
+22:07:43 INFO    [adapters.xray_config] Patched proxy outbound → [1x] [C] [直连] [SS] 新加坡 9 (ss.029.node-for-bigairport.win:29088)
+22:07:43 DEBUG   [adapters.xray_config] Written to d:\useful\加速器\v2rayn\binConfigs\config.json
+22:07:43 INFO    [core.runtime_manager] Restarting sing-box...
+22:07:43 INFO    [core.runtime_manager] Stopping sing-box (PID: 24572)...
+22:07:43 INFO    [core.runtime_manager] sing-box stopped gracefully
+22:07:44 INFO    [core.runtime_manager] Starting Xray...
+22:07:45 INFO    [core.runtime_manager] sing-box started (PID: 24568)
+22:07:47 INFO    [services.node_switcher] sing-box 运行正常
+22:07:47 DEBUG   [urllib3.connectionpool] Starting new HTTPS connection (1): www.google.com:443
+22:08:07 WARNING [services.node_switcher] [1x] [C] [直连] [SS] 新加坡 9 不可用
+22:08:07 INFO    [services.node_switcher] --- 尝试 9/41: [1x] [D] [直连] [SS] 日本 3 ---
+22:08:07 INFO    [services.node_switcher] 切换到: [[1x] [D] [直连] [SS] 日本 3] ss.033.node-for-bigairport.win:13888 |  | 
+22:08:07 INFO    [adapters.xray_config] Backup saved to d:\useful\加速器\v2rayn\binConfigs\config.json.bak
+22:08:07 INFO    [adapters.xray_config] Detected config format: xray
+22:08:07 DEBUG   [adapters.outbound_builder] Building Xray outbound (config_type=3, protocol=)
+22:08:07 INFO    [adapters.xray_config] Patched proxy outbound → [1x] [D] [直连] [SS] 日本 3 (ss.033.node-for-bigairport.win:13888)
+22:08:07 DEBUG   [adapters.xray_config] Written to d:\useful\加速器\v2rayn\binConfigs\config.json
+22:08:07 INFO    [core.runtime_manager] Restarting sing-box...
+22:08:07 INFO    [core.runtime_manager] Stopping sing-box (PID: 24568)...
+22:08:07 INFO    [core.runtime_manager] sing-box stopped gracefully
+22:08:08 INFO    [core.runtime_manager] Starting Xray...
+22:08:08 INFO    [core.runtime_manager] sing-box started (PID: 14812)
+22:08:10 INFO    [services.node_switcher] sing-box 运行正常
+22:08:10 DEBUG   [urllib3.connectionpool] Starting new HTTPS connection (1): www.google.com:443
+22:08:30 WARNING [services.node_switcher] [1x] [D] [直连] [SS] 日本 3 不可用
+22:08:30 INFO    [services.node_switcher] --- 尝试 10/41: [1x] [D] [直连] [SS] 日本 4 ---
+22:08:30 INFO    [services.node_switcher] 切换到: [[1x] [D] [直连] [SS] 日本 4] ss.034.node-for-bigairport.win:15886 |  | 
+22:08:30 INFO    [adapters.xray_config] Backup saved to d:\useful\加速器\v2rayn\binConfigs\config.json.bak
+22:08:30 INFO    [adapters.xray_config] Detected config format: xray
+22:08:30 DEBUG   [adapters.outbound_builder] Building Xray outbound (config_type=3, protocol=)
+22:08:30 INFO    [adapters.xray_config] Patched proxy outbound → [1x] [D] [直连] [SS] 日本 4 (ss.034.node-for-bigairport.win:15886)
+22:08:30 DEBUG   [adapters.xray_config] Written to d:\useful\加速器\v2rayn\binConfigs\config.json
+22:08:30 INFO    [core.runtime_manager] Restarting sing-box...
+22:08:30 INFO    [core.runtime_manager] Stopping sing-box (PID: 14812)...
+22:08:30 INFO    [core.runtime_manager] sing-box stopped gracefully
+22:08:32 INFO    [core.runtime_manager] Starting Xray...
+22:08:32 INFO    [core.runtime_manager] sing-box started (PID: 17504)
+22:08:34 INFO    [services.node_switcher] sing-box 运行正常
+22:08:34 DEBUG   [urllib3.connectionpool] Starting new HTTPS connection (1): www.google.com:443
+22:08:54 WARNING [services.node_switcher] [1x] [D] [直连] [SS] 日本 4 不可用
+22:08:54 INFO    [services.node_switcher] --- 尝试 11/41: [1x] [直连] [SS] 日本 01 ---
+22:08:54 INFO    [services.node_switcher] 切换到: [[1x] [直连] [SS] 日本 01] ss.021.node-for-bigairport.win:19287 |  | 
+22:08:54 INFO    [adapters.xray_config] Backup saved to d:\useful\加速器\v2rayn\binConfigs\config.json.bak
+22:08:54 INFO    [adapters.xray_config] Detected config format: xray
+22:08:54 DEBUG   [adapters.outbound_builder] Building Xray outbound (config_type=3, protocol=)
+22:08:54 INFO    [adapters.xray_config] Patched proxy outbound → [1x] [直连] [SS] 日本 01 (ss.021.node-for-bigairport.win:19287)
+22:08:54 DEBUG   [adapters.xray_config] Written to d:\useful\加速器\v2rayn\binConfigs\config.json
+22:08:54 INFO    [core.runtime_manager] Restarting sing-box...
+22:08:54 INFO    [core.runtime_manager] Stopping sing-box (PID: 17504)...
+22:08:54 INFO    [core.runtime_manager] sing-box stopped gracefully
+22:08:55 INFO    [core.runtime_manager] Starting Xray...
+22:08:55 INFO    [core.runtime_manager] sing-box started (PID: 16232)
+22:08:57 INFO    [services.node_switcher] sing-box 运行正常
+22:08:57 DEBUG   [urllib3.connectionpool] Starting new HTTPS connection (1): www.google.com:443
+22:09:17 WARNING [services.node_switcher] [1x] [直连] [SS] 日本 01 不可用
+22:09:17 INFO    [services.node_switcher] --- 尝试 12/41: [1x] [直连] [SS] 日本 02 ---
+22:09:17 INFO    [services.node_switcher] 切换到: [[1x] [直连] [SS] 日本 02] ss.022.node-for-bigairport.win:29004 |  | 
+22:09:17 INFO    [adapters.xray_config] Backup saved to d:\useful\加速器\v2rayn\binConfigs\config.json.bak
+22:09:17 INFO    [adapters.xray_config] Detected config format: xray
+22:09:17 DEBUG   [adapters.outbound_builder] Building Xray outbound (config_type=3, protocol=)
+22:09:17 INFO    [adapters.xray_config] Patched proxy outbound → [1x] [直连] [SS] 日本 02 (ss.022.node-for-bigairport.win:29004)
+22:09:17 DEBUG   [adapters.xray_config] Written to d:\useful\加速器\v2rayn\binConfigs\config.json
+22:09:17 INFO    [core.runtime_manager] Restarting sing-box...
+22:09:17 INFO    [core.runtime_manager] Stopping sing-box (PID: 16232)...
+22:09:17 INFO    [core.runtime_manager] sing-box stopped gracefully
+22:09:18 INFO    [core.runtime_manager] Starting Xray...
+22:09:18 INFO    [core.runtime_manager] sing-box started (PID: 29704)
+22:09:20 INFO    [services.node_switcher] sing-box 运行正常
+22:09:20 DEBUG   [urllib3.connectionpool] Starting new HTTPS connection (1): www.google.com:443
+22:09:41 WARNING [services.node_switcher] [1x] [直连] [SS] 日本 02 不可用
+22:09:41 INFO    [services.node_switcher] --- 尝试 13/41: [1x] [直连] [SS] 日本 15 ---
+22:09:41 INFO    [services.node_switcher] 切换到: [[1x] [直连] [SS] 日本 15] ss.035.node-for-bigairport.win:29004 |  | 
+22:09:41 INFO    [adapters.xray_config] Backup saved to d:\useful\加速器\v2rayn\binConfigs\config.json.bak
+22:09:41 INFO    [adapters.xray_config] Detected config format: xray
+22:09:41 DEBUG   [adapters.outbound_builder] Building Xray outbound (config_type=3, protocol=)
+22:09:41 INFO    [adapters.xray_config] Patched proxy outbound → [1x] [直连] [SS] 日本 15 (ss.035.node-for-bigairport.win:29004)
+22:09:41 DEBUG   [adapters.xray_config] Written to d:\useful\加速器\v2rayn\binConfigs\config.json
+22:09:41 INFO    [core.runtime_manager] Restarting sing-box...
+22:09:41 INFO    [core.runtime_manager] Stopping sing-box (PID: 29704)...
+22:09:41 INFO    [core.runtime_manager] sing-box stopped gracefully
+22:09:42 INFO    [core.runtime_manager] Starting Xray...
+22:09:42 INFO    [core.runtime_manager] sing-box started (PID: 4544)
+22:09:44 INFO    [services.node_switcher] sing-box 运行正常
+22:09:44 DEBUG   [urllib3.connectionpool] Starting new HTTPS connection (1): www.google.com:443
+22:10:04 WARNING [services.node_switcher] [1x] [直连] [SS] 日本 15 不可用
+22:10:04 INFO    [services.node_switcher] --- 尝试 14/41: [1x] [直连] [SS] 香港 13 ---
+22:10:04 INFO    [services.node_switcher] 切换到: [[1x] [直连] [SS] 香港 13] ss.013.node-for-bigairport.win:15099 |  | 
+22:10:04 INFO    [adapters.xray_config] Backup saved to d:\useful\加速器\v2rayn\binConfigs\config.json.bak
+22:10:04 INFO    [adapters.xray_config] Detected config format: xray
+22:10:04 DEBUG   [adapters.outbound_builder] Building Xray outbound (config_type=3, protocol=)
+22:10:04 INFO    [adapters.xray_config] Patched proxy outbound → [1x] [直连] [SS] 香港 13 (ss.013.node-for-bigairport.win:15099)
+22:10:04 DEBUG   [adapters.xray_config] Written to d:\useful\加速器\v2rayn\binConfigs\config.json
+22:10:04 INFO    [core.runtime_manager] Restarting sing-box...
+22:10:04 INFO    [core.runtime_manager] Stopping sing-box (PID: 4544)...
+22:10:04 INFO    [core.runtime_manager] sing-box stopped gracefully
+22:10:05 INFO    [core.runtime_manager] Starting Xray...
+22:10:05 INFO    [core.runtime_manager] sing-box started (PID: 6048)
+22:10:07 INFO    [services.node_switcher] sing-box 运行正常
+22:10:07 DEBUG   [urllib3.connectionpool] Starting new HTTPS connection (1): www.google.com:443
+22:10:27 WARNING [services.node_switcher] [1x] [直连] [SS] 香港 13 不可用
+22:10:27 INFO    [services.node_switcher] --- 尝试 15/41: [1x] [直连] [SS] 香港 14 ---
+22:10:27 INFO    [services.node_switcher] 切换到: [[1x] [直连] [SS] 香港 14] ss.014.node-for-bigairport.win:15099 |  | 
+22:10:27 INFO    [adapters.xray_config] Backup saved to d:\useful\加速器\v2rayn\binConfigs\config.json.bak
+22:10:27 INFO    [adapters.xray_config] Detected config format: xray
+22:10:27 DEBUG   [adapters.outbound_builder] Building Xray outbound (config_type=3, protocol=)
+22:10:27 INFO    [adapters.xray_config] Patched proxy outbound → [1x] [直连] [SS] 香港 14 (ss.014.node-for-bigairport.win:15099)
+22:10:27 DEBUG   [adapters.xray_config] Written to d:\useful\加速器\v2rayn\binConfigs\config.json
+22:10:27 INFO    [core.runtime_manager] Restarting sing-box...
+22:10:27 INFO    [core.runtime_manager] Stopping sing-box (PID: 6048)...
+22:10:27 INFO    [core.runtime_manager] sing-box stopped gracefully
+22:10:29 INFO    [core.runtime_manager] Starting Xray...
+22:10:29 INFO    [core.runtime_manager] sing-box started (PID: 28956)
+22:10:31 INFO    [services.node_switcher] sing-box 运行正常
+22:10:31 DEBUG   [urllib3.connectionpool] Starting new HTTPS connection (1): www.google.com:443
+22:10:51 WARNING [services.node_switcher] [1x] [直连] [SS] 香港 14 不可用
+22:10:51 INFO    [services.node_switcher] --- 尝试 16/41: [1x] [直连] [SS] 香港 16 ---
+22:10:51 INFO    [services.node_switcher] 切换到: [[1x] [直连] [SS] 香港 16] ss.016.node-for-bigairport.win:13004 |  | 
+22:10:51 INFO    [adapters.xray_config] Backup saved to d:\useful\加速器\v2rayn\binConfigs\config.json.bak
+22:10:51 INFO    [adapters.xray_config] Detected config format: xray
+22:10:51 DEBUG   [adapters.outbound_builder] Building Xray outbound (config_type=3, protocol=)
+22:10:51 INFO    [adapters.xray_config] Patched proxy outbound → [1x] [直连] [SS] 香港 16 (ss.016.node-for-bigairport.win:13004)
+22:10:51 DEBUG   [adapters.xray_config] Written to d:\useful\加速器\v2rayn\binConfigs\config.json
+22:10:51 INFO    [core.runtime_manager] Restarting sing-box...
+22:10:51 INFO    [core.runtime_manager] Stopping sing-box (PID: 28956)...
+22:10:51 INFO    [core.runtime_manager] sing-box stopped gracefully
+22:10:52 INFO    [core.runtime_manager] Starting Xray...
+22:10:52 INFO    [core.runtime_manager] sing-box started (PID: 12852)
+22:10:55 INFO    [services.node_switcher] sing-box 运行正常
+22:10:55 DEBUG   [urllib3.connectionpool] Starting new HTTPS connection (1): www.google.com:443
+22:11:15 WARNING [services.node_switcher] [1x] [直连] [SS] 香港 16 不可用
+22:11:15 INFO    [services.node_switcher] --- 尝试 17/41: [1x] [直连] [SS] 香港 18 ---
+22:11:15 INFO    [services.node_switcher] 切换到: [[1x] [直连] [SS] 香港 18] ss.018.node-for-bigairport.win:16098 |  | 
+22:11:15 INFO    [adapters.xray_config] Backup saved to d:\useful\加速器\v2rayn\binConfigs\config.json.bak
+22:11:15 INFO    [adapters.xray_config] Detected config format: xray
+22:11:15 DEBUG   [adapters.outbound_builder] Building Xray outbound (config_type=3, protocol=)
+22:11:15 INFO    [adapters.xray_config] Patched proxy outbound → [1x] [直连] [SS] 香港 18 (ss.018.node-for-bigairport.win:16098)
+22:11:15 DEBUG   [adapters.xray_config] Written to d:\useful\加速器\v2rayn\binConfigs\config.json
+22:11:15 INFO    [core.runtime_manager] Restarting sing-box...
+22:11:15 INFO    [core.runtime_manager] Stopping sing-box (PID: 12852)...
+22:11:15 INFO    [core.runtime_manager] sing-box stopped gracefully
+22:11:16 INFO    [core.runtime_manager] Starting Xray...
+22:11:16 INFO    [core.runtime_manager] sing-box started (PID: 22932)
+22:11:18 INFO    [services.node_switcher] sing-box 运行正常
+22:11:18 DEBUG   [urllib3.connectionpool] Starting new HTTPS connection (1): www.google.com:443
+22:11:38 WARNING [services.node_switcher] [1x] [直连] [SS] 香港 18 不可用
+22:11:38 INFO    [services.node_switcher] --- 尝试 18/41: [1x] [直连] [SS] 香港 19 ---
+22:11:38 INFO    [services.node_switcher] 切换到: [[1x] [直连] [SS] 香港 19] ss.019.node-for-bigairport.win:16097 |  | 
+22:11:38 INFO    [adapters.xray_config] Backup saved to d:\useful\加速器\v2rayn\binConfigs\config.json.bak
+22:11:38 INFO    [adapters.xray_config] Detected config format: xray
+22:11:38 DEBUG   [adapters.outbound_builder] Building Xray outbound (config_type=3, protocol=)
+22:11:38 INFO    [adapters.xray_config] Patched proxy outbound → [1x] [直连] [SS] 香港 19 (ss.019.node-for-bigairport.win:16097)
+22:11:38 DEBUG   [adapters.xray_config] Written to d:\useful\加速器\v2rayn\binConfigs\config.json
+22:11:38 INFO    [core.runtime_manager] Restarting sing-box...
+22:11:38 INFO    [core.runtime_manager] Stopping sing-box (PID: 22932)...
+22:11:38 INFO    [core.runtime_manager] sing-box stopped gracefully
+22:11:39 INFO    [core.runtime_manager] Starting Xray...
+22:11:39 INFO    [core.runtime_manager] sing-box started (PID: 17184)
+22:11:41 INFO    [services.node_switcher] sing-box 运行正常
+22:11:41 DEBUG   [urllib3.connectionpool] Starting new HTTPS connection (1): www.google.com:443
+22:12:01 WARNING [services.node_switcher] [1x] [直连] [SS] 香港 19 不可用
+22:12:01 INFO    [services.node_switcher] --- 尝试 19/41: [1x] [直连] [SS] 香港 20 ---
+22:12:01 INFO    [services.node_switcher] 切换到: [[1x] [直连] [SS] 香港 20] ss.020.node-for-bigairport.win:13006 |  | 
+22:12:01 INFO    [adapters.xray_config] Backup saved to d:\useful\加速器\v2rayn\binConfigs\config.json.bak
+22:12:01 INFO    [adapters.xray_config] Detected config format: xray
+22:12:01 DEBUG   [adapters.outbound_builder] Building Xray outbound (config_type=3, protocol=)
+22:12:01 INFO    [adapters.xray_config] Patched proxy outbound → [1x] [直连] [SS] 香港 20 (ss.020.node-for-bigairport.win:13006)
+22:12:01 DEBUG   [adapters.xray_config] Written to d:\useful\加速器\v2rayn\binConfigs\config.json
+22:12:01 INFO    [core.runtime_manager] Restarting sing-box...
+22:12:01 INFO    [core.runtime_manager] Stopping sing-box (PID: 17184)...
+22:12:01 INFO    [core.runtime_manager] sing-box stopped gracefully
+22:12:03 INFO    [core.runtime_manager] Starting Xray...
+22:12:03 INFO    [core.runtime_manager] sing-box started (PID: 9704)
+22:12:05 INFO    [services.node_switcher] sing-box 运行正常
+22:12:05 DEBUG   [urllib3.connectionpool] Starting new HTTPS connection (1): www.google.com:443
+22:12:25 WARNING [services.node_switcher] [1x] [直连] [SS] 香港 20 不可用
+22:12:25 INFO    [services.node_switcher] --- 尝试 20/41: [5x] [直连] [SS] 香港 02 ---
+22:12:25 INFO    [services.node_switcher] 切换到: [[5x] [直连] [SS] 香港 02] ss.002.node-for-bigairport.win:16888 |  | 
+22:12:25 INFO    [adapters.xray_config] Backup saved to d:\useful\加速器\v2rayn\binConfigs\config.json.bak
+22:12:25 INFO    [adapters.xray_config] Detected config format: xray
+22:12:25 DEBUG   [adapters.outbound_builder] Building Xray outbound (config_type=3, protocol=)
+22:12:25 INFO    [adapters.xray_config] Patched proxy outbound → [5x] [直连] [SS] 香港 02 (ss.002.node-for-bigairport.win:16888)
+22:12:25 DEBUG   [adapters.xray_config] Written to d:\useful\加速器\v2rayn\binConfigs\config.json
+22:12:25 INFO    [core.runtime_manager] Restarting sing-box...
+22:12:25 INFO    [core.runtime_manager] Stopping sing-box (PID: 9704)...
+22:12:25 INFO    [core.runtime_manager] sing-box stopped gracefully
+22:12:26 INFO    [core.runtime_manager] Starting Xray...
+22:12:26 INFO    [core.runtime_manager] sing-box started (PID: 6012)
+22:12:28 INFO    [services.node_switcher] sing-box 运行正常
+22:12:28 DEBUG   [urllib3.connectionpool] Starting new HTTPS connection (1): www.google.com:443
+22:12:48 WARNING [services.node_switcher] [5x] [直连] [SS] 香港 02 不可用
+22:12:48 INFO    [services.node_switcher] --- 尝试 21/41: [5x] [直连] [SS] 香港 03 ---
+22:12:48 INFO    [services.node_switcher] 切换到: [[5x] [直连] [SS] 香港 03] ss.003.node-for-bigairport.win:36888 |  | 
+22:12:48 INFO    [adapters.xray_config] Backup saved to d:\useful\加速器\v2rayn\binConfigs\config.json.bak
+22:12:48 INFO    [adapters.xray_config] Detected config format: xray
+22:12:48 DEBUG   [adapters.outbound_builder] Building Xray outbound (config_type=3, protocol=)
+22:12:48 INFO    [adapters.xray_config] Patched proxy outbound → [5x] [直连] [SS] 香港 03 (ss.003.node-for-bigairport.win:36888)
+22:12:48 DEBUG   [adapters.xray_config] Written to d:\useful\加速器\v2rayn\binConfigs\config.json
+22:12:48 INFO    [core.runtime_manager] Restarting sing-box...
+22:12:48 INFO    [core.runtime_manager] Stopping sing-box (PID: 6012)...
+22:12:48 INFO    [core.runtime_manager] sing-box stopped gracefully
+22:12:49 INFO    [core.runtime_manager] Starting Xray...
+22:12:49 INFO    [core.runtime_manager] sing-box started (PID: 20580)
+22:12:51 INFO    [services.node_switcher] sing-box 运行正常
+22:12:51 DEBUG   [urllib3.connectionpool] Starting new HTTPS connection (1): www.google.com:443
+22:13:11 WARNING [services.node_switcher] [5x] [直连] [SS] 香港 03 不可用
+22:13:11 INFO    [services.node_switcher] --- 尝试 22/41: [5x] [直连] [SS] 香港 04 ---
+22:13:11 INFO    [services.node_switcher] 切换到: [[5x] [直连] [SS] 香港 04] ss.004.node-for-bigairport.win:15099 |  | 
+22:13:11 INFO    [adapters.xray_config] Backup saved to d:\useful\加速器\v2rayn\binConfigs\config.json.bak
+22:13:11 INFO    [adapters.xray_config] Detected config format: xray
+22:13:11 DEBUG   [adapters.outbound_builder] Building Xray outbound (config_type=3, protocol=)
+22:13:11 INFO    [adapters.xray_config] Patched proxy outbound → [5x] [直连] [SS] 香港 04 (ss.004.node-for-bigairport.win:15099)
+22:13:11 DEBUG   [adapters.xray_config] Written to d:\useful\加速器\v2rayn\binConfigs\config.json
+22:13:11 INFO    [core.runtime_manager] Restarting sing-box...
+22:13:11 INFO    [core.runtime_manager] Stopping sing-box (PID: 20580)...
+22:13:11 INFO    [core.runtime_manager] sing-box stopped gracefully
+22:13:13 INFO    [core.runtime_manager] Starting Xray...
+22:13:13 INFO    [core.runtime_manager] sing-box started (PID: 16992)
+22:13:15 INFO    [services.node_switcher] sing-box 运行正常
+22:13:15 DEBUG   [urllib3.connectionpool] Starting new HTTPS connection (1): www.google.com:443
+22:13:35 WARNING [services.node_switcher] [5x] [直连] [SS] 香港 04 不可用
+22:13:35 INFO    [services.node_switcher] --- 尝试 23/41: [5x] [直连] [SS] 香港 06 ---
+22:13:35 INFO    [services.node_switcher] 切换到: [[5x] [直连] [SS] 香港 06] ss.006.node-for-bigairport.win:11688 |  | 
+22:13:35 INFO    [adapters.xray_config] Backup saved to d:\useful\加速器\v2rayn\binConfigs\config.json.bak
+22:13:35 INFO    [adapters.xray_config] Detected config format: xray
+22:13:35 DEBUG   [adapters.outbound_builder] Building Xray outbound (config_type=3, protocol=)
+22:13:35 INFO    [adapters.xray_config] Patched proxy outbound → [5x] [直连] [SS] 香港 06 (ss.006.node-for-bigairport.win:11688)
+22:13:35 DEBUG   [adapters.xray_config] Written to d:\useful\加速器\v2rayn\binConfigs\config.json
+22:13:35 INFO    [core.runtime_manager] Restarting sing-box...
+22:13:35 INFO    [core.runtime_manager] Stopping sing-box (PID: 16992)...
+22:13:35 INFO    [core.runtime_manager] sing-box stopped gracefully
+22:13:36 INFO    [core.runtime_manager] Starting Xray...
+22:13:36 INFO    [core.runtime_manager] sing-box started (PID: 22872)
+22:13:38 INFO    [services.node_switcher] sing-box 运行正常
+22:13:38 DEBUG   [urllib3.connectionpool] Starting new HTTPS connection (1): www.google.com:443
+22:13:58 WARNING [services.node_switcher] [5x] [直连] [SS] 香港 06 不可用
+22:13:58 INFO    [services.node_switcher] --- 尝试 24/41: [5x] [直连] [SS] 香港 08 ---
+22:13:58 INFO    [services.node_switcher] 切换到: [[5x] [直连] [SS] 香港 08] ss.008.node-for-bigairport.win:23888 |  | 
+22:13:58 INFO    [adapters.xray_config] Backup saved to d:\useful\加速器\v2rayn\binConfigs\config.json.bak
+22:13:58 INFO    [adapters.xray_config] Detected config format: xray
+22:13:58 DEBUG   [adapters.outbound_builder] Building Xray outbound (config_type=3, protocol=)
+22:13:58 INFO    [adapters.xray_config] Patched proxy outbound → [5x] [直连] [SS] 香港 08 (ss.008.node-for-bigairport.win:23888)
+22:13:58 DEBUG   [adapters.xray_config] Written to d:\useful\加速器\v2rayn\binConfigs\config.json
+22:13:58 INFO    [core.runtime_manager] Restarting sing-box...
+22:13:58 INFO    [core.runtime_manager] Stopping sing-box (PID: 22872)...
+22:13:58 INFO    [core.runtime_manager] sing-box stopped gracefully
+22:13:59 INFO    [core.runtime_manager] Starting Xray...
+22:13:59 INFO    [core.runtime_manager] sing-box started (PID: 21904)
+22:14:01 INFO    [services.node_switcher] sing-box 运行正常
+22:14:01 DEBUG   [urllib3.connectionpool] Starting new HTTPS connection (1): www.google.com:443
+22:14:21 WARNING [services.node_switcher] [5x] [直连] [SS] 香港 08 不可用
+22:14:21 INFO    [services.node_switcher] --- 尝试 25/41: [1x] [C] [直连] [SS] 新加坡 10 ---
+22:14:21 INFO    [services.node_switcher] 切换到: [[1x] [C] [直连] [SS] 新加坡 10] ss.030.node-for-bigairport.win:19287 |  | 
+22:14:21 INFO    [adapters.xray_config] Backup saved to d:\useful\加速器\v2rayn\binConfigs\config.json.bak
+22:14:21 INFO    [adapters.xray_config] Detected config format: xray
+22:14:21 DEBUG   [adapters.outbound_builder] Building Xray outbound (config_type=3, protocol=)
+22:14:21 INFO    [adapters.xray_config] Patched proxy outbound → [1x] [C] [直连] [SS] 新加坡 10 (ss.030.node-for-bigairport.win:19287)
+22:14:21 DEBUG   [adapters.xray_config] Written to d:\useful\加速器\v2rayn\binConfigs\config.json
+22:14:21 INFO    [core.runtime_manager] Restarting sing-box...
+22:14:21 INFO    [core.runtime_manager] Stopping sing-box (PID: 21904)...
+22:14:21 INFO    [core.runtime_manager] sing-box stopped gracefully
+22:14:22 INFO    [core.runtime_manager] Starting Xray...
+22:14:22 INFO    [core.runtime_manager] sing-box started (PID: 7344)
+22:14:24 INFO    [services.node_switcher] sing-box 运行正常
+22:14:24 DEBUG   [urllib3.connectionpool] Starting new HTTPS connection (1): www.google.com:443
+22:14:44 WARNING [services.node_switcher] [1x] [C] [直连] [SS] 新加坡 10 不可用
+22:14:44 INFO    [services.node_switcher] --- 尝试 26/41: [1x] [D] [直连] [SS] 新加坡 10 ---
+22:14:44 INFO    [services.node_switcher] 切换到: [[1x] [D] [直连] [SS] 新加坡 10] ss.040.node-for-bigairport.win:12689 |  | 
+22:14:44 INFO    [adapters.xray_config] Backup saved to d:\useful\加速器\v2rayn\binConfigs\config.json.bak
+22:14:44 INFO    [adapters.xray_config] Detected config format: xray
+22:14:44 DEBUG   [adapters.outbound_builder] Building Xray outbound (config_type=3, protocol=)
+22:14:44 INFO    [adapters.xray_config] Patched proxy outbound → [1x] [D] [直连] [SS] 新加坡 10 (ss.040.node-for-bigairport.win:12689)
+22:14:44 DEBUG   [adapters.xray_config] Written to d:\useful\加速器\v2rayn\binConfigs\config.json
+22:14:44 INFO    [core.runtime_manager] Restarting sing-box...
+22:14:44 INFO    [core.runtime_manager] Stopping sing-box (PID: 7344)...
+22:14:44 INFO    [core.runtime_manager] sing-box stopped gracefully
+22:14:45 INFO    [core.runtime_manager] Starting Xray...
+22:14:45 INFO    [core.runtime_manager] sing-box started (PID: 22640)
+22:14:48 INFO    [services.node_switcher] sing-box 运行正常
+22:14:48 DEBUG   [urllib3.connectionpool] Starting new HTTPS connection (1): www.google.com:443
+22:15:08 WARNING [services.node_switcher] [1x] [D] [直连] [SS] 新加坡 10 不可用
+22:15:08 INFO    [services.node_switcher] --- 尝试 27/41: [1x] [D] [直连] [SS] 日本 1 ---
+22:15:08 INFO    [services.node_switcher] 切换到: [[1x] [D] [直连] [SS] 日本 1] ss.031.node-for-bigairport.win:12885 |  | 
+22:15:08 INFO    [adapters.xray_config] Backup saved to d:\useful\加速器\v2rayn\binConfigs\config.json.bak
+22:15:08 INFO    [adapters.xray_config] Detected config format: xray
+22:15:08 DEBUG   [adapters.outbound_builder] Building Xray outbound (config_type=3, protocol=)
+22:15:08 INFO    [adapters.xray_config] Patched proxy outbound → [1x] [D] [直连] [SS] 日本 1 (ss.031.node-for-bigairport.win:12885)
+22:15:08 DEBUG   [adapters.xray_config] Written to d:\useful\加速器\v2rayn\binConfigs\config.json
+22:15:08 INFO    [core.runtime_manager] Restarting sing-box...
+22:15:08 INFO    [core.runtime_manager] Stopping sing-box (PID: 22640)...
+22:15:08 INFO    [core.runtime_manager] sing-box stopped gracefully
+22:15:09 INFO    [core.runtime_manager] Starting Xray...
+22:15:09 INFO    [core.runtime_manager] sing-box started (PID: 18216)
+22:15:11 INFO    [services.node_switcher] sing-box 运行正常
+22:15:11 DEBUG   [urllib3.connectionpool] Starting new HTTPS connection (1): www.google.com:443
+22:15:31 WARNING [services.node_switcher] [1x] [D] [直连] [SS] 日本 1 不可用
+22:15:31 INFO    [services.node_switcher] --- 尝试 28/41: [1x] [直连] [SS] 懒人 01 ---
+22:15:31 INFO    [services.node_switcher] 切换到: [[1x] [直连] [SS] 懒人 01] ss.001.node-for-bigairport.win:21888 |  | 
+22:15:31 INFO    [adapters.xray_config] Backup saved to d:\useful\加速器\v2rayn\binConfigs\config.json.bak
+22:15:31 INFO    [adapters.xray_config] Detected config format: xray
+22:15:31 DEBUG   [adapters.outbound_builder] Building Xray outbound (config_type=3, protocol=)
+22:15:31 INFO    [adapters.xray_config] Patched proxy outbound → [1x] [直连] [SS] 懒人 01 (ss.001.node-for-bigairport.win:21888)
+22:15:31 DEBUG   [adapters.xray_config] Written to d:\useful\加速器\v2rayn\binConfigs\config.json
+22:15:31 INFO    [core.runtime_manager] Restarting sing-box...
+22:15:31 INFO    [core.runtime_manager] Stopping sing-box (PID: 18216)...
+22:15:31 INFO    [core.runtime_manager] sing-box stopped gracefully
+22:15:32 INFO    [core.runtime_manager] Starting Xray...
+22:15:32 INFO    [core.runtime_manager] sing-box started (PID: 28220)
+22:15:34 INFO    [services.node_switcher] sing-box 运行正常
+22:15:34 DEBUG   [urllib3.connectionpool] Starting new HTTPS connection (1): www.google.com:443
+22:15:54 WARNING [services.node_switcher] [1x] [直连] [SS] 懒人 01 不可用
+22:15:54 INFO    [services.node_switcher] --- 尝试 29/41: [1x] [直连] [SS] 日本 03 ---
+22:15:54 INFO    [services.node_switcher] 切换到: [[1x] [直连] [SS] 日本 03] ss.023.node-for-bigairport.win:29888 |  | 
+22:15:54 INFO    [adapters.xray_config] Backup saved to d:\useful\加速器\v2rayn\binConfigs\config.json.bak
+22:15:54 INFO    [adapters.xray_config] Detected config format: xray
+22:15:54 DEBUG   [adapters.outbound_builder] Building Xray outbound (config_type=3, protocol=)
+22:15:54 INFO    [adapters.xray_config] Patched proxy outbound → [1x] [直连] [SS] 日本 03 (ss.023.node-for-bigairport.win:29888)
+22:15:54 DEBUG   [adapters.xray_config] Written to d:\useful\加速器\v2rayn\binConfigs\config.json
+22:15:54 INFO    [core.runtime_manager] Restarting sing-box...
+22:15:54 INFO    [core.runtime_manager] Stopping sing-box (PID: 28220)...
+22:15:54 INFO    [core.runtime_manager] sing-box stopped gracefully
+22:15:55 INFO    [core.runtime_manager] Starting Xray...
+22:15:55 INFO    [core.runtime_manager] sing-box started (PID: 29704)
+22:15:58 INFO    [services.node_switcher] sing-box 运行正常
+22:15:58 DEBUG   [urllib3.connectionpool] Starting new HTTPS connection (1): www.google.com:443
+22:16:18 WARNING [services.node_switcher] [1x] [直连] [SS] 日本 03 不可用
+22:16:18 INFO    [services.node_switcher] --- 尝试 30/41: [1x] [直连] [SS] 日本 04 ---
+22:16:18 INFO    [services.node_switcher] 切换到: [[1x] [直连] [SS] 日本 04] ss.024.node-for-bigairport.win:12099 |  | 
+22:16:18 INFO    [adapters.xray_config] Backup saved to d:\useful\加速器\v2rayn\binConfigs\config.json.bak
+22:16:18 INFO    [adapters.xray_config] Detected config format: xray
+22:16:18 DEBUG   [adapters.outbound_builder] Building Xray outbound (config_type=3, protocol=)
+22:16:18 INFO    [adapters.xray_config] Patched proxy outbound → [1x] [直连] [SS] 日本 04 (ss.024.node-for-bigairport.win:12099)
+22:16:18 DEBUG   [adapters.xray_config] Written to d:\useful\加速器\v2rayn\binConfigs\config.json
+22:16:18 INFO    [core.runtime_manager] Restarting sing-box...
+22:16:18 INFO    [core.runtime_manager] Stopping sing-box (PID: 29704)...
+22:16:18 INFO    [core.runtime_manager] sing-box stopped gracefully
+22:16:19 INFO    [core.runtime_manager] Starting Xray...
+22:16:19 INFO    [core.runtime_manager] sing-box started (PID: 28196)
+22:16:21 INFO    [services.node_switcher] sing-box 运行正常
+22:16:21 DEBUG   [urllib3.connectionpool] Starting new HTTPS connection (1): www.google.com:443
+22:16:41 WARNING [services.node_switcher] [1x] [直连] [SS] 日本 04 不可用
+22:16:41 INFO    [services.node_switcher] --- 尝试 31/41: [1x] [直连] [SS] 日本 05 ---
+22:16:41 INFO    [services.node_switcher] 切换到: [[1x] [直连] [SS] 日本 05] ss.025.node-for-bigairport.win:29690 |  | 
+22:16:41 INFO    [adapters.xray_config] Backup saved to d:\useful\加速器\v2rayn\binConfigs\config.json.bak
+22:16:41 INFO    [adapters.xray_config] Detected config format: xray
+22:16:41 DEBUG   [adapters.outbound_builder] Building Xray outbound (config_type=3, protocol=)
+22:16:41 INFO    [adapters.xray_config] Patched proxy outbound → [1x] [直连] [SS] 日本 05 (ss.025.node-for-bigairport.win:29690)
+22:16:41 DEBUG   [adapters.xray_config] Written to d:\useful\加速器\v2rayn\binConfigs\config.json
+22:16:41 INFO    [core.runtime_manager] Restarting sing-box...
+22:16:41 INFO    [core.runtime_manager] Stopping sing-box (PID: 28196)...
+22:16:41 INFO    [core.runtime_manager] sing-box stopped gracefully
+22:16:42 INFO    [core.runtime_manager] Starting Xray...
+22:16:43 INFO    [core.runtime_manager] sing-box started (PID: 32064)
+22:16:45 INFO    [services.node_switcher] sing-box 运行正常
+22:16:45 DEBUG   [urllib3.connectionpool] Starting new HTTPS connection (1): www.google.com:443
+22:17:05 WARNING [services.node_switcher] [1x] [直连] [SS] 日本 05 不可用
+22:17:05 INFO    [services.node_switcher] --- 尝试 32/41: [1x] [直连] [SS] 日本 06 ---
+22:17:05 INFO    [services.node_switcher] 切换到: [[1x] [直连] [SS] 日本 06] ss.026.node-for-bigairport.win:36099 |  | 
+22:17:05 INFO    [adapters.xray_config] Backup saved to d:\useful\加速器\v2rayn\binConfigs\config.json.bak
+22:17:05 INFO    [adapters.xray_config] Detected config format: xray
+22:17:05 DEBUG   [adapters.outbound_builder] Building Xray outbound (config_type=3, protocol=)
+22:17:05 INFO    [adapters.xray_config] Patched proxy outbound → [1x] [直连] [SS] 日本 06 (ss.026.node-for-bigairport.win:36099)
+22:17:05 DEBUG   [adapters.xray_config] Written to d:\useful\加速器\v2rayn\binConfigs\config.json
+22:17:05 INFO    [core.runtime_manager] Restarting sing-box...
+22:17:05 INFO    [core.runtime_manager] Stopping sing-box (PID: 32064)...
+22:17:05 INFO    [core.runtime_manager] sing-box stopped gracefully
+22:17:06 INFO    [core.runtime_manager] Starting Xray...
+22:17:06 INFO    [core.runtime_manager] sing-box started (PID: 29228)
+22:17:08 INFO    [services.node_switcher] sing-box 运行正常
+22:17:08 DEBUG   [urllib3.connectionpool] Starting new HTTPS connection (1): www.google.com:443
+22:17:28 WARNING [services.node_switcher] [1x] [直连] [SS] 日本 06 不可用
+22:17:28 INFO    [services.node_switcher] --- 尝试 33/41: [1x] [直连] [SS] 日本 07 ---
+22:17:28 INFO    [services.node_switcher] 切换到: [[1x] [直连] [SS] 日本 07] ss.027.node-for-bigairport.win:18287 |  | 
+22:17:28 INFO    [adapters.xray_config] Backup saved to d:\useful\加速器\v2rayn\binConfigs\config.json.bak
+22:17:28 INFO    [adapters.xray_config] Detected config format: xray
+22:17:28 DEBUG   [adapters.outbound_builder] Building Xray outbound (config_type=3, protocol=)
+22:17:28 INFO    [adapters.xray_config] Patched proxy outbound → [1x] [直连] [SS] 日本 07 (ss.027.node-for-bigairport.win:18287)
+22:17:28 DEBUG   [adapters.xray_config] Written to d:\useful\加速器\v2rayn\binConfigs\config.json
+22:17:28 INFO    [core.runtime_manager] Restarting sing-box...
+22:17:28 INFO    [core.runtime_manager] Stopping sing-box (PID: 29228)...
+22:17:28 INFO    [core.runtime_manager] sing-box stopped gracefully
+22:17:29 INFO    [core.runtime_manager] Starting Xray...
+22:17:29 INFO    [core.runtime_manager] sing-box started (PID: 22160)
+22:17:31 INFO    [services.node_switcher] sing-box 运行正常
+22:17:31 DEBUG   [urllib3.connectionpool] Starting new HTTPS connection (1): www.google.com:443
+22:17:51 WARNING [services.node_switcher] [1x] [直连] [SS] 日本 07 不可用
+22:17:51 INFO    [services.node_switcher] --- 尝试 34/41: [1x] [直连] [SS] 日本 08 ---
+22:17:51 INFO    [services.node_switcher] 切换到: [[1x] [直连] [SS] 日本 08] ss.028.node-for-bigairport.win:29015 |  | 
+22:17:51 INFO    [adapters.xray_config] Backup saved to d:\useful\加速器\v2rayn\binConfigs\config.json.bak
+22:17:51 INFO    [adapters.xray_config] Detected config format: xray
+22:17:51 DEBUG   [adapters.outbound_builder] Building Xray outbound (config_type=3, protocol=)
+22:17:51 INFO    [adapters.xray_config] Patched proxy outbound → [1x] [直连] [SS] 日本 08 (ss.028.node-for-bigairport.win:29015)
+22:17:51 DEBUG   [adapters.xray_config] Written to d:\useful\加速器\v2rayn\binConfigs\config.json
+22:17:51 INFO    [core.runtime_manager] Restarting sing-box...
+22:17:52 INFO    [core.runtime_manager] Stopping sing-box (PID: 22160)...
+22:17:52 INFO    [core.runtime_manager] sing-box stopped gracefully
+22:17:53 INFO    [core.runtime_manager] Starting Xray...
+22:17:53 INFO    [core.runtime_manager] sing-box started (PID: 19640)
+22:17:55 INFO    [services.node_switcher] sing-box 运行正常
+22:17:55 DEBUG   [urllib3.connectionpool] Starting new HTTPS connection (1): www.google.com:443
+22:18:15 WARNING [services.node_switcher] [1x] [直连] [SS] 日本 08 不可用
+22:18:15 INFO    [services.node_switcher] --- 尝试 35/41: [1x] [直连] [SS] 香港 12 ---
+22:18:15 INFO    [services.node_switcher] 切换到: [[1x] [直连] [SS] 香港 12] ss.012.node-for-bigairport.win:22189 |  | 
+22:18:15 INFO    [adapters.xray_config] Backup saved to d:\useful\加速器\v2rayn\binConfigs\config.json.bak
+22:18:15 INFO    [adapters.xray_config] Detected config format: xray
+22:18:15 DEBUG   [adapters.outbound_builder] Building Xray outbound (config_type=3, protocol=)
+22:18:15 INFO    [adapters.xray_config] Patched proxy outbound → [1x] [直连] [SS] 香港 12 (ss.012.node-for-bigairport.win:22189)
+22:18:15 DEBUG   [adapters.xray_config] Written to d:\useful\加速器\v2rayn\binConfigs\config.json
+22:18:15 INFO    [core.runtime_manager] Restarting sing-box...
+22:18:15 INFO    [core.runtime_manager] Stopping sing-box (PID: 19640)...
+22:18:15 INFO    [core.runtime_manager] sing-box stopped gracefully
+22:18:16 INFO    [core.runtime_manager] Starting Xray...
+22:18:16 INFO    [core.runtime_manager] sing-box started (PID: 30464)
+22:18:18 INFO    [services.node_switcher] sing-box 运行正常
+22:18:18 DEBUG   [urllib3.connectionpool] Starting new HTTPS connection (1): www.google.com:443
+22:18:38 WARNING [services.node_switcher] [1x] [直连] [SS] 香港 12 不可用
+22:18:38 INFO    [services.node_switcher] --- 尝试 36/41: [1x] [直连] [SS] 香港 15 ---
+22:18:38 INFO    [services.node_switcher] 切换到: [[1x] [直连] [SS] 香港 15] ss.015.node-for-bigairport.win:13001 |  | 
+22:18:38 INFO    [adapters.xray_config] Backup saved to d:\useful\加速器\v2rayn\binConfigs\config.json.bak
+22:18:38 INFO    [adapters.xray_config] Detected config format: xray
+22:18:38 DEBUG   [adapters.outbound_builder] Building Xray outbound (config_type=3, protocol=)
+22:18:38 INFO    [adapters.xray_config] Patched proxy outbound → [1x] [直连] [SS] 香港 15 (ss.015.node-for-bigairport.win:13001)
+22:18:38 DEBUG   [adapters.xray_config] Written to d:\useful\加速器\v2rayn\binConfigs\config.json
+22:18:38 INFO    [core.runtime_manager] Restarting sing-box...
+22:18:38 INFO    [core.runtime_manager] Stopping sing-box (PID: 30464)...
+22:18:38 INFO    [core.runtime_manager] sing-box stopped gracefully
+22:18:39 INFO    [core.runtime_manager] Starting Xray...
+22:18:39 INFO    [core.runtime_manager] sing-box started (PID: 27372)
+22:18:41 INFO    [services.node_switcher] sing-box 运行正常
+22:18:41 DEBUG   [urllib3.connectionpool] Starting new HTTPS connection (1): www.google.com:443
+22:19:02 WARNING [services.node_switcher] [1x] [直连] [SS] 香港 15 不可用
+22:19:02 INFO    [services.node_switcher] --- 尝试 37/41: [1x] [直连] [SS] 香港 17 ---
+22:19:02 INFO    [services.node_switcher] 切换到: [[1x] [直连] [SS] 香港 17] ss.017.node-for-bigairport.win:13005 |  | 
+22:19:02 INFO    [adapters.xray_config] Backup saved to d:\useful\加速器\v2rayn\binConfigs\config.json.bak
+22:19:02 INFO    [adapters.xray_config] Detected config format: xray
+22:19:02 DEBUG   [adapters.outbound_builder] Building Xray outbound (config_type=3, protocol=)
+22:19:02 INFO    [adapters.xray_config] Patched proxy outbound → [1x] [直连] [SS] 香港 17 (ss.017.node-for-bigairport.win:13005)
+22:19:02 DEBUG   [adapters.xray_config] Written to d:\useful\加速器\v2rayn\binConfigs\config.json
+22:19:02 INFO    [core.runtime_manager] Restarting sing-box...
+22:19:02 INFO    [core.runtime_manager] Stopping sing-box (PID: 27372)...
+22:19:02 INFO    [core.runtime_manager] sing-box stopped gracefully
+22:19:03 INFO    [core.runtime_manager] Starting Xray...
+22:19:03 INFO    [core.runtime_manager] sing-box started (PID: 9476)
+22:19:05 INFO    [services.node_switcher] sing-box 运行正常
+22:19:05 DEBUG   [urllib3.connectionpool] Starting new HTTPS connection (1): www.google.com:443
+22:46:35 INFO    [core.runtime_manager] Starting sing-box (TUN mode)...
+22:46:35 INFO    [core.runtime_manager] sing-box started (PID: 30468)
+22:46:36 INFO    [core.runtime_manager] Starting Xray...
+22:46:36 INFO    [core.runtime_manager] Xray started (PID: 25680)
+22:46:36 INFO    [core.runtime_manager] Both processes running — TUN + proxy ready
+22:46:36 INFO    [core.runtime_manager] sing-box  RUNNING | PID: 30468 | Memory: 51.2 MB | CPU: 0.0%
+22:46:36 INFO    [core.runtime_manager] Xray      RUNNING | PID: 25680 | Memory: 1.9 MB | CPU: 0.0%
+22:46:38 DEBUG   [urllib3.connectionpool] Starting new HTTPS connection (1): www.google.com:443
+22:55:02 INFO    [core.runtime_manager] Cleaning up legacy process xray.exe (PID 25680)
+22:55:03 INFO    [core.runtime_manager] Cleaning up legacy process sing-box.exe (PID 30468)
+22:55:03 INFO    [core.runtime_manager] Cleaned up 2 legacy process(es)
+22:55:04 INFO    [core.runtime_manager] Starting sing-box (TUN mode)...
+22:55:04 INFO    [core.runtime_manager] sing-box started (PID: 33452)
+22:55:05 INFO    [core.runtime_manager] Starting Xray...
+22:55:05 INFO    [core.runtime_manager] Xray started (PID: 30828)
+22:55:05 INFO    [core.runtime_manager] Both processes running — TUN + proxy ready
+22:55:05 INFO    [core.runtime_manager] sing-box  RUNNING | PID: 33452 | Memory: 30.3 MB | CPU: 0.0%
+22:55:05 INFO    [core.runtime_manager] Xray      RUNNING | PID: 30828 | Memory: 1.9 MB | CPU: 0.0%
+22:55:07 DEBUG   [urllib3.connectionpool] Starting new HTTPS connection (1): www.google.com:443
+22:55:16 DEBUG   [urllib3.connectionpool] https://www.google.com:443 "GET /generate_204 HTTP/1.1" 204 0
+22:59:17 INFO    [core.runtime_manager] Stopping xray (PID: 30828)...
+22:59:17 INFO    [core.runtime_manager] xray stopped gracefully
+22:59:17 INFO    [core.runtime_manager] Stopping sing-box (PID: 33452)...
+22:59:17 INFO    [core.runtime_manager] sing-box stopped gracefully
+23:03:05 INFO    [orchestrator] ==================================================
+23:03:05 INFO    [orchestrator]   VPN Orchestrator — Auto Connect
+23:03:05 INFO    [orchestrator] ==================================================
+23:03:05 ERROR   [orchestrator] Admin privileges required. sing-box needs admin rights to create the TUN virtual network interface. Please run as administrator.
+23:04:48 INFO    [orchestrator] ==================================================
+23:04:48 INFO    [orchestrator]   VPN Orchestrator — Auto Connect
+23:04:48 INFO    [orchestrator] ==================================================
+23:04:48 INFO    [orchestrator] [1/5] Selecting node & patching config...
+23:04:48 INFO    [orchestrator]   Best node: [1x] [直连] [SS] 新加坡 02 (delay: 88ms, speed: 7.7MB/s)
+23:04:48 INFO    [adapters.xray_config] Backup saved to d:\useful\加速器\v2rayn\binConfigs\config.json.bak
+23:04:48 INFO    [adapters.xray_config] Detected config format: xray
+23:04:48 DEBUG   [adapters.outbound_builder] Building Xray outbound (config_type=3, protocol=)
+23:04:48 DEBUG   [adapters.xray_config] Preserved dialerProxy for TUN mode
+23:04:48 INFO    [adapters.xray_config] Patched proxy outbound → [1x] [直连] [SS] 新加坡 02 (ss.037.node-for-bigairport.win:19887)
+23:04:48 DEBUG   [adapters.xray_config] Written to d:\useful\加速器\v2rayn\binConfigs\config.json
+23:04:48 INFO    [orchestrator] [2/5] Stopping old processes...
+23:04:48 INFO    [core.runtime_manager] xray is not running
+23:04:48 INFO    [core.runtime_manager] sing-box is not running
+23:04:48 INFO    [orchestrator] [3/5] Starting sing-box + Xray...
+23:04:48 INFO    [orchestrator] State: CONNECTING
+23:04:48 INFO    [core.runtime_manager] Starting sing-box (TUN mode)...
+23:04:48 INFO    [core.runtime_manager] sing-box started (PID: 16848)
+23:04:49 INFO    [core.runtime_manager] Starting Xray...
+23:04:49 INFO    [core.runtime_manager] Xray started (PID: 7480)
+23:04:49 INFO    [core.runtime_manager] Both processes running — TUN + proxy ready
+23:04:49 INFO    [orchestrator] State: CONNECTED
+23:04:49 INFO    [orchestrator] [4/5] Checking proxy...
+23:04:49 DEBUG   [urllib3.connectionpool] Starting new HTTPS connection (1): www.google.com:443
+23:04:50 DEBUG   [urllib3.connectionpool] https://www.google.com:443 "GET /generate_204 HTTP/1.1" 204 0
+23:04:50 INFO    [orchestrator]   Proxy OK (latency: 1102ms)
+23:04:50 INFO    [orchestrator] [5/5] Opening browser...
+23:04:50 INFO    [services.browser_launcher] 正在打开 2 个页面...
+23:04:50 INFO    [services.browser_launcher]   1. https://chatgpt.com
+23:04:52 INFO    [services.browser_launcher]   2. https://gemini.google.com
+23:04:52 INFO    [services.browser_launcher] 浏览器启动完成
+23:04:52 INFO    [orchestrator]   VPN Ready!
+23:09:28 DEBUG   [urllib3.connectionpool] Starting new HTTPS connection (1): www.google.com:443
+23:09:29 DEBUG   [urllib3.connectionpool] https://www.google.com:443 "GET /generate_204 HTTP/1.1" 204 0
+23:09:29 INFO    [orchestrator] ==================================================
+23:09:29 INFO    [orchestrator]   VPN Orchestrator — Auto Connect
+23:09:29 INFO    [orchestrator] ==================================================
+23:09:29 ERROR   [orchestrator] Admin privileges required. sing-box needs admin rights to create the TUN virtual network interface. Please run as administrator.
+23:11:10 DEBUG   [urllib3.connectionpool] Starting new HTTPS connection (1): www.google.com:443
+23:11:11 DEBUG   [urllib3.connectionpool] https://www.google.com:443 "GET /generate_204 HTTP/1.1" 204 0
+23:11:11 INFO    [orchestrator] ==================================================
+23:11:11 INFO    [orchestrator]   VPN Orchestrator — Auto Connect
+23:11:11 INFO    [orchestrator] ==================================================
+23:11:11 ERROR   [orchestrator] Admin privileges required. sing-box needs admin rights to create the TUN virtual network interface. Please run as administrator.
+23:11:18 DEBUG   [urllib3.connectionpool] Starting new HTTPS connection (1): www.google.com:443
+23:11:19 DEBUG   [urllib3.connectionpool] https://www.google.com:443 "GET /generate_204 HTTP/1.1" 204 0
+23:11:19 INFO    [orchestrator] ==================================================
+23:11:19 INFO    [orchestrator]   VPN Orchestrator — Auto Connect
+23:11:19 INFO    [orchestrator] ==================================================
+23:11:19 ERROR   [orchestrator] Admin privileges required. sing-box needs admin rights to create the TUN virtual network interface. Please run as administrator.
+23:16:30 DEBUG   [urllib3.connectionpool] Starting new HTTPS connection (1): www.google.com:443
+23:16:31 DEBUG   [urllib3.connectionpool] https://www.google.com:443 "GET /generate_204 HTTP/1.1" 204 0
+23:16:31 INFO    [orchestrator] ==================================================
+23:16:31 INFO    [orchestrator]   VPN Orchestrator — Auto Connect
+23:16:31 INFO    [orchestrator] ==================================================
+23:16:31 ERROR   [orchestrator] Admin privileges required. sing-box needs admin rights to create the TUN virtual network interface. Please run as administrator.
+23:18:15 DEBUG   [urllib3.connectionpool] Starting new HTTPS connection (1): www.google.com:443
+23:18:15 DEBUG   [urllib3.connectionpool] https://www.google.com:443 "GET /generate_204 HTTP/1.1" 204 0
+23:18:15 INFO    [orchestrator] ==================================================
+23:18:15 INFO    [orchestrator]   VPN Orchestrator — Auto Connect
+23:18:15 INFO    [orchestrator] ==================================================
+23:18:15 ERROR   [orchestrator] Admin privileges required. sing-box needs admin rights to create the TUN virtual network interface. Please run as administrator.
+23:18:41 DEBUG   [urllib3.connectionpool] Starting new HTTPS connection (1): www.google.com:443
+23:18:41 DEBUG   [urllib3.connectionpool] https://www.google.com:443 "GET /generate_204 HTTP/1.1" 204 0
+23:18:41 INFO    [orchestrator] ==================================================
+23:18:41 INFO    [orchestrator]   VPN Orchestrator — Auto Connect
+23:18:41 INFO    [orchestrator] ==================================================
+23:18:41 INFO    [orchestrator] [1/5] Selecting node & patching config...
+23:18:41 INFO    [orchestrator]   Best node: [1x] [直连] [SS] 新加坡 02 (delay: 88ms, speed: 7.7MB/s)
+23:18:41 INFO    [adapters.xray_config] Backup saved to d:\useful\加速器\v2rayn\binConfigs\config.json.bak
+23:18:41 INFO    [adapters.xray_config] Detected config format: xray
+23:18:41 DEBUG   [adapters.outbound_builder] Building Xray outbound (config_type=3, protocol=)
+23:18:41 DEBUG   [adapters.xray_config] Preserved dialerProxy for TUN mode
+23:18:41 INFO    [adapters.xray_config] Patched proxy outbound → [1x] [直连] [SS] 新加坡 02 (ss.037.node-for-bigairport.win:19887)
+23:18:41 DEBUG   [adapters.xray_config] Written to d:\useful\加速器\v2rayn\binConfigs\config.json
+23:18:41 INFO    [orchestrator] [2/5] Stopping old processes...
+23:18:41 INFO    [core.runtime_manager] Stopping xray (PID: 7480)...
+23:18:41 INFO    [core.runtime_manager] xray stopped gracefully
+23:18:42 INFO    [core.runtime_manager] Stopping sing-box (PID: 16848)...
+23:18:42 INFO    [core.runtime_manager] sing-box stopped gracefully
+23:18:43 INFO    [orchestrator] [3/5] Starting sing-box + Xray...
+23:18:43 WARNING [orchestrator] Illegal transition: CONNECTED → CONNECTING
+23:18:43 INFO    [core.runtime_manager] Starting sing-box (TUN mode)...
+23:18:43 INFO    [core.runtime_manager] sing-box started (PID: 7392)
+23:18:44 INFO    [core.runtime_manager] Starting Xray...
+23:18:44 INFO    [core.runtime_manager] Xray started (PID: 23224)
+23:18:44 INFO    [core.runtime_manager] Both processes running — TUN + proxy ready
+23:18:44 WARNING [orchestrator] Illegal transition: CONNECTED → CONNECTED
+23:18:44 INFO    [orchestrator] [4/5] Checking proxy...
+23:18:44 DEBUG   [urllib3.connectionpool] Starting new HTTPS connection (1): www.google.com:443
+23:19:04 WARNING [orchestrator]   Proxy unreachable, trying failover...
+23:19:04 WARNING [orchestrator] Illegal transition: CONNECTED → RECOVERING
+23:19:04 INFO    [services.node_switcher] --- 尝试 1/41: [1x] [D] [直连] [SS] 新加坡 9 ---
+23:19:04 INFO    [services.node_switcher] 切换到: [[1x] [D] [直连] [SS] 新加坡 9] ss.039.node-for-bigairport.win:29004 |  | 
+23:19:04 INFO    [adapters.xray_config] Backup saved to d:\useful\加速器\v2rayn\binConfigs\config.json.bak
+23:19:04 INFO    [adapters.xray_config] Detected config format: xray
+23:19:04 DEBUG   [adapters.outbound_builder] Building Xray outbound (config_type=3, protocol=)
+23:19:04 DEBUG   [adapters.xray_config] Preserved dialerProxy for TUN mode
+23:19:04 INFO    [adapters.xray_config] Patched proxy outbound → [1x] [D] [直连] [SS] 新加坡 9 (ss.039.node-for-bigairport.win:29004)
+23:19:04 DEBUG   [adapters.xray_config] Written to d:\useful\加速器\v2rayn\binConfigs\config.json
+23:19:04 INFO    [core.runtime_manager] Restarting Xray (node switch)...
+23:19:04 INFO    [core.runtime_manager] Stopping xray (PID: 23224)...
+23:19:04 INFO    [core.runtime_manager] xray stopped gracefully
+23:19:05 INFO    [core.runtime_manager] Starting Xray...
+23:19:05 INFO    [core.runtime_manager] Xray started (PID: 12068)
+23:19:07 INFO    [services.node_switcher] Xray 运行正常
+23:19:07 DEBUG   [urllib3.connectionpool] Starting new HTTPS connection (1): www.google.com:443
+23:19:08 DEBUG   [urllib3.connectionpool] https://www.google.com:443 "GET /generate_204 HTTP/1.1" 204 0
+23:19:08 INFO    [services.node_switcher] [1x] [D] [直连] [SS] 新加坡 9 可用! 延迟: 586ms
+23:19:08 WARNING [orchestrator] Illegal transition: CONNECTED → CONNECTED
+23:19:08 INFO    [orchestrator] [5/5] Opening browser...
+23:19:08 INFO    [services.browser_launcher] 正在打开 2 个页面...
+23:19:08 INFO    [services.browser_launcher]   1. https://chatgpt.com
+23:19:09 INFO    [services.browser_launcher]   2. https://gemini.google.com
+23:19:09 INFO    [services.browser_launcher] 浏览器启动完成
+23:19:09 INFO    [orchestrator]   VPN Ready!
+23:24:00 DEBUG   [urllib3.connectionpool] Starting new HTTPS connection (1): www.google.com:443
+23:24:02 DEBUG   [urllib3.connectionpool] https://www.google.com:443 "GET /generate_204 HTTP/1.1" 204 0
+23:24:02 INFO    [orchestrator] ==================================================
+23:24:02 INFO    [orchestrator]   VPN Orchestrator — Auto Connect
+23:24:02 INFO    [orchestrator] ==================================================
+23:24:02 INFO    [orchestrator] [1/5] Selecting node & patching config...
+23:24:02 INFO    [orchestrator]   Best node: [1x] [直连] [SS] 新加坡 02 (delay: 88ms, speed: 7.7MB/s)
+23:24:02 INFO    [adapters.xray_config] Backup saved to d:\useful\加速器\v2rayn\binConfigs\config.json.bak
+23:24:02 INFO    [adapters.xray_config] Detected config format: xray
+23:24:02 DEBUG   [adapters.outbound_builder] Building Xray outbound (config_type=3, protocol=)
+23:24:02 DEBUG   [adapters.xray_config] Preserved dialerProxy for TUN mode
+23:24:02 INFO    [adapters.xray_config] Patched proxy outbound → [1x] [直连] [SS] 新加坡 02 (ss.037.node-for-bigairport.win:19887)
+23:24:02 DEBUG   [adapters.xray_config] Written to d:\useful\加速器\v2rayn\binConfigs\config.json
+23:24:02 INFO    [orchestrator] [2/5] Stopping old processes...
+23:24:02 INFO    [core.runtime_manager] Stopping xray (PID: 12068)...
+23:24:02 INFO    [core.runtime_manager] xray stopped gracefully
+23:24:03 INFO    [core.runtime_manager] Stopping sing-box (PID: 7392)...
+23:24:03 INFO    [core.runtime_manager] sing-box stopped gracefully
+23:24:03 INFO    [orchestrator] [3/5] Starting sing-box + Xray...
+23:24:03 WARNING [orchestrator] Illegal transition: CONNECTED → CONNECTING
+23:24:04 INFO    [core.runtime_manager] Starting sing-box (TUN mode)...
+23:24:04 INFO    [core.runtime_manager] sing-box started (PID: 33076)
+23:24:05 INFO    [core.runtime_manager] Starting Xray...
+23:24:05 INFO    [core.runtime_manager] Xray started (PID: 12852)
+23:24:05 INFO    [core.runtime_manager] Both processes running — TUN + proxy ready
+23:24:05 WARNING [orchestrator] Illegal transition: CONNECTED → CONNECTED
+23:24:05 INFO    [orchestrator] [4/5] Checking proxy...
+23:24:05 DEBUG   [urllib3.connectionpool] Starting new HTTPS connection (1): www.google.com:443
+23:24:07 DEBUG   [urllib3.connectionpool] https://www.google.com:443 "GET /generate_204 HTTP/1.1" 204 0
+23:24:07 INFO    [orchestrator]   Proxy OK (latency: 2352ms)
+23:24:07 INFO    [orchestrator] [5/5] Opening browser...
+23:24:07 INFO    [services.browser_launcher] 正在打开 2 个页面...
+23:24:07 INFO    [services.browser_launcher]   1. https://chatgpt.com
+23:24:09 INFO    [services.browser_launcher]   2. https://gemini.google.com
+23:24:09 INFO    [services.browser_launcher] 浏览器启动完成
+23:24:09 INFO    [orchestrator]   VPN Ready!

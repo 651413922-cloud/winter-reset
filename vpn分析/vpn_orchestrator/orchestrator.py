@@ -115,6 +115,25 @@ class VpnOrchestrator:
         logger.info('  VPN Orchestrator — Auto Connect')
         logger.info('=' * 50)
 
+        # Step 0: Check prerequisites
+        if not RuntimeManager.is_admin():
+            logger.error(
+                'Admin privileges required. sing-box needs admin rights '
+                'to create the TUN virtual network interface. '
+                'Please run as administrator.'
+            )
+            return False
+
+        warnings = self.rt.check_coexistence()
+        if warnings:
+            for w in warnings:
+                logger.warning('CONFLICT: %s', w)
+            logger.error(
+                'v2rayN GUI and orchestrator cannot run simultaneously. '
+                'Please close v2rayN GUI first.'
+            )
+            return False
+
         # Step 1: Pick best node, patch config
         logger.info('[1/5] Selecting node & patching config...')
         profile = self._pick_best_profile()
@@ -124,12 +143,12 @@ class VpnOrchestrator:
         apply_profile_to_config(profile)
         self._sync_current_node()
 
-        # Step 2: Stop old process
-        logger.info('[2/5] Stopping old process...')
+        # Step 2: Stop old processes
+        logger.info('[2/5] Stopping old processes...')
         self.rt.stop()
 
-        # Step 3: Start
-        logger.info('[3/5] Starting sing-box...')
+        # Step 3: Start sing-box (TUN) + Xray (proxy)
+        logger.info('[3/5] Starting sing-box + Xray...')
         self._try_transition(VpnState.CONNECTING)
         if not self.rt.start():
             self._try_transition(VpnState.FAILED)
@@ -208,12 +227,26 @@ class VpnOrchestrator:
             return self.sm.state
 
         # Health check
-        process_running = self.rt.is_running()
+        sb_running = RuntimeManager.is_singbox_running()
+        xr_running = RuntimeManager.is_xray_running()
+        process_running = sb_running and xr_running
         online, latency = self.checker.check_connectivity() if process_running else (False, -1)
         self.status.update_health(online, latency, process_running)
 
         if not process_running:
-            logger.warning('Process lost, attempting restart...')
+            if not sb_running:
+                logger.warning('sing-box (TUN) lost, full restart needed...')
+            elif not xr_running:
+                logger.warning('Xray (proxy) lost, restarting Xray only...')
+                if self.rt.restart_xray():
+                    time.sleep(2)
+                    online, _ = self.checker.check_connectivity()
+                    if online:
+                        self._try_transition(VpnState.CONNECTED)
+                        self.status.reset_failures()
+                        self._sync_current_node()
+                        return self.sm.state
+
             self._try_transition(VpnState.CONNECTING)
             if self.rt.start():
                 self._try_transition(VpnState.CONNECTED)
@@ -339,7 +372,7 @@ class VpnOrchestrator:
     #  Status & diagnostics
     # ================================================================
 
-    def status(self):
+    def print_status_report(self):
         """Print comprehensive status report."""
         self.rt.print_status()
         online, latency = self.checker.check_connectivity()

@@ -144,13 +144,17 @@ def _deep_merge(base: dict, overlay: dict) -> dict:
     return base
 
 
-def patch_proxy_outbound(config: dict, new_outbound: dict) -> dict:
+def patch_proxy_outbound(config: dict, new_outbound: dict,
+                         standalone: bool = False) -> dict:
     """
     Replace the proxy outbound in config with new_outbound.
 
     Preserves extra fields from the original:
-      - Top-level: mux, sockopt, and any unknown keys
-      - streamSettings.sockopt: critical for TUN mode (dialerProxy)
+      - Top-level: mux and any unknown keys
+      - streamSettings.sockopt: TUN dialerProxy (only if standalone=False)
+
+    When standalone=True (no v2rayN GUI), dialerProxy is removed because
+    the TUN infrastructure is not available.
 
     Returns the modified config (mutated in-place as well).
     """
@@ -168,11 +172,27 @@ def patch_proxy_outbound(config: dict, new_outbound: dict) -> dict:
     merged = dict(new_outbound)
     merged.update(preserved)
 
-    # ---- Preserve streamSettings.sockopt (TUN dialerProxy) ----
+    # ---- Handle streamSettings.sockopt (TUN dialerProxy) ----
     orig_ss = original.get('streamSettings', {})
     orig_sockopt = orig_ss.get('sockopt')
-    if orig_sockopt and 'streamSettings' in merged:
-        merged['streamSettings']['sockopt'] = orig_sockopt
+    has_tun_protect = any(
+        ob.get('tag') == 'tun-protect-socks' for ob in config.get('outbounds', [])
+    )
+
+    if 'streamSettings' in merged:
+        if standalone:
+            merged['streamSettings'].pop('sockopt', None)
+            logger.debug("Removed dialerProxy (standalone mode)")
+        elif orig_sockopt:
+            merged['streamSettings']['sockopt'] = orig_sockopt
+            logger.debug("Preserved dialerProxy for TUN mode")
+        elif has_tun_protect:
+            # Config has tun-protect-socks outbound but proxy lost its
+            # sockopt from an earlier standalone patch — restore it.
+            merged['streamSettings']['sockopt'] = {
+                'dialerProxy': 'tun-protect-socks'
+            }
+            logger.debug("Restored dialerProxy → tun-protect-socks")
 
     config['outbounds'][idx] = merged
     return config
@@ -182,12 +202,17 @@ def patch_proxy_outbound(config: dict, new_outbound: dict) -> dict:
 #  High-level: Apply a node to config
 # ============================================================
 
-def apply_node_to_config(profile: ProfileItem) -> str:
+def apply_node_to_config(profile: ProfileItem, standalone: bool = False) -> str:
     """
     Patch config.json: replace proxy outbound with the given node.
 
     This is the main entry point — call this instead of the old
     config_builder.apply_profile_to_config().
+
+    Args:
+        profile: The node to switch to
+        standalone: If True, remove TUN-specific settings (dialerProxy)
+                    that require v2rayN GUI's TUN infrastructure
 
     1. Backup current config
     2. Read config
@@ -207,11 +232,10 @@ def apply_node_to_config(profile: ProfileItem) -> str:
     if fmt == 'xray':
         new_ob = build_xray_outbound(profile)
     else:
-        # Future: sing-box native format support
         from adapters.outbound_builder import build_singbox_outbound
         new_ob = build_singbox_outbound(profile)
 
-    patch_proxy_outbound(config, new_ob)
+    patch_proxy_outbound(config, new_ob, standalone=standalone)
     write_config(config)
 
     logger.info("Patched proxy outbound → %s (%s:%s)",
