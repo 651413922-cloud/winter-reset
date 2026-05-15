@@ -12,16 +12,16 @@ _orch_root = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
 if _orch_root not in sys.path:
     sys.path.insert(0, _orch_root)
 
-from config import SOCKS5_PROXY, CHECK_URL, TIMEOUT, SPEED_TEST_URL
+from config import get_socks_proxy, CHECK_URL, TIMEOUT, SPEED_TEST_URL
 
 
 class ProxyChecker:
     """检测代理连通性和性能"""
 
-    def __init__(self, proxy_url: str = SOCKS5_PROXY,
+    def __init__(self, proxy_url: str = None,
                  check_url: str = CHECK_URL,
                  timeout: int = TIMEOUT):
-        self.proxy_url = proxy_url
+        self.proxy_url = proxy_url or get_socks_proxy()
         self.check_url = check_url
         self.timeout = timeout
 

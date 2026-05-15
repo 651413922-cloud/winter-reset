@@ -105,7 +105,7 @@ class VpnDaemon:
         logger.info("Daemon 退出")
 
         # 打印运行摘要
-        self.orch.status()
+        self.orch.print_status_report()
 
         logger.info(
             "摘要: %d ticks | 切换 %d 次 | 连续失败 %d",

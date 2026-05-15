@@ -23,15 +23,14 @@ logger = logging.getLogger(__name__)
 class ProcessManager:
     """Manage sing-box process (delegates to RuntimeManager)."""
 
-    def __init__(self, exe_path: str = SING_BOX_EXE,
+    def __init__(self, exe_path: str = None,
                  config_path: str = CONFIG_JSON):
-        self.exe_path = exe_path
-        self.config_path = config_path
-        self._process: Optional = None
-
         # Lazy-import to avoid circular dependency
         from core.runtime_manager import RuntimeManager
         self._rt = RuntimeManager(exe_path, config_path)
+        self.exe_path = self._rt.xray_exe
+        self.config_path = config_path
+        self._process: Optional = None
 
     # ========== Process Discovery ==========
 
@@ -62,6 +61,10 @@ class ProcessManager:
 
     def restart(self) -> bool:
         return self._rt.restart()
+
+    def restart_xray(self) -> bool:
+        """Restart Xray only (for node switching without tearing down TUN)."""
+        return self._rt.restart_xray()
 
     # ========== Status ==========
 

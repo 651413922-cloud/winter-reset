@@ -27,7 +27,28 @@
       "Read(//tmp/**)",
       "Bash(tasklist)",
       "Bash(powershell -Command \"Stop-Process -Id 15312 -Force\")",
-      "Bash(powershell -Command \"Stop-Process -Name sing-box -Force -ErrorAction SilentlyContinue\")"
+      "Bash(powershell -Command \"Stop-Process -Name sing-box -Force -ErrorAction SilentlyContinue\")",
+      "Read(//d/useful/加速器/v2rayn/**)",
+      "Bash(\"bin/sing_box/sing-box.exe\" run *)",
+      "Bash(pip install *)",
+      "Bash(taskkill /F /IM xray.exe)",
+      "Bash(taskkill /F /IM sing-box.exe)",
+      "Bash(cp \"d:\\\\useful\\\\加速器\\\\v2rayn\\\\binConfigs\\\\config.json.bak\" \"d:\\\\useful\\\\加速器\\\\v2rayn\\\\binConfigs\\\\config.json\")",
+      "Bash(\"bin/xray/xray.exe\" run *)",
+      "Bash(nslookup <REDACTED_SS_SERVER>)",
+      "Bash(nslookup google.com)",
+      "Bash(powershell *)",
+      "Bash(nslookup <REDACTED_SS_SERVER>)",
+      "Bash(ls -la \"d:\\\\\\\\useful\\\\\\\\加速器\\\\\\\\v2rayn\\\\\\\\binConfigs\\\\\\\\\")",
+      "Bash(taskkill /f /im xray.exe)",
+      "Bash(taskkill /f /im \"sing-box.exe\")",
+      "Bash(taskkill /f /im sing-box.exe)",
+      "Bash(cat \"D:\\\\\\\\d\\\\\\\\GitHub\\\\\\\\winter-reset\\\\\\\\vpn分析\\\\\\\\vpn_orchestrator\\\\\\\\test_output.txt\")",
+      "Bash(cat \"D:\\\\\\\\d\\\\\\\\GitHub\\\\\\\\winter-reset\\\\\\\\vpn分析\\\\\\\\vpn_orchestrator\\\\\\\\test_error.txt\")",
+      "Bash(echo \"exit: $?\")",
+      "Bash(xxd \"D:/d/GitHub/winter-reset/vpn分析/vpn_orchestrator/vpn_start.bat\")",
+      "Bash(xxd)",
+      "Bash(printf *)"
     ]
   }
 }

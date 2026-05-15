@@ -57,7 +57,7 @@ def build_outbound_for_profile(profile: ProfileItem) -> dict:
         return build_xray_outbound(profile)
 
 
-def apply_profile_to_config(profile: ProfileItem) -> str:
+def apply_profile_to_config(profile: ProfileItem, standalone: bool = False) -> str:
     """
     Patch config.json: replace proxy outbound with the given profile's data.
 
@@ -67,8 +67,12 @@ def apply_profile_to_config(profile: ProfileItem) -> str:
       - Preserves inbounds, routing, DNS, and all other outbounds
       - Writes back
 
+    Args:
+        profile: The node to switch to
+        standalone: If True, remove TUN-specific settings (dialerProxy)
+
     Returns:
         Path to the written config.json
     """
     from adapters.xray_config import apply_node_to_config
-    return apply_node_to_config(profile)
+    return apply_node_to_config(profile, standalone=standalone)

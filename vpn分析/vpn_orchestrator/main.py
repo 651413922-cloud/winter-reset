@@ -95,7 +95,7 @@ def run_interactive():
             orch.switch_working()
 
         elif choice == '6':
-            orch.status()
+            orch.print_status_report()
 
         elif choice == '7':
             orch.check_proxy()
@@ -160,7 +160,7 @@ def run_cli():
         orch.restart()
 
     elif cmd == 'status':
-        orch.status()
+        orch.print_status_report()
 
     elif cmd == 'check':
         orch.check_proxy()
