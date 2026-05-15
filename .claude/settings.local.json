@@ -48,7 +48,10 @@
       "Bash(echo \"exit: $?\")",
       "Bash(xxd \"D:/d/GitHub/winter-reset/vpn分析/vpn_orchestrator/vpn_start.bat\")",
       "Bash(xxd)",
-      "Bash(printf *)"
+      "Bash(printf *)",
+      "Bash(mkdir -p __TRACKED_VAR__/.claude/skills)",
+      "Bash(cp -r D:/d/GitHub/winter-reset/.claude/skills/complexity-guard __TRACKED_VAR__/.claude/skills/)",
+      "Bash(cp -r D:/d/GitHub/winter-reset/.claude/skills/architecture-explainer __TRACKED_VAR__/.claude/skills/)"
     ]
   }
 }
