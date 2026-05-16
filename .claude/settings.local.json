@@ -60,7 +60,16 @@
       "Bash(grep -rnoE \"\\\\b\\(?:[0-9]{1,3}\\\\.\\){3}[0-9]{1,3}\\\\b\" --include=\"*.py\" --include=\"*.md\" --include=\"*.txt\" --include=\"*.json\" --exclude-dir=\".git\" --exclude-dir=\"__pycache__\" .)",
       "Bash(grep -rnoE \"<REDACTED_UUID>\" --exclude-dir=\".git\" --exclude-dir=\"__pycache__\" .)",
       "Bash(grep -rnoE \"<REDACTED_ENCRYPTION>\" --exclude-dir=\".git\" --exclude-dir=\"__pycache__\" .)",
-      "Bash(git rm *)"
+      "Bash(git rm *)",
+      "Bash(git filter-branch *)",
+      "Bash(git stash *)",
+      "Bash(git show-ref *)",
+      "Bash(git reflog *)",
+      "Bash(git gc *)",
+      "Bash(Remove-Item *)",
+      "Bash(git restore *)",
+      "Bash(git update-ref *)",
+      "Bash(git fetch *)"
     ]
   }
 }
