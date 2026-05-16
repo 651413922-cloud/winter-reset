@@ -22,6 +22,9 @@ configTest*.json
 .vscode/
 .idea/
 
+# Work summaries
+*-工作总结.md
+
 # OS
 .DS_Store
 Thumbs.db
