@@ -1,0 +1,27 @@
+# Bytecode
+__pycache__/
+*.pyc
+*.pyo
+
+# Logs
+*.log
+
+# Databases
+*.db
+*.sqlite
+
+# Runtime config
+config.json
+configTest*.json
+
+# Environment
+.env
+.env.*
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
