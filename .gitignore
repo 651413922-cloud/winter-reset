@@ -25,6 +25,9 @@ configTest*.json
 # Work summaries
 *-工作总结.md
 
+# Temp scripts with sensitive patterns
+_filter_*.py
+
 # OS
 .DS_Store
 Thumbs.db
