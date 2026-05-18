@@ -7,11 +7,6 @@ Public API kept stable for backward compatibility with orchestrator and services
 
 import logging
 
-import sys, os
-_orch_root = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
-if _orch_root not in sys.path:
-    sys.path.insert(0, _orch_root)
-
 from models.profile import ProfileItem
 
 logger = logging.getLogger(__name__)

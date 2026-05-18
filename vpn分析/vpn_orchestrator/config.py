@@ -7,13 +7,12 @@ import logging
 logger = logging.getLogger(__name__)
 
 # === v2rayN 客户端根目录 ===
-BASE_DIR = r"d:\useful\加速器\v2rayn"
+BASE_DIR = os.environ.get('V2RAYN_ROOT', r"d:\useful\加速器\v2rayn")
 
 # === 路径 ===
 GUI_DB = os.path.join(BASE_DIR, 'guiConfigs', 'guiNDB.db')
 GUI_NCONFIG_PATH = os.path.join(BASE_DIR, 'guiConfigs', 'guiNConfig.json')
 CONFIG_JSON = os.path.join(BASE_DIR, 'binConfigs', 'config.json')
-BACKUP_CONFIG_JSON = os.path.join(BASE_DIR, 'binConfigs', 'config.json.bak')
 SING_BOX_CONFIG = os.path.join(BASE_DIR, 'binConfigs', 'configPre.json')
 SING_BOX_EXE = os.path.join(BASE_DIR, 'bin', 'sing_box', 'sing-box.exe')
 XRAY_EXE = os.path.join(BASE_DIR, 'bin', 'xray', 'xray.exe')
@@ -94,13 +93,9 @@ def get_socks_proxy() -> str:
     return f'socks5://{SOCKS5_HOST}:{port}'
 
 
-SOCKS5_PROXY = f'socks5://{SOCKS5_HOST}:{SOCKS5_PORT}'
-HTTP_PROXY = f'http://{SOCKS5_HOST}:{SOCKS5_PORT}'
-
 # === 连通性检测 ===
 CHECK_URL = 'https://www.google.com/generate_204'
 TIMEOUT = 20          # 秒
-SPEED_TEST_URL = 'https://cachefly.cachefly.net/50mb.test'
 
 # === GUI 配置 ===
 GUI_NCONFIG_PATH = os.path.join(BASE_DIR, 'guiConfigs', 'guiNConfig.json')

@@ -1,6 +1,7 @@
 """统一日志配置。其他模块通过 logging.getLogger(__name__) 获取 logger。"""
 
 import logging
+import logging.handlers
 import os
 import sys
 
@@ -43,13 +44,15 @@ def setup_logging(level: int = logging.INFO,
     root.handlers.clear()
     root.addHandler(console)
 
-    # 文件 handler（DEBUG 级别）
+    # 文件 handler（DEBUG 级别，自动轮转 10MB x 5）
     if log_file is None:
         log_file = os.path.join(
             os.path.dirname(os.path.abspath(__file__)),
             "vpn_orchestrator.log",
         )
-    file_handler = logging.FileHandler(log_file, encoding='utf-8')
+    file_handler = logging.handlers.RotatingFileHandler(
+        log_file, encoding='utf-8', maxBytes=10*1024*1024, backupCount=5
+    )
     file_handler.setLevel(logging.DEBUG)
     file_handler.setFormatter(fmt)
     root.addHandler(file_handler)

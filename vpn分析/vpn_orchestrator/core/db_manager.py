@@ -2,13 +2,7 @@
 
 import logging
 import sqlite3
-import sys, os
 from typing import List, Optional
-from pathlib import Path
-
-_orch_root = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
-if _orch_root not in sys.path:
-    sys.path.insert(0, _orch_root)
 
 from config import GUI_DB
 from models.profile import ProfileItem, profile_from_db_row
@@ -194,7 +188,7 @@ class DbManager:
             delay_str = f"{stats['delay']}ms" if stats['delay'] >= 0 else "未测"
             speed_str = f"{stats['speed']}MB/s" if stats['speed'] > 0 else ""
             self._safe_print(f"  {i}. {p.display()}")
-            self._safe_print(f"     UUID: {p.password[:16]}... | Flow: {p.effective_flow}")
+            self._safe_print(f"     UUID: {p.password[:8]}... | Flow: {p.effective_flow}")
             self._safe_print(f"     Path: {p.effective_path} | SNI: {p.sni or '(同地址)'}")
             self._safe_print(f"     延迟: {delay_str} | 速度: {speed_str}")
             self._safe_print("")

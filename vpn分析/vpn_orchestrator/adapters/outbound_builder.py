@@ -15,11 +15,6 @@ Supports:
 import logging
 from typing import Optional
 
-import sys, os
-_orch_root = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
-if _orch_root not in sys.path:
-    sys.path.insert(0, _orch_root)
-
 from models.profile import ProfileItem
 
 logger = logging.getLogger(__name__)

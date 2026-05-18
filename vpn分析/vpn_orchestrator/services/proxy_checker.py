@@ -4,15 +4,10 @@
 """
 
 import time
-import sys, os
 import requests
 from typing import Tuple, Optional
 
-_orch_root = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
-if _orch_root not in sys.path:
-    sys.path.insert(0, _orch_root)
-
-from config import get_socks_proxy, CHECK_URL, TIMEOUT, SPEED_TEST_URL
+from config import get_socks_proxy, CHECK_URL, TIMEOUT
 
 
 class ProxyChecker:

@@ -10,19 +10,11 @@ Integrates:
   - BrowserLauncher  (browser tabs)
 """
 
-import sys
-import os
 import logging
-
-_orch_dir = os.path.dirname(os.path.abspath(__file__))
-if _orch_dir not in sys.path:
-    sys.path.insert(0, _orch_dir)
-
 import time
 from typing import Optional
 
 from core.db_manager import DbManager
-from core.process_manager import ProcessManager
 from core.runtime_manager import RuntimeManager
 from core.config_builder import apply_profile_to_config, read_current_config
 from core.state import (
@@ -42,7 +34,6 @@ class VpnOrchestrator:
     def __init__(self, tick_interval: float = 30.0):
         self.db = DbManager()
         self.rt = RuntimeManager()
-        self.proc = ProcessManager()  # backward-compat wrapper
         self.checker = ProxyChecker()
         self.switcher = NodeSwitcher()
         self.browser = BrowserLauncher()
@@ -67,26 +58,11 @@ class VpnOrchestrator:
     def _sync_current_node(self):
         """Read current proxy outbound from config.json into status."""
         try:
-            from adapters.xray_config import find_proxy_outbound, read_config
+            from adapters.xray_config import find_proxy_outbound, read_config, extract_node_identifier
             cfg = read_config()
             ob, _ = find_proxy_outbound(cfg)
             if ob:
-                proto = ob.get('protocol', ob.get('type', ''))
-                if proto in ('vless', 'vmess', 'trojan'):
-                    vnext = ob.get('settings', {}).get('vnext', [])
-                    if vnext:
-                        addr = vnext[0].get('address', '')
-                        port = vnext[0].get('port', '')
-                        self.status.current_node = f'{addr}:{port}'
-                        return
-                elif proto == 'shadowsocks':
-                    servers = ob.get('settings', {}).get('servers', [])
-                    if servers:
-                        addr = servers[0].get('address', '')
-                        port = servers[0].get('port', '')
-                        self.status.current_node = f'{addr}:{port}'
-                        return
-                self.status.current_node = f'{proto}://{ob.get("server", "?")}'
+                self.status.current_node = extract_node_identifier(ob)
         except Exception:
             pass
 

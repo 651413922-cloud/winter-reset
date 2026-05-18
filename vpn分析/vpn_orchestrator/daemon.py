@@ -61,7 +61,7 @@ class VpnDaemon:
         logger.info("=" * 50)
 
         # 首次启动：确保 VPN 在线
-        if not self.orch.proc.is_running():
+        if not self.orch.rt.is_running():
             logger.info("首次启动，执行 auto_connect...")
             self.orch.auto_connect(open_browser=False)
 

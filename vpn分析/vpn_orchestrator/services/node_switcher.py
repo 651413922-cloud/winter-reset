@@ -5,17 +5,12 @@
 
 import logging
 import time
-import sys, os
 from typing import List, Optional, Tuple
-
-_orch_root = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
-if _orch_root not in sys.path:
-    sys.path.insert(0, _orch_root)
 
 from models.profile import ProfileItem
 from core.db_manager import DbManager
 from core.config_builder import apply_profile_to_config
-from core.process_manager import ProcessManager
+from core.runtime_manager import RuntimeManager
 from services.proxy_checker import ProxyChecker
 
 logger = logging.getLogger(__name__)
@@ -26,7 +21,7 @@ class NodeSwitcher:
 
     def __init__(self):
         self.db = DbManager()
-        self.proc = ProcessManager()
+        self.proc = RuntimeManager()
         self.checker = ProxyChecker()
 
     # ========== 按名称切换 ==========

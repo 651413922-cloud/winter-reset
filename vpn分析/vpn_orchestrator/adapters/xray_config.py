@@ -17,15 +17,11 @@ configuration and causes connection timeouts.
 import json
 import logging
 import shutil
+import time
 from pathlib import Path
 from typing import Optional, Tuple
 
-import sys, os
-_orch_root = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
-if _orch_root not in sys.path:
-    sys.path.insert(0, _orch_root)
-
-from config import CONFIG_JSON, BACKUP_CONFIG_JSON
+from config import CONFIG_JSON
 from models.profile import ProfileItem
 from adapters.outbound_builder import build_xray_outbound
 
@@ -74,19 +70,45 @@ def write_config(config: dict) -> None:
 
 
 def backup_config() -> None:
-    """Create a backup of the current config.json."""
+    """Create a timestamped backup of the current config.json. Keeps last 5."""
     src = Path(CONFIG_JSON)
     if src.exists():
-        shutil.copy2(src, BACKUP_CONFIG_JSON)
-        logger.info("Backup saved to %s", BACKUP_CONFIG_JSON)
+        ts = time.strftime('%Y%m%d-%H%M%S')
+        bak = src.parent / (src.name + f'.{ts}.bak')
+        shutil.copy2(src, bak)
+        _prune_backups(keep=5)
+        logger.info("Backup saved to %s", bak.name)
+
+
+def _prune_backups(keep: int = 5) -> None:
+    """Remove old timestamped backups, keeping the most recent `keep`."""
+    cfg_dir = Path(CONFIG_JSON).parent
+    cfg_name = Path(CONFIG_JSON).name
+    backups = sorted(
+        cfg_dir.glob(cfg_name + '.*.bak'),
+        key=lambda p: p.stat().st_mtime, reverse=True,
+    )
+    for old in backups[keep:]:
+        old.unlink(missing_ok=True)
+
+
+def _latest_backup() -> Optional[Path]:
+    """Return the most recent timestamped backup, or None."""
+    cfg_dir = Path(CONFIG_JSON).parent
+    cfg_name = Path(CONFIG_JSON).name
+    backups = sorted(
+        cfg_dir.glob(cfg_name + '.*.bak'),
+        key=lambda p: p.stat().st_mtime, reverse=True,
+    )
+    return backups[0] if backups else None
 
 
 def restore_config() -> bool:
-    """Restore config.json from backup."""
-    bak = Path(BACKUP_CONFIG_JSON)
-    if bak.exists():
+    """Restore config.json from the most recent backup."""
+    bak = _latest_backup()
+    if bak:
         shutil.copy2(bak, CONFIG_JSON)
-        logger.info("Restored from backup: %s", CONFIG_JSON)
+        logger.info("Restored from backup: %s → %s", bak.name, CONFIG_JSON)
         return True
     logger.error("No backup file to restore")
     return False
@@ -242,3 +264,30 @@ def apply_node_to_config(profile: ProfileItem, standalone: bool = False) -> str:
                 profile.remarks, profile.address, profile.port)
     logger.debug("Written to %s", CONFIG_JSON)
     return CONFIG_JSON
+
+
+# ============================================================
+#  Utility: extract node identifier from an outbound
+# ============================================================
+
+def extract_node_identifier(outbound: dict) -> str:
+    """Extract a human-readable identifier (addr:port) from an outbound dict."""
+    proto = outbound.get('protocol', outbound.get('type', ''))
+
+    if proto in ('vless', 'vmess', 'trojan'):
+        vnext = outbound.get('settings', {}).get('vnext', [])
+        if vnext:
+            return f"{vnext[0].get('address', '?')}:{vnext[0].get('port', '?')}"
+
+    elif proto == 'shadowsocks':
+        servers = outbound.get('settings', {}).get('servers', [])
+        if servers:
+            return f"{servers[0].get('address', '?')}:{servers[0].get('port', '?')}"
+
+    # Sing-box native format or fallback
+    server = outbound.get('server', '')
+    port = outbound.get('server_port', '')
+    if server:
+        return f'{server}:{port}' if port else server
+
+    return f'{proto}://?'
