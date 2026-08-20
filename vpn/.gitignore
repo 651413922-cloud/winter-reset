@@ -1,0 +1,41 @@
+# Bytecode
+__pycache__/
+*.pyc
+*.pyo
+
+# Logs
+*.log
+
+# Databases
+*.db
+*.sqlite
+
+# Runtime config
+config.json
+configTest*.json
+
+# Environment
+.env
+.env.*
+
+# IDE
+.vscode/
+.idea/
+
+# Work summaries
+*-工作总结.md
+
+# Temp scripts with sensitive patterns
+_filter_*.py
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Local IDE settings
+.claude/
+.workbuddy/
+
+# Build backups (keep only the main exe)
+dist/*.bak*
+dist/*.old_*
